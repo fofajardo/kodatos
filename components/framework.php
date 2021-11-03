@@ -23,6 +23,7 @@ class Framework
             "ROOT"    => $droot,
             "COM"     => $droot . "/components",
             "DBP"     => $droot . "/components/db",
+            "EXT"     => $droot . "/components/external",
             "TPL"     => $droot . "/components/templates",
             "AST"     => $droot . "/assets",
             "CNT"     => $droot . "/assets/content",
@@ -40,6 +41,7 @@ class Framework
         self::$com = [
             "CONFIG"  => self::$dir["COM"] . "/config.php",
             "TPLMAN"  => self::$dir["COM"] . "/template.php",
+            // Database
             "DB"      => self::$dir["DBP"] . "/database.php",
             "DBPAT"   => self::$dir["DBP"] . "/patients.php",
             "DBPRO"   => self::$dir["DBP"] . "/products.php",
@@ -48,6 +50,9 @@ class Framework
             "DBVAX"   => self::$dir["DBP"] . "/vaxrecords.php",
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
             "DBLOC"   => self::$dir["DBP"] . "/locations.php",
+            // External
+            "QRGEN"   => self::$dir["EXT"] . "/qrgenerator/qrlib.php",
+            "QRDEC"   => self::$dir["EXT"] . "/qrdecoder/QrReader.php",
         ];
 
         // Required components
