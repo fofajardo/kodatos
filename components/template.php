@@ -29,6 +29,16 @@ class Template
         $this->template = $template;
     }
 
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function &getDataByRef()
+    {
+        return $this->data;
+    }
+
     public function setData(array $data)
     {
         $this->data = $data;
@@ -44,9 +54,19 @@ class Template
         return $this->content;
     }
 
+    public function &getContentByRef()
+    {
+        return $this->content;
+    }
+
     public function setContent(array $content)
     {
         $this->content = $content;
+    }
+
+    public function attachContent(array &$content)
+    {
+        $this->content = &$content;
     }
 
     public static function createOpeningTag(
