@@ -1,25 +1,42 @@
 <?php
 
+/* @FILE: template.php
+   © Francis Dominic Fajardo - All Rights Reserved
+   Unauthorized copying of this file, via any medium is strictly prohibited
+   Proprietary and confidential
+*/
+
 class Template
 {
     private $template;
     private $data = [];
     private $content = [];
-    
+    private $child_templates = [];
+
     public function __construct(
-        string $template
+        string $template,
+        bool $auto_retrieve = false
     ) {
+        if ($auto_retrieve) {
+            $this->setTemplate(Framework::getTemplate($template));
+            return;
+        }
         $this->setTemplate($template);
     }
-    
+
     public function setTemplate(string $template)
     {
         $this->template = $template;
     }
-    
+
     public function setData(array $data)
     {
         $this->data = $data;
+    }
+
+    public function attachData(array &$data)
+    {
+        $this->data = &$data;
     }
 
     public function getContent()
@@ -31,7 +48,7 @@ class Template
     {
         $this->content = $content;
     }
-    
+
     public static function createOpeningTag(
         string $name,
         array $attributes,
@@ -47,12 +64,12 @@ class Template
         $node .= ($self_closing ? "/>" : ">");
         return $node;
     }
-    
+
     public static function createClosingTag(string $name)
     {
         return "</$name>";
     }
-    
+
     public static function createElement(
         string $name,
         array $attributes = [],
@@ -87,7 +104,7 @@ class Template
     {
         $this->content[] = str_repeat("<br/>", $multiplier);
     }
-    
+
     public function append($content)
     {
         if (is_array($content))
@@ -98,24 +115,36 @@ class Template
         $this->content[] = $content;
     }
     
+    public function attach($template)
+    {
+        $this->child_templates[] = &$template;
+    }
+
     public function output()
     {
-        $search = [
-            "CONTENT_INSERT",
-            "DIR_AST",
-            "DIR_IMG",
-        ];
-        $replace = [
-            implode(PHP_EOL, $this->content),
-            Framework::$dir["S_AST"],
-            Framework::$dir["S_IMG"],
-        ];
-        
-        $output = str_replace($search, $replace, $this->template);
-        
-        $search = array_keys($this->data);
-        $replace = array_values($this->data);
+        $content_merged = implode(PHP_EOL, $this->content);
+        for ($i = 0; $i < count($this->child_templates); $i++)
+        {
+            $content_merged .= $this->child_templates[$i]->output() . PHP_EOL;
+        }
 
-        return str_replace($search, $replace, $output);
+        $search = array_merge(
+            [
+                "CONTENT_INSERT",
+                "DIR_AST",
+                "DIR_IMG",
+            ],
+            array_keys($this->data)
+        );
+        $replace = array_merge(
+            [
+                $content_merged,
+                Framework::$dir["S_AST"],
+                Framework::$dir["S_IMG"],
+            ],
+            array_values($this->data)
+        );
+
+        return str_replace($search, $replace, $this->template);
     }
 }
