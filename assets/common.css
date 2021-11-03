@@ -508,7 +508,6 @@ form button {
   background-color: #FF7A37;
 }
 
-#pov-status-container,
 #pov-container {
   display: flex;
   justify-content: space-between;
@@ -516,6 +515,9 @@ form button {
   flex-wrap: wrap;
 }
 
+#pov-qr-container {
+  text-align: center;
+}
 #pov-general > .title {
   font-size: 2em;
   font-weight: 700;
@@ -557,6 +559,9 @@ body,
 
 @media screen and (max-width: 650px) {
   /* 650px */
+  #pov-container {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
