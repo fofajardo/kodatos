@@ -367,7 +367,7 @@ footer {
   background: rgba(0,0,0,0.15);
   padding: 15px;
   border: 2px solid black;
-  /* border-bottom-style: none; */
+  border-radius: 5px;
   margin-top: 25px;
 }
 
@@ -500,7 +500,6 @@ form button {
 
 .status-box {
   border-radius: 5px;
-  background-color: #FFE408;
   background-image: repeating-linear-gradient(135deg,
                                               rgba(255,255,255,.05), rgba(255,255,255,.05) 15px,
                                               rgba(0,0,0,.05) 15px, rgba(0,0,0,.05) 25px);
@@ -511,6 +510,10 @@ form button {
   text-align: center;
   font-weight: bold;
   min-width: 50px;
+}
+
+.status-box.yellow {
+  background-color: #FFE408;
 }
 
 .status-box.green {
