@@ -329,7 +329,6 @@ footer {
 }
 
 .card2 > .title {
-  background-color: #FFE408;
   font-weight: bold;
   margin: -17px -17px 17px -17px;
   padding: 15px;
@@ -340,12 +339,26 @@ footer {
   border: 2px solid #000;
 }
 
-.card2 > .title.green {
+.card2 > .title.state-low {
+  background-color: #FF7A37;
+}
+
+.card2 > .title.state-mid {
+  background-color: #FFE408;
+}
+
+.card2 > .title.state-high {
   background-color: #0AFF53;
 }
 
-.card2 > .title.red {
-  background-color: #FF7A37;
+.card2 > .title.state-low > .state-low-child,
+.card2 > .title.state-mid > .state-mid-child,
+.card2 > .title.state-high > .state-high-child {
+  display: block;
+}
+
+.card2 > .title > .state-child {
+  display: none;
 }
 
 .table > .row.subhead {
