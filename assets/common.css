@@ -515,15 +515,26 @@ form button {
   flex-wrap: wrap;
 }
 
+#pov-status-box {
+  margin-top: 10px;
+}
+
 #pov-qr-container {
   text-align: center;
 }
+
+#pov-qr-container > img {
+  display: inline !important;
+  width: 150px;
+  height: 150px;
+}
+
 #pov-general > .title {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: 700;
 }
 #pov-general > .subtitle {
-  font-size: 12px;
+  font-size: 1em;
   font-weight: 500;
 }
 
@@ -557,10 +568,29 @@ body,
   /* 800px */
 }
 
-@media screen and (max-width: 650px) {
-  /* 650px */
+@media screen and (max-width: 750px) {
+  #pov-status-box {
+    margin-left: 10px;
+  }
+
+  #pov-general > .title {
+    font-size: 2em;
+    font-weight: 700;
+  }
+
+  #pov-general > .subtitle {
+    font-size: 1em;
+    font-weight: 500;
+  }
+
   #pov-container {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #pov-status-box {
+    margin-left: 0;
   }
 }
 
