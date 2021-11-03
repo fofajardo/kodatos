@@ -1,3 +1,10 @@
+<?php
+
+require_once "./components/framework.php";
+
+// new Template();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,12 +39,12 @@
         </header>
         <!-- <main id="main" class="bg ib0 vh-full"> -->
         <main id="main">
-            <div id="primary-header-spacer"></div>
-            <section id="section-view-header" class="bg ib0">
+            <section id="section-view-header" class="bg ib0 vh-full">
+                <div id="primary-header-spacer"></div>
                 <div class="content-layout">
                     <div id="pov-container">
                         <div id="pov-general">
-                            <div class="title">DOE, Jane Galloway</div>
+                            <div class="title">GALLOWAY, Jane Joanne</div>
                             <div class="subtitle">Intramuros, Manila, Philippines</div>
                             <div class="subtitle">Date of Birth: June 12, 1898</div>
                         </div>
@@ -58,22 +65,61 @@
                                         <span class="mdi-set mdi-checkbox-marked-circle"></span>
                                         Last vaccinated on:
                                     </span>
-                                    <span>%VAXDATE%</span>
+                                    <span>%RECENTVAXDATE%</span>
                                 </div>
                                 <div class="status-date-box">
                                     <span>
                                         <span class="mdi-set mdi-checkbox-marked-circle"></span>
                                         Last tested on:
                                     </span>
-                                    <span>%TESTDATE%</span>
+                                    <span>%RECENTTESTDATE%</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section id="section-view-body" class="bg ib0 vh-full">
-                <div>
+                <div class="content-layout">
+                    <div class="box v">
+                        <div class="card l">
+                            <div class="table">
+                                <div class="title">
+                                    <span class="cell hr">COVID-19 vaccine</span>
+                                    <span class="cell">
+                                        <span class="mdi-set mdi-checkbox-marked-circle"></span>
+                                        <span>FULLY VACCINATED</span>
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class="cell table">
+                                        <div class="row">
+                                            <span class="cell hr">Date of Vaccination:</span>
+                                            <span class="cell">%VAXDATE%</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="cell hr">Vaccine/Prophylaxis:</span>
+                                            <span class="cell">%VAXTYPE%</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="cell hr">Product Name/Manufacturer:</span>
+                                            <span class="cell">%PRODNAME%</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="cell hr">Lot Number:</span>
+                                            <span class="cell">%LOTNUM%</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="cell hr">Vaccination Site:</span>
+                                            <span class="cell">%VAXSITE%</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="cell hr">Healthcare Professional:</span>
+                                            <span class="cell">%HCWNAME%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

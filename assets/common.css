@@ -302,9 +302,8 @@ footer {
 .choice {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background: rgba(255, 255, 255, 0.75);
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.2);
   padding: 15px;
   margin: 10px;
@@ -313,6 +312,47 @@ footer {
   transition: all 200ms;
   border: 2px solid transparent;
   min-width: 300px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+}
+
+.table > .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table > .row > .cell {
+  padding: 5px 0;
+  flex: 2 250px;
+}
+
+.table > .row > .cell.hr {
+  flex: 1 200px;
+  font-weight: bold;
+}
+
+.table > .title {
+  background-color: #16ff5c;
+  font-weight: bold;
+  margin: -17px -17px 17px -17px;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000;
+}
+
+.card {
+  margin: 10px 0;
+}
+
+.choice {
+  align-items: center;
 }
 
 .choice:hover {
@@ -359,14 +399,6 @@ footer {
 
 #section-login > .card {
   max-width: 400px;
-}
-
-.table {
-  display: flex;
-}
-
-.table > *:not(.ex) {
-  flex: 1 300px;
 }
 
 /* ::::: Input elements ::::: */
@@ -455,11 +487,11 @@ form button {
   font-weight: 500;
 }
 
-.title {
+#pov-general > .title {
   font-size: 2em;
   font-weight: 700;
 }
-.subtitle {
+#pov-general > .subtitle {
   font-size: 12px;
   font-weight: 500;
 }

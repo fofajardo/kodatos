@@ -60,6 +60,9 @@ class Framework
         foreach (self::$rcom as $component) {
             self::load($component);
         }
+
+        // Set content type HTTP header
+        header("Content-Type: text/html; charset=utf-8");
     }
 
     public static function load(string $name)
