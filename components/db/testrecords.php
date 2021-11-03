@@ -1,6 +1,6 @@
 <?php
 
-class Vaccinations extends Database
+class TestRecords extends Database
 {
     public function create(
         $patient_id,

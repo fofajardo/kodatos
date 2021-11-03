@@ -51,6 +51,7 @@ class Framework
             "DBVAX"   => self::$dir["DBP"] . "/vaxrecords.php",
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
             "DBLOC"   => self::$dir["DBP"] . "/locations.php",
+            "DBTSR"   => self::$dir["DBP"] . "/testrecords.php",
             // External
             "QRDEC"   => self::$dir["EXT"] . "/qrdecoder/QrReader.php",
         ];
