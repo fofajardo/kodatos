@@ -15,13 +15,13 @@ class Template
 
     public function __construct(
         string $template,
-        bool $auto_retrieve = false
+        bool $fromString = false
     ) {
-        if ($auto_retrieve) {
-            $this->setTemplate(Utils::getTemplate($template));
+        if ($fromString) {
+            $this->setTemplate($template);
             return;
         }
-        $this->setTemplate($template);
+        $this->setTemplate(Utils::getTemplate($template));
     }
 
     public function setTemplate(string $template)

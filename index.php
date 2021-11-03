@@ -2,7 +2,7 @@
 
 require_once "./components/framework.php";
 
-$document = new Template("home", true);
+$document = new Template("home");
 
 $page_info = [];
 $page_info["TPL_HEADER"] = Utils::getTemplate("_header");

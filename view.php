@@ -9,7 +9,7 @@ Framework::load("DBSIT");
 Framework::load("DBWOR");
 
 // Init document
-$document = new Template("view", true);
+$document = new Template("view");
 
 $data = [];
 $document->attachData($data);
@@ -43,11 +43,11 @@ $data["PATIENT_REFCODE"] = $info["patient"]["reference_code"];
 $data["PATIENT_LOCATION"] = $info["location"]["name"];
 
 // Init covid test card
-$card_test = new Template("card-covidtest", true);
+$card_test = new Template("card-covidtest");
 $document->attach($card_test);
 
 // Init covid vax card
-$card_vax = new Template("card-covidvax", true);
+$card_vax = new Template("card-covidvax");
 $card_vax_data = [];
 $card_vax->attachData($card_vax_data);
 $document->attach($card_vax);
@@ -56,7 +56,7 @@ $record_count = count($info["vaxrecord"]);
 for ($i = 0; $i < $record_count; $i++)
 {
     $record = $info["vaxrecord"][$i];
-    $record_tpl = new Template("card-covidvax-dose", true);
+    $record_tpl = new Template("card-covidvax-dose");
     $card_vax->attach($record_tpl);
 
     // FIXME: ID should be handled in DB component directly
