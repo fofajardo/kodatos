@@ -13,9 +13,9 @@ class Vaccinations extends Database
         $vax_hcw_id
     ) {
         $parameters = [
-            "INSERT INTO `vaccinations`",
+            "INSERT INTO `vaxrecords`",
             "(`patient_id`, `vax_dosenum`, `vax_product_id`, `vax_lotnum`, `vax_expiry`, `vax_date`, `vax_site_id`, `vax_hcw_id`)",
-            "VALUES (?, ?, ?, ?)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         ];
         $values = [
             $patient_id, $vax_dosenum, $vax_product_id, $vax_lotnum
@@ -34,7 +34,7 @@ class Vaccinations extends Database
         $vax_hcw_id = null,
         $id
     ) {
-        $query = ["UPDATE `vaccinations` SET"];
+        $query = ["UPDATE `vaxrecords` SET"];
 		$parameters = [];
         $values = [];
         
@@ -88,7 +88,7 @@ class Vaccinations extends Database
 
     public function read()
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `vaccinations`");
+        $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords`");
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -96,7 +96,7 @@ class Vaccinations extends Database
     
     public function readFromPatientId(int $id)
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `vaccinations` WHERE `patient_id`=?");
+        $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords` WHERE `patient_id`=?");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -105,7 +105,7 @@ class Vaccinations extends Database
     public function delete(int $id)
     {
         return $this->execute(
-            "DELETE FROM `vaccinations` WHERE `id`=?",
+            "DELETE FROM `vaxrecords` WHERE `id`=?",
             [$id]
         );
     }

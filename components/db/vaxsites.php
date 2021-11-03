@@ -7,7 +7,7 @@ class Sites extends Database
         $location_id
     ) {
         $parameters = [
-            "INSERT INTO `sites`",
+            "INSERT INTO `vaxsites`",
             "(`name`, `location_id)",
             "VALUES (?, ?)",
         ];
@@ -23,7 +23,7 @@ class Sites extends Database
         $location_id = null,
         $id
     ) {
-        $query = ["UPDATE `sites` SET"];
+        $query = ["UPDATE `vaxsites` SET"];
 		$parameters = [];
         $values = [];
         
@@ -47,7 +47,7 @@ class Sites extends Database
 
     public function read()
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `sites`");
+        $this->statement = $this->connection->prepare("SELECT * FROM `vaxsites`");
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -56,7 +56,7 @@ class Sites extends Database
     public function delete(int $id)
     {
         return $this->execute(
-            "DELETE FROM `sites` WHERE `id`=?",
+            "DELETE FROM `vaxsites` WHERE `id`=?",
             [$id]
         );
     }
