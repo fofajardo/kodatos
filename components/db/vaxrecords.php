@@ -96,7 +96,7 @@ class Vaccinations extends Database
     
     public function readFromPatientId(int $id)
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords` WHERE `patient_id`=?");
+        $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords` WHERE `patient_id`=? ORDER BY `vax_date` ASC");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;

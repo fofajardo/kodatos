@@ -533,10 +533,8 @@ form button {
 
 #pov-status-box {
   margin-top: 10px;
-}
-
-#pov-qr-container {
   text-align: center;
+  font-family: monospace;
 }
 
 #pov-qr-container > img {

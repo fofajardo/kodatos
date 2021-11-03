@@ -23,8 +23,7 @@ $info["patient"] = $db->readId($info["pid"]);
 
 if (is_bool($info["patient"]))
 {
-    //
-    // exit;
+    $document->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov-404");
 }
 else
 {
@@ -44,9 +43,10 @@ else
     $info["testtype"] = $db->read();
 
     $vaccinated = !is_bool($info["vaxrecord"]);
-    $tested = !is_bool($info["vaxrecord"]);
+    $tested = !is_bool($info["tests"]);
 
     // data
+    $document->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov");
     $document->getDataByRef()["PATIENT_NAME"] = sprintf(
                                 "%s, %s %s",
                                 strtoupper($info["patient"]["last_name"]),
@@ -54,7 +54,7 @@ else
                                 $info["patient"]["middle_name"]
                             );
     $document->getDataByRef()["PATIENT_BIRTH"] = $info["patient"]["birthdate"];
-    $document->getDataByRef()["PATIENT_REFCODE"] = $info["patient"]["reference_code"];
+    $document->getDataByRef()["PATIENT_REFCODE"] = strtoupper($info["patient"]["reference_code"]);
     $document->getDataByRef()["PATIENT_LOCATION"] = $info["location"]["name"];
 
     // Init covid test card
@@ -65,11 +65,13 @@ else
     {
         // Get the latest record
         $record = $info["tests"][0];
+        $record_tpl = new Template("card-covidtest-child");
+        $card_test->attach($record_tpl);
 
         // FIXME: ID should be handled in DB component directly
-        $card_test->setData([
+        $record_tpl->setData([
             "TEST_DATE" => $record["test_date"],
-            "TEST_TYPE" => $info["testtype"][$record["test_type"]]["name"],
+            "TEST_TYPE" => $info["testtype"][$record["test_type"] - 1]["name"],
             "TEST_SITE" => $info["vaxsites"][$record["test_site_id"] - 1]["name"],
         ]);
         
