@@ -76,30 +76,6 @@ class Framework
     {
         require(self::$com[$name]);
     }
-
-    public static function getContent(string $name, string $extension = ".html")
-    {
-        $path = self::$dir["CNT"] . "/" . $name . $extension;
-        return self::getFile($path);
-    }
-
-    public static function getTemplate(string $name)
-    {
-        $path = self::$dir["TPL"] . "/" . $name . ".html";
-        return self::getFile($path);
-    }
-
-    private static function getFile(string $path)
-    {
-        if (file_exists($path))
-        {
-            return file_get_contents($path);
-        }
-        else
-        {
-            throw new Exception("Missing file");
-        }
-    }
 }
 
 Framework::initialize();

@@ -13,7 +13,7 @@ $document = new Template("view", true);
 
 $data = [];
 $document->attachData($data);
-$data["TPL_HEADER"] = Framework::getTemplate("_header");
+$data["TPL_HEADER"] = Utils::getTemplate("_header");
 
 // Info
 $info = [];

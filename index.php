@@ -2,11 +2,10 @@
 
 require_once "./components/framework.php";
 
-$template_file = Framework::getTemplate("home");
-$document = new Template($template_file);
+$document = new Template("home", true);
 
 $page_info = [];
-$page_info["TPL_HEADER"] = Framework::getTemplate("_header");
+$page_info["TPL_HEADER"] = Utils::getTemplate("_header");
 
 $document->setData($page_info);
 

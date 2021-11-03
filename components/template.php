@@ -18,7 +18,7 @@ class Template
         bool $auto_retrieve = false
     ) {
         if ($auto_retrieve) {
-            $this->setTemplate(Framework::getTemplate($template));
+            $this->setTemplate(Utils::getTemplate($template));
             return;
         }
         $this->setTemplate($template);
