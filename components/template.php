@@ -123,7 +123,8 @@ class Template
     public function output()
     {
         $content_merged = implode(PHP_EOL, $this->content);
-        for ($i = 0; $i < count($this->child_templates); $i++)
+        $template_count = count($this->child_templates);
+        for ($i = 0; $i < $template_count; $i++)
         {
             $content_merged .= $this->child_templates[$i]->output() . PHP_EOL;
         }
