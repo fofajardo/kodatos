@@ -14,7 +14,7 @@ class Framework
 
     public static function initialize()
     {
-        $protocol = "https";
+        $protocol = "http";
         $droot = $_SERVER["DOCUMENT_ROOT"];
         $sroot = $protocol . '://' . $_SERVER['HTTP_HOST'];
 
