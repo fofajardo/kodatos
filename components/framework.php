@@ -51,7 +51,6 @@ class Framework
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
             "DBLOC"   => self::$dir["DBP"] . "/locations.php",
             // External
-            "QRGEN"   => self::$dir["EXT"] . "/qrgenerator/qrlib.php",
             "QRDEC"   => self::$dir["EXT"] . "/qrdecoder/QrReader.php",
         ];
 
