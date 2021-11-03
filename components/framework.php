@@ -43,12 +43,13 @@ class Framework
             "DB"      => self::$dir["DBP"] . "/database.php",
             "DBPAT"   => self::$dir["DBP"] . "/patients.php",
             "DBPRO"   => self::$dir["DBP"] . "/products.php",
-            "DBSIT"   => self::$dir["DBP"] . "/site.php",
             "DBUSR"   => self::$dir["DBP"] . "/users.php",
-            "DBVAX"   => self::$dir["DBP"] . "/vaccinations.php",
+            "DBSIT"   => self::$dir["DBP"] . "/vaxsites.php",
+            "DBVAX"   => self::$dir["DBP"] . "/vaxrecords.php",
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
+            "DBLOC"   => self::$dir["DBP"] . "/locations.php",
         ];
-        
+
         // Required components
         self::$rcom = [
             "CONFIG",

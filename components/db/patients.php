@@ -6,12 +6,13 @@ class Patients extends Database
         $first_name,
         $last_name,
         $middle_name,
-        $birthdate
+        $birthdate,
+        $location_id
     ) {
         $parameters = [
             "INSERT INTO `patients`",
-            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `birthdate`)",
-            "VALUES (?, ?, ?, ?, ?, ?)",
+            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `birthdate`, `location_id`)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
         ];
 
         $rand = random_int(0, 1000);
@@ -19,7 +20,7 @@ class Patients extends Database
         $cd_sec = hash("adler32", $first_name . $middle_name . $last_name . $birthdate . $rand);
 
         $values = [
-            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $birthdate
+            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $birthdate, $location_id
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -29,6 +30,7 @@ class Patients extends Database
         $last_name = null,
         $middle_name = null,
         $birthdate = null,
+        $location_id = null,
         $id
     ) {
         $query = ["UPDATE `patients` SET"];
@@ -55,6 +57,11 @@ class Patients extends Database
             $parameters[] = "`birthdate`=?";
             $values[] = $birthdate;
         }
+        if (!empty($location_id))
+        {
+            $parameters[] = "`location_id`=?";
+            $values[] = $location_id;
+        }
         
 		$query[] = implode(",", $parameters);
         $query[] = "WHERE `id`=?";
@@ -76,7 +83,7 @@ class Patients extends Database
         $this->statement = $this->connection->prepare("SELECT * FROM `patients` WHERE `id`=?");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
-        return ($this->statement->rowCount() == 0) ? false : $entries;
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
     public function readCode(string $reference_code, string $security_code)
@@ -86,7 +93,7 @@ class Patients extends Database
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         $exists = ($this->statement->rowCount() > 0);
         if ($exists) {
-            return ($this->statement->rowCount() == 0) ? false : $entries;
+            return ($this->statement->rowCount() == 0) ? false : $entries[0];
         }
         return false;
     }

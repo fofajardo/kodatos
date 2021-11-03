@@ -3,21 +3,24 @@
 class Sites extends Database
 {
     public function create(
-        $site_name
+        $site_name,
+        $location_id
     ) {
         $parameters = [
             "INSERT INTO `sites`",
-            "(`site_name`)",
-            "VALUES (?)",
+            "(`name`, `location_id)",
+            "VALUES (?, ?)",
         ];
         $values = [
-            $site_name
+            $site_name,
+            $location_id
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
 
     public function update(
         $site_name = null,
+        $location_id = null,
         $id
     ) {
         $query = ["UPDATE `sites` SET"];
@@ -26,8 +29,13 @@ class Sites extends Database
         
         if (!empty($site_name))
         {
-            $parameters[] = "`site_name`=?";
+            $parameters[] = "`name`=?";
             $values[] = $site_name;
+        }
+        if (!empty($location_id))
+        {
+            $parameters[] = "`location_id`=?";
+            $values[] = $location_id;
         }
         
 		$query[] = implode(",", $parameters);
