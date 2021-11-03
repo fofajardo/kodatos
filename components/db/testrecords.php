@@ -60,7 +60,7 @@ class TestRecords extends Database
 
     public function read()
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `testrecords`");
+        $this->statement = $this->connection->prepare("SELECT * FROM `testrecords` ORDER BY `test_date` DESC");
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -68,7 +68,7 @@ class TestRecords extends Database
     
     public function readFromPatientId(int $id)
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `testrecords` WHERE `patient_id`=?");
+        $this->statement = $this->connection->prepare("SELECT * FROM `testrecords` WHERE `patient_id`=? ORDER BY `test_date` DESC");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
