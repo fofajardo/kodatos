@@ -53,8 +53,6 @@ class Framework
             "DBLOC"   => self::$dir["DBP"] . "/locations.php",
             "DBTSR"   => self::$dir["DBP"] . "/testrecords.php",
             "DBTTY"   => self::$dir["DBP"] . "/testtype.php",
-            // External
-            "QRDEC"   => self::$dir["EXT"] . "/qrdecoder/QrReader.php",
         ];
 
         // Required components
