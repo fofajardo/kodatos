@@ -26,7 +26,8 @@ class Utils
         }
     }
 
-    public static function getOrdinal($number) {
+    public static function getOrdinal($number)
+    {
         $ends = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
         if ((($number % 100) >= 11) && (($number%100) <= 13))
         {
@@ -36,5 +37,11 @@ class Utils
         {
             return $number . $ends[$number % 10];
         }
+    }
+    
+    public static function redirect($page)
+    {
+        header('Location: ' . Framework::$dir["S_ROOT"] . "/" . $page);
+        exit;
     }
 }
