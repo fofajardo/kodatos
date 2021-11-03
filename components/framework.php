@@ -40,6 +40,7 @@ class Framework
         // Components
         self::$com = [
             "CONFIG"  => self::$dir["COM"] . "/config.php",
+            "UTILS"   => self::$dir["COM"] . "/utils.php",
             "TPLMAN"  => self::$dir["COM"] . "/template.php",
             // Database
             "DB"      => self::$dir["DBP"] . "/database.php",
@@ -57,6 +58,7 @@ class Framework
         // Required components
         self::$rcom = [
             "CONFIG",
+            "UTILS",
             "TPLMAN",
             "DB",
         ];
