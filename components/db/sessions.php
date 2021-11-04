@@ -34,6 +34,14 @@ class Sessions extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries;
     }
 
+    public function readFromSID(int $id)
+    {
+        $this->statement = $this->connection->prepare("SELECT * FROM `account_sessions` WHERE `session_id`=?");
+        $this->statement->execute([$id]);
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
+    }
+
     public function delete(int $id)
     {
         return $this->execute(
