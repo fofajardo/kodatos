@@ -77,7 +77,7 @@ class Framework
 
     public static function load(string $name)
     {
-        require(self::$com[$name]);
+        require_once(self::$com[$name]);
     }
 }
 
