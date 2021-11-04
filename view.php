@@ -1,14 +1,7 @@
 <?php
 
 require "./components/framework.php";
-Framework::load("DBVAX");
-Framework::load("DBLOC");
-Framework::load("DBPAT");
-Framework::load("DBPRO");
-Framework::load("DBSIT");
-Framework::load("DBWOR");
-Framework::load("DBTSR");
-Framework::load("DBTTY");
+Framework::loadMultiple(["DBVAX", "DBLOC", "DBPAT", "DBPRO", "DBSIT", "DBWOR", "DBTSR", "DBTTY"]);
 
 // Init document
 $document = new Template("view");
@@ -40,20 +33,13 @@ if (is_bool($info["patient"]))
 else
 {
     $info["pid"] = $info["patient"]["id"];
-    $db = new Locations();
-    $info["location"] = $db->readId($info["patient"]["location_id"]);
-    $db = new Vaccinations();
-    $info["vaxrecord"] = $db->readFromPatientId($info["pid"]);
-    $db = new Products();
-    $info["products"] = $db->read();
-    $db = new Sites();
-    $info["vaxsites"] = $db->read();
-    $db = new Workers();
-    $info["workers"] = $db->read();
-    $db = new TestRecords();
-    $info["tests"] = $db->readFromPatientId($info["pid"]);
-    $db = new TestType();
-    $info["testtype"] = $db->read();
+    $info["location"]  = DBM::$com["LOC"]->readId($info["patient"]["location_id"]);
+    $info["vaxrecord"] = DBM::$com["VAXR"]->readFromPatientId($info["pid"]);
+    $info["products"]  = DBM::$com["PROD"]->read();
+    $info["vaxsites"]  = DBM::$com["SITES"]->read();
+    $info["workers"]   = DBM::$com["HCW"]->read();
+    $info["tests"]     = DBM::$com["TSTR"]->readFromPatientId($info["pid"]);
+    $info["testtype"]  = DBM::$com["TSTT"]->read();
 
     $vaccinated = !is_bool($info["vaxrecord"]);
     $tested = !is_bool($info["tests"]);
