@@ -558,6 +558,11 @@ form button {
   flex-wrap: wrap;
 }
 
+#pov-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
 #pov-status-container,
 #pov-info-container {
   width: 100%;
