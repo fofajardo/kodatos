@@ -1,6 +1,6 @@
 <?php
 
-class Users extends Database
+class Accounts extends Database
 {
     public function create(
         $username,

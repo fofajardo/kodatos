@@ -1,9 +1,9 @@
 <?php
 
 header("Content-Type: text/html; charset=utf-8");
-require_once "./components/framework.php";
+require_once "../components/framework.php";
 
-Framework::load("DBUSR"); // users
+Framework::load("DBACC"); // accounts
 Framework::load("DBVAX"); // vax
 Framework::load("DBPAT"); // patients
 Framework::load("DBPRO"); // products (vaccines)
@@ -19,7 +19,7 @@ $data = $test->readId(1);
 var_dump($data);
 // echo $test->create("William", "McCoy", "Rojo", "1985-08-14");
 
-$test = new Users();
+$test = new Accounts();
 $data = $test->read();
 var_dump($data);
 // echo $test->create("jose", "joseb@dict.gob.fil", "pandemic2020", 3);

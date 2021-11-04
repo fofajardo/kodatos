@@ -46,7 +46,7 @@ class Framework
             "DB"      => self::$dir["DBP"] . "/database.php",
             "DBPAT"   => self::$dir["DBP"] . "/patients.php",
             "DBPRO"   => self::$dir["DBP"] . "/products.php",
-            "DBUSR"   => self::$dir["DBP"] . "/users.php",
+            "DBACC"   => self::$dir["DBP"] . "/accounts.php",
             "DBSIT"   => self::$dir["DBP"] . "/vaxsites.php",
             "DBVAX"   => self::$dir["DBP"] . "/vaxrecords.php",
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
