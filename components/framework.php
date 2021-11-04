@@ -42,11 +42,13 @@ class Framework
             "CONFIG"  => self::$dir["COM"] . "/config.php",
             "UTILS"   => self::$dir["COM"] . "/utils.php",
             "TPLMAN"  => self::$dir["COM"] . "/template.php",
+            "AUTH"    => self::$dir["COM"] . "/auth.php",
             // Database
             "DB"      => self::$dir["DBP"] . "/database.php",
             "DBPAT"   => self::$dir["DBP"] . "/patients.php",
             "DBPRO"   => self::$dir["DBP"] . "/products.php",
             "DBACC"   => self::$dir["DBP"] . "/accounts.php",
+            "DBSES"   => self::$dir["DBP"] . "/sessions.php",
             "DBSIT"   => self::$dir["DBP"] . "/vaxsites.php",
             "DBVAX"   => self::$dir["DBP"] . "/vaxrecords.php",
             "DBWOR"   => self::$dir["DBP"] . "/workers.php",
@@ -61,6 +63,7 @@ class Framework
             "UTILS",
             "TPLMAN",
             "DB",
+            "AUTH"
         ];
 
         // Load all required components
