@@ -79,6 +79,13 @@ class Framework
     {
         require_once(self::$com[$name]);
     }
+
+    public static function loadMultiple(array $names)
+    {
+        foreach ($names as $component) {
+            self::load($component);
+        }
+    }
 }
 
 Framework::initialize();
