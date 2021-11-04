@@ -15,11 +15,18 @@ $document = new Template("view");
 
 $document->getDataByRef()["TPL_HEADER"] = Utils::getTemplate("_header");
 
+if (!isset($_POST["reference"]))
+{
+    Utils::redirect("");
+}
+
 // Info
 $info = [];
-$info["pid"] = 1;
+// $info["pid"] = 1;
 $db = new Patients();
-$info["patient"] = $db->readId($info["pid"]);
+// $info["patient"] = $db->readId($info["pid"]);
+$info["patient"] = $db->readCode($_POST["reference"], "");
+$info["pid"] = $info["patient"]["id"];
 
 if (is_bool($info["patient"]))
 {

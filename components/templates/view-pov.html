@@ -1,16 +1,16 @@
-                    <div id="pov-container">
-                        <div id="pov-general">
+                    <div id="pov-status-container">
+                        <div id="pov-left-col">
                             <div class="title">PATIENT_NAME</div>
                             <div class="subtitle">PATIENT_LOCATION</div>
                             <div class="subtitle">Date of Birth: PATIENT_BIRTH</div>
                         </div>
-                        <div id="pov-status-box" class="box v wp">
-                            <div id="pov-qr-container">
+                        <div id="pov-right-col">
+                            <div id="pov-qr">
                             </div>
                             <span id="pov-reference-code">PATIENT_REFCODE</span>
                             <script type="text/javascript">
                                 new QRCode(
-                                    document.getElementById("pov-qr-container"),
+                                    document.getElementById("pov-qr"),
                                     {
                                         text: document.getElementById("pov-reference-code").innerHTML,
                                         width: 1024,
