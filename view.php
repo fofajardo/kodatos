@@ -5,9 +5,9 @@ Framework::loadMultiple(["DBVAX", "DBLOC", "DBPAT", "DBPRO", "DBSIT", "DBWOR", "
 
 // Init document
 $document = new Template("view");
-
+$header_tpl = new Template("_header");
 $document->setData([
-    "TPL_HEADER" => Utils::getTemplate("_header"),
+    "TPL_HEADER" => $header_tpl->output(),
     "TPL_POV" => "",
     "CONTENT_VISIBLE" => "",
 ]);
@@ -74,7 +74,7 @@ else
             "TEST_SITE" => $info["vaxsites"][$record["test_site_id"] - 1]["name"],
         ]);
         
-        if ($record["test_result"] == 1)
+        if ((bool)$record["test_result"])
         {
             $card_test->getDataByRef()["STATE_ID"] = "state-low";
         }

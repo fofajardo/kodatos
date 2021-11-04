@@ -2,12 +2,9 @@
 
 require_once "./components/framework.php";
 
+$header_tpl = new Template("_header");
 $document = new Template("enter-code");
-
-$page_info = [];
-$page_info["TPL_HEADER"] = Utils::getTemplate("_header");
-
-$document->setData($page_info);
+$document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
 
 echo $document->output();
 
