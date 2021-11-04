@@ -626,6 +626,17 @@ body,
   text-shadow: 0px 0px 5px black;
 }
 
+/* ::::: Print ::::: */
+
+@media print {
+  #primary-header-spacer {
+    display: none;
+  }
+  #primary-header {
+    display: none;
+  }
+}
+
 /* ::::: Responsive Design ::::: */
 
 @media screen and (max-width: 950px) {
