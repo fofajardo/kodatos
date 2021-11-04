@@ -61,3 +61,5 @@ class Products extends Database
         );
     }
 }
+
+DBM::add("PROD", new Products());

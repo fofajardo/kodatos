@@ -67,3 +67,5 @@ class Workers extends Database
         );
     }
 }
+
+DBM::add("HCW", new Workers());

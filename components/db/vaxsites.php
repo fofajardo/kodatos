@@ -61,3 +61,5 @@ class Sites extends Database
         );
     }
 }
+
+DBM::add("SITES", new Sites());

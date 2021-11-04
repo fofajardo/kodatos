@@ -106,3 +106,5 @@ class Patients extends Database
         );
     }
 }
+
+DBM::add("PAT", new Patients());

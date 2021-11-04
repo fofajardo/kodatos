@@ -43,7 +43,7 @@ class Database
         return true;
     }
     
-    public function get_column_names()
+    public function getColumnNames()
     {
         if ($this->statement == null)
         {
@@ -58,5 +58,23 @@ class Database
         }
         
         return $columns;
+    }
+}
+
+class DBM
+{
+    public static $com = [];
+
+    public static function add($name, $dbComponent)
+    {
+        self::$com[$name] = $dbComponent;
+    }
+
+    public static function remove($name)
+    {
+        if (array_key_exists($name, self::$com))
+        {
+            unset(self::$com[$name]);
+        }
     }
 }

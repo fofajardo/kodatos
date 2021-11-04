@@ -61,3 +61,5 @@ class TestType extends Database
         );
     }
 }
+
+DBM::add("TSTT", new TestType());

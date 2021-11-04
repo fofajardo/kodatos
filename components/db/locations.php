@@ -61,3 +61,5 @@ class Locations extends Database
         );
     }
 }
+
+DBM::add("LOC", new Locations());

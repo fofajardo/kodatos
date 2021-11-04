@@ -110,3 +110,5 @@ class Vaccinations extends Database
         );
     }
 }
+
+DBM::add("VAXR", new Vaccinations());

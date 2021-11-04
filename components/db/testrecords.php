@@ -82,3 +82,5 @@ class TestRecords extends Database
         );
     }
 }
+
+DBM::add("TSTR", new TestRecords());

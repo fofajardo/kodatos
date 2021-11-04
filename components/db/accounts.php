@@ -99,3 +99,5 @@ class Accounts extends Database
         );
     }
 }
+
+DBM::add("ACC", new Accounts());

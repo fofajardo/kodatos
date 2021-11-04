@@ -58,3 +58,5 @@ class Sessions extends Database
         );
     }
 }
+
+DBM::add("SESS", new Sessions());
