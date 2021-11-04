@@ -11,7 +11,7 @@ class Template
     private $template;
     private $data = [];
     private $content = [];
-    private $child_templates = [];
+    private $childTemplates = [];
 
     public function __construct(
         string $template,
@@ -137,16 +137,16 @@ class Template
     
     public function attach($template)
     {
-        $this->child_templates[] = &$template;
+        $this->childTemplates[] = &$template;
     }
 
     public function output()
     {
         $content_merged = implode(PHP_EOL, $this->content);
-        $template_count = count($this->child_templates);
+        $template_count = count($this->childTemplates);
         for ($i = 0; $i < $template_count; $i++)
         {
-            $content_merged .= $this->child_templates[$i]->output() . PHP_EOL;
+            $content_merged .= $this->childTemplates[$i]->output() . PHP_EOL;
         }
 
         $search = array_merge(
