@@ -23,7 +23,11 @@ $test = new Accounts();
 $data = $test->read();
 var_dump($data);
 // echo $test->create("jose", "joseb@dict.gob.fil", "pandemic2020", 3);
-var_dump($test->checkPassword("joseb@dict.gob.fil", "pandemic2020"));
-var_dump($test->checkPassword("jose", "pandemic2020"));
+var_dump($test->readCredentials("joseb@dict.gob.fil", "pandemic2020"));
+var_dump($test->readCredentials("jose", "pandemic2020"));
+echo "wrong" . PHP_EOL;
+var_dump($test->readCredentials("jose", "2020"));
+echo "non-existent" . PHP_EOL;
+var_dump($test->readCredentials("this_should_not_exist", "2020"));
 
 // echo Framework::$dir["S_ROOT"];
