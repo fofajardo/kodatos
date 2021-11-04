@@ -66,9 +66,9 @@ class Auth
         }
         
         $record = DBM::$com["ACC"]->readCredentials($email, $password);
-        if (is_bool($record))
+        if (is_int($record))
         {
-            return false;
+            return $record;
         }
 
         self::updateState($record);

@@ -101,10 +101,10 @@ class Accounts extends Database
             $record = $entries[0];
             $password_hash = $record["password"];
             $matches = password_verify($password, $password_hash);
-            return $matches ? $record : false;
+            return $matches ? $record : 2;
         }
 
-        return false;
+        return 1;
     }
 
     public function delete(int $id)
