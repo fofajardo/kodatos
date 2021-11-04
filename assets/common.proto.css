@@ -1,0 +1,113 @@
+
+/* ::::: Formatting ::::: */
+
+.nm {
+  margin: 0;
+}
+
+.nmt {
+  margin-top: 0;
+}
+
+.nmb {
+  margin-bottom: 0;
+}
+
+.pa1 {
+  padding: 1em;
+}
+
+.pt1 {
+  padding-top: 1em;
+}
+
+.pb1 {
+  padding-bottom: 1em;
+}
+
+.pr1 {
+  padding-right: 1em;
+}
+
+.pl1 {
+  padding-left: 1em;
+}
+
+.ma1 {
+  margin: 1em;
+}
+
+.mt1 {
+  margin-top: 1em;
+}
+
+.mb1 {
+  margin-bottom: 1em;
+}
+
+.mr1 {
+  margin-right: 1em;
+}
+
+.ml1 {
+  margin-left: 1em;
+}
+
+/* ::::: Flexbox ::::: */
+
+.box {
+  display: flex;
+  flex-direction: row;
+}
+
+.box.wp {
+  flex-wrap: wrap;
+}
+
+.box.v {
+  flex-direction: column;
+}
+
+.box.ah {
+  align-items: stretch;
+}
+
+.box.ac {
+  align-items: center;
+}
+
+.box.as {
+  align-items: start;
+}
+
+.box.ae {
+  align-items: end;
+}
+
+.box.jc {
+  justify-content: center;
+}
+
+.box.js {
+  justify-content: start;
+}
+
+.box.je {
+  justify-content: end;
+}
+
+.box.jsb {
+  justify-content: space-between;
+}
+
+.box.jsa {
+  justify-content: space-around;
+}
+
+/* ::::: Responsive Design ::::: */
+
+@media screen and (max-width: 950px) {
+  .box > .list-entry {
+    max-width: none;
+  }
+}

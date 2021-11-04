@@ -1,6 +1,7 @@
 
-/* ::::: Fonts ::::: */
+/* ::::: External ::::: */
 
+@import url("common.proto.css");
 @import url("fonts/icons_full.css");
 
 /* ::::: Page ::::: */
@@ -51,58 +52,6 @@ input, button, body {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box 
-}
-
-.nm {
-  margin: 0;
-}
-
-.nmt {
-  margin-top: 0;
-}
-
-.nmb {
-  margin-bottom: 0;
-}
-
-.pa1 {
-  padding: 1em;
-}
-
-.pt1 {
-  padding-top: 1em;
-}
-
-.pb1 {
-  padding-bottom: 1em;
-}
-
-.pr1 {
-  padding-right: 1em;
-}
-
-.pl1 {
-  padding-left: 1em;
-}
-
-.ma1 {
-  margin: 1em;
-}
-
-.mt1 {
-  margin-top: 1em;
-}
-
-.mb1 {
-  margin-bottom: 1em;
-}
-
-.mr1 {
-  margin-right: 1em;
-}
-
-.ml1 {
-  margin-left: 1em;
 }
 
 div.ct,
@@ -255,54 +204,39 @@ footer {
   /* color: var(--accent-color); */
 }
 
-.box {
+.content-layout > h1 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.content-layout > h1:first-child {
+  margin-top: 0;
+}
+
+.content-layout > h2 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.section-full {
   display: flex;
-  flex-direction: row;
-}
-
-.box.wp {
-  flex-wrap: wrap;
-}
-
-.box.v {
   flex-direction: column;
-}
-
-.box.ah {
-  align-items: stretch;
-}
-
-.box.ac {
   align-items: center;
-}
-
-.box.as {
-  align-items: start;
-}
-
-.box.ae {
-  align-items: end;
-}
-
-.box.jc {
   justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - var(--header-height));
 }
 
-.box.js {
-  justify-content: start;
-}
-
-.box.je {
+.section-full.alt {
   justify-content: end;
 }
 
-.box.jsb {
-  justify-content: space-between;
+.section-full:not(.nh) {
+  min-height: 100vh;
 }
 
-.box.jsa {
-  justify-content: space-around;
-}
+/* ::::: Content: Cards ::::: */
 
 .card,
 .choice {
@@ -368,6 +302,16 @@ footer {
   display: none;
 }
 
+.card3 {
+  color: #fff;
+  background: #0091ff;
+  box-shadow: 0 0 20px 5px var(--header-shadow-color);
+  text-shadow: none;
+  border-radius: 24px 24px 0 0;
+}
+
+/* ::::: Content: Table ::::: */
+
 .table > .row.subhead {
   font-size: 1.2em;
   font-weight: bold;
@@ -406,7 +350,7 @@ footer {
   font-weight: bold;
 }
 
-/* . */
+/* ::::: Content: Choice Buttons ::::: */
 
 .choice {
   align-items: center;
@@ -441,38 +385,6 @@ footer {
 
 .choice > .title > .text {
   font-weight: 400;
-}
-
-.section-full {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: calc(100vh - var(--header-height));
-}
-
-.section-full.alt {
-  justify-content: end;
-}
-
-.section-full:not(.nh) {
-  min-height: 100vh;
-}
-
-.content-layout > h1 {
-  font-size: 40px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.content-layout > h1:first-child {
-  margin-top: 0;
-}
-
-.content-layout > h2 {
-  font-size: 20px;
-  font-weight: 300;
 }
 
 /* ::::: Input elements ::::: */
@@ -526,6 +438,8 @@ form button {
   width: 100%;
 }
 
+/* ::::: Status box ::::: */
+
 .status-box {
   border-radius: 5px;
   background-image: repeating-linear-gradient(135deg,
@@ -550,6 +464,8 @@ form button {
 .status-box.red {
   background-color: #FF7A37;
 }
+
+/* ::::: Custom elements ::::: */
 
 #pov-status-container {
   display: flex;
@@ -591,14 +507,6 @@ form button {
   display: inline !important;
   width: 150px;
   height: 150px;
-}
-
-.card3 {
-  color: #fff;
-  background: #0091ff;
-  box-shadow: 0 0 20px 5px var(--header-shadow-color);
-  text-shadow: none;
-  border-radius: 24px 24px 0 0;
 }
 
 #section-login > .card {
@@ -652,9 +560,6 @@ body,
 /* ::::: Responsive Design ::::: */
 
 @media screen and (max-width: 950px) {
-  .box > .list-entry {
-    max-width: none;
-  }
 }
 
 @media screen and (max-width: 800px) {
