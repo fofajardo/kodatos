@@ -1,8 +1,55 @@
-                    <div id="pov-container">
-                        <div id="pov-general">
-                            <div class="title">Invalid reference code.</div>
-                            <div class="subtitle">The reference code or QR code that you scanned is invalid.</div>
-                            <div class="subtitle">Please try again.</div>
-                            <!-- INSERT BUTTON HERE -->
-                        </div>
+            <section id="section-scan" class="bg ib0 section-full">
+                <div id="primary-header-spacer"></div>
+                <div class="content-layout">
+                <img src="DIR_IMG/404.svg" width="200px">
+                    <h1>Invalid reference code</h1>
+                    <h2>The reference code or QR code that you scanned is invalid. Please try again.</h2>
+                    <div class="box wp ac jc">
+                        <a class="choice" href="#" onclick="document.getElementById('qr-selector').click();">
+                            <div class="box title">
+                                <span class="icon mdi-set mdi-qrcode-scan"></span>
+                                <span class="text c nm">Scan QR code</span>
+                            </div>
+                        </a>
+                        <a class="choice" href="/enter-code">
+                            <div class="box title">
+                                <span class="icon mdi-set mdi-tooltip-account"></span>
+                                <span class="text c nm">Use reference code</span>
+                            </div>
+                        </a>
                     </div>
+                </div>
+                <div hidden>
+                    <input type="file" id="qr-selector" accept="image/*">
+                    <script type="module">
+                        import QrScanner from "./assets/qr-scanner.min.js";
+                        QrScanner.WORKER_PATH = './assets/qr-scanner-worker.min.js';
+
+                        var fileSelector = document.getElementById('qr-selector');
+
+                        function setResult(result) {
+                            var label = document.getElementById("field-reference");
+                            label.value = result;
+                            document.verifyForm.submit();
+                        }
+
+                        fileSelector.addEventListener('change', event => {
+                            const file = fileSelector.files[0];
+                            if (!file) {
+                                return;
+                            }
+                            QrScanner.scanImage(file)
+                                .then(result => setResult(result))
+                                .catch(e => setResult(e || 'No QR code found.'));
+                        });
+                    </script>
+                    <form name="verifyForm" method="post" action="view">
+                        <input type="text" id="field-reference" class="mb1" name="reference" placeholder="Reference Code" required>
+                        <div class="box ac jc v">
+                            <button class="">
+                                <span class="text c nm">Verify</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>

@@ -13,7 +13,11 @@ Framework::load("DBTTY");
 // Init document
 $document = new Template("view");
 
-$document->getDataByRef()["TPL_HEADER"] = Utils::getTemplate("_header");
+$document->setData([
+    "TPL_HEADER" => Utils::getTemplate("_header"),
+    "TPL_POV" => "",
+    "CONTENT_VISIBLE" => "",
+]);
 
 if (!isset($_POST["reference"]))
 {
@@ -26,14 +30,16 @@ $info = [];
 $db = new Patients();
 // $info["patient"] = $db->readId($info["pid"]);
 $info["patient"] = $db->readCode($_POST["reference"], "");
-$info["pid"] = $info["patient"]["id"];
 
 if (is_bool($info["patient"]))
 {
-    $document->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov-404");
+    $nf_tpl = new Template("view-pov-404");
+    $document->getDataByRef()["TPL_POV"] = $nf_tpl->output();
+    $document->getDataByRef()["CONTENT_VISIBLE"] = "hidden";
 }
 else
 {
+    $info["pid"] = $info["patient"]["id"];
     $db = new Locations();
     $info["location"] = $db->readId($info["patient"]["location_id"]);
     $db = new Vaccinations();
