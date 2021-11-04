@@ -6,16 +6,18 @@ class Accounts extends Database
         $username,
         $email,
         $password,
-        $role_id
+        $role_id,
+        $location_id,
+        $enabled
     ) {
         $parameters = [
-            "INSERT INTO `users`",
-            "(`username`, `email`, `password`, `role_id`)",
+            "INSERT INTO `accounts`",
+            "(`username`, `email`, `password`, `role_id`, `location_id`, `enabled`)",
             "VALUES (?, ?, ?, ?)",
         ];
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $values = [
-            $username, $email, $hash, $role_id
+            $username, $email, $hash, $role_id, $location_id, $enabled
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -25,9 +27,11 @@ class Accounts extends Database
         $email = null,
         $password = null,
         $role_id = null,
+        $location_id = null,
+        $enabled = null,
         $id
     ) {
-        $query = ["UPDATE `users` SET"];
+        $query = ["UPDATE `accounts` SET"];
 		$parameters = [];
         $values = [];
         
@@ -52,17 +56,27 @@ class Accounts extends Database
             $parameters[] = "`role_id`=?";
             $values[] = $role_id;
         }
-        
+        if (!empty($location_id))
+        {
+            $parameters[] = "`location_id`=?";
+            $values[] = $location_id;
+        }
+        if (!empty($enabled))
+        {
+            $parameters[] = "`enabled`=?";
+            $values[] = $enabled;
+        }
+
 		$query[] = implode(",", $parameters);
         $query[] = "WHERE `id`=?";
         $values[] = $id;
-        
+
         return $this->execute(implode(" ", $query), $values);
     }
 
     public function read()
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `users`");
+        $this->statement = $this->connection->prepare("SELECT * FROM `accounts`");
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -70,22 +84,24 @@ class Accounts extends Database
 
     public function readId(int $id)
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `users` WHERE `id`=?");
+        $this->statement = $this->connection->prepare("SELECT * FROM `accounts` WHERE `id`=?");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
-        return ($this->statement->rowCount() == 0) ? false : $entries;
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
-    public function checkPassword(string $email, string $password)
+    public function readCredentials(string $email, string $password)
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `users` WHERE `email`=? OR `username`=?");
+        $this->statement = $this->connection->prepare("SELECT * FROM `accounts` WHERE `email`=? OR `username`=?");
         $this->statement->execute([$email, $email]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         $exists = ($this->statement->rowCount() > 0);
 
         if ($exists) {
-            $hash = $entries[0]["password"];
-            return password_verify($password, $hash);
+            $record = $entries[0];
+            $password_hash = $record["password"];
+            $matches = password_verify($password, $password_hash);
+            return $matches ? $record : false;
         }
 
         return false;
@@ -94,7 +110,7 @@ class Accounts extends Database
     public function delete(int $id)
     {
         return $this->execute(
-            "DELETE FROM `users` WHERE `id`=?",
+            "DELETE FROM `accounts` WHERE `id`=?",
             [$id]
         );
     }

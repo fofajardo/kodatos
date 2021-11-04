@@ -6,10 +6,14 @@ class Sessions extends Database
         $session_id,
         $account_id
     ) {
+        if (empty($session_id) || empty($account_id))
+        {
+            return false;
+        }
         $parameters = [
             "INSERT INTO `account_sessions`",
-            "(`session_id`, `account_id`, `login_time`)",
-            "VALUES (?, ?, NOW())",
+            "(`session_id`, `account_id`, `creation`, `expiry`)",
+            "VALUES (?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY))",
         ];
         $values = [
             $session_id,
@@ -34,7 +38,7 @@ class Sessions extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries;
     }
 
-    public function readFromSID(int $id)
+    public function readFromSID(string $id)
     {
         $this->statement = $this->connection->prepare("SELECT * FROM `account_sessions` WHERE `session_id`=?");
         $this->statement->execute([$id]);
@@ -42,7 +46,7 @@ class Sessions extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
-    public function delete(int $id)
+    public function delete(string $id)
     {
         return $this->execute(
             "DELETE FROM `account_sessions` WHERE `session_id`=?",
