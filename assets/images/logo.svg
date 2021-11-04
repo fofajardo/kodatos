@@ -6,7 +6,7 @@
 		  display: none;
 		}
 		use {
-		  fill: #00487E;
+		  fill: #0091ff;
 		}
 		use[id$="-inv"] {
 		  fill: #fff;
