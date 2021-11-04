@@ -190,6 +190,10 @@ header a.link .mdi-set {
   font-size: 24px;
 }
 
+header a.link .mdi-set ~ span {
+  margin-left: 5px;  
+}
+
 #logo,
 header a.link {
   -webkit-user-select: none;
@@ -209,7 +213,6 @@ header a.link {
   background: var(--header-background);
   color: var(--header-text-color);
   box-shadow: 0 0 20px 1px var(--header-shadow-color);
-  padding: 0 1em;
   justify-content: space-between;
 }
 
@@ -494,6 +497,10 @@ input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type=
   border-color: rgba(0, 0, 0, 0.7);
 }
 
+input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"]):not(:last-child) {
+  margin-bottom: 1em;
+}
+
 button {
   background: #0067C0;
   border-radius: 5px;
@@ -527,7 +534,6 @@ form button {
   padding: 5px;
   border: 2px solid rgba(0, 0, 0, 0.5);
   font-size: 12px;
-  margin: 5px;
   text-align: center;
   font-weight: bold;
   min-width: 50px;
@@ -708,4 +714,9 @@ body,
 
 @media screen and (max-width: 480px) {
   /* 480px */
+  #section-login > .card {
+    border-radius: 0;
+    width: 100%;
+    max-width: none;
+  }
 }
