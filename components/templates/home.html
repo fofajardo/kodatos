@@ -11,20 +11,83 @@
     <body>
 TPL_HEADER
         <main id="main">
-            <section id="section-home" class="bg ib0 vh-full box v ac jc c">
-                <div id="primary-header-spacer"></div>
-                <h1>Do you need to verify COVID-19 information?</h1>
-                <div class="box wp ac jc">
-                    <a class="choice" href="#">
+            <div id="primary-header-spacer"></div>
+            <section id="" class="bg ib1 section-full nh">
+            </section>
+            <section id="section-home">
+                <div class="content-layout">
+                    <h1>Do you need to verify COVID-19 information?</h1>
+                    <h2>Scan a QR code or type the reference code from your infocard.</h2>
+                    <div class="box wp ac jc">
+                        <a class="choice" href="#" onclick="document.getElementById('qr-selector').click();">
+                            <div class="box title">
+                                <span class="icon mdi-set mdi-qrcode-scan"></span>
+                                <span class="text c nm">Scan QR code</span>
+                            </div>
+                        </a>
+                        <a class="choice" href="/enter-code">
+                            <div class="box title">
+                                <span class="icon mdi-set mdi-tooltip-account"></span>
+                                <span class="text c nm">Use reference code</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div hidden>
+                    <input type="file" id="qr-selector" accept="image/*">
+                    <script type="module">
+                        import QrScanner from "./assets/qr-scanner.min.js";
+                        QrScanner.WORKER_PATH = './assets/qr-scanner-worker.min.js';
+
+                        var fileSelector = document.getElementById('qr-selector');
+
+                        function setResult(result) {
+                            var label = document.getElementById("field-reference");
+                            label.value = result;
+                            document.verifyForm.submit();
+                        }
+
+                        fileSelector.addEventListener('change', event => {
+                            const file = fileSelector.files[0];
+                            if (!file) {
+                                return;
+                            }
+                            QrScanner.scanImage(file)
+                                .then(result => setResult(result))
+                                .catch(e => setResult(e || 'No QR code found.'));
+                        });
+                    </script>
+                    <form name="verifyForm" method="post" action="view">
+                        <input type="text" id="field-reference" class="mb1" name="reference" placeholder="Reference Code" required>
+                        <div class="box ac jc v">
+                            <button class="">
+                                <span class="text c nm">Verify</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section id="section-vax-2" class="bg ib3 section-full nh">
+                <div class="content-layout">
+                    <h1>Not yet vaccinated?</h1>
+                    <h2>Know more if you're eligible and where you can get vaccinated.</h2>
+                    <a class="choice" href="https://doh.gov.ph/vaccines">
                         <div class="box title">
-                            <span class="icon mdi-set mdi-qrcode-scan"></span>
-                            <span class="text c nm">Scan QR code</span>
+                            <span class="icon mdi-set mdi-magnify"></span>
+                            <span class="text c nm">Find COVID-19 vaccines</span>
                         </div>
                     </a>
+                </div>
+            </section>
+            <section id="section-vax-1" class="bg ib2 section-full nh">
+                <div class="content-layout">
+                    <img src="assets/images/logo-full.svg#sprite" width="75%" />
+                    <!-- <h1>Komunidad + Datos</h1> -->
+                    <h2>KoDatos is a unified platform for vaccination cards and COVID-19 test results.</h2>
                     <a class="choice" href="#">
                         <div class="box title">
-                            <span class="icon mdi-set mdi-tooltip-account"></span>
-                            <span class="text c nm">Use reference code</span>
+                            <span class="icon mdi-set mdi-information"></span>
+                            <span class="text c nm">About KoDatos</span>
                         </div>
                     </a>
                 </div>
