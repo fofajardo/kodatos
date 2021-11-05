@@ -159,10 +159,16 @@ header a.link {
   top: 0;
   right: 0;
   left: 0;
-  background: var(--header-background);
   color: var(--header-text-color);
-  box-shadow: 0 0 20px 1px var(--header-shadow-color);
   justify-content: space-between;
+  transition-property: background, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+#primary-header[opaque] {
+  background: var(--header-background);
+  box-shadow: 0 0 20px 1px var(--header-shadow-color);
 }
 
 #primary-header-spacer {

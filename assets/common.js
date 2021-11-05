@@ -1,4 +1,7 @@
 var gSite = {
+    lastKnownScrollPosition: 0,
+    ticking: false,
+
     initialize: function () {
     },
 
@@ -7,8 +10,26 @@ var gSite = {
     
     reflow: function () {
     },
+
+    updateHeader: function (e) {
+        gSite.lastKnownScrollPosition = window.scrollY;
+
+        if (!gSite.ticking) {
+            window.requestAnimationFrame(function() {
+                let header = document.getElementById("primary-header");
+                if (gSite.lastKnownScrollPosition > 100) {
+                    header.setAttribute("opaque", "true");
+                } else {
+                    header.removeAttribute("opaque");
+                }
+                gSite.ticking = false;
+            });
+            gSite.ticking = true;
+        }
+    }
 };
 
 window.addEventListener("DOMContentLoaded", gSite.initialize);
 window.addEventListener("load", gSite.deferredLoad);
 window.addEventListener("resize", gSite.reflow);
+document.addEventListener("scroll", gSite.updateHeader);
