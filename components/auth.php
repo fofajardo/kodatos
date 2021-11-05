@@ -13,8 +13,9 @@ class Auth
     private static $accountID = null;
     private static $roleID = null;
     private static $locationID = null;
-    private static $accountEnabled = null;
     private static $sessionID = null;
+    private static $accountEnabled = null;
+    private static $userName = null;
     private static $sessionExpired = false;
 
     public static function getAccountID()
@@ -37,6 +38,11 @@ class Auth
         return self::$accountEnabled;
     }
 
+    public static function getUserName()
+    {
+        return self::$userName;
+    }
+
     public static function isSessionExpired()
     {
         return self::$sessionExpired;
@@ -56,6 +62,7 @@ class Auth
         self::$roleID = $record["role_id"];
         self::$locationID = $record["location_id"];
         self::$accountEnabled = (bool)$record["enabled"];
+        self::$userName = $record["username"];
     }
 
     public static function signIn(string $email, string $password)
@@ -127,6 +134,7 @@ class Auth
         self::$roleID = null;
         self::$locationID = null;
         self::$accountEnabled = null;
+        self::$userName = null;
 
         return $session_removed;
     }
