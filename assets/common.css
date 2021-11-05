@@ -187,7 +187,6 @@ footer {
 .content-layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
   margin: 0 auto;
   padding: 15px;
@@ -230,6 +229,10 @@ footer {
 
 .section-full.alt {
   justify-content: end;
+}
+
+.section-full > .content-layout {
+  align-items: center;
 }
 
 .section-full:not(.nh) {
@@ -604,6 +607,9 @@ body,
 @media screen and (max-width: 650px) {
   #pov-right-col {
     margin-left: 0;
+  }
+  #primary-header > #right-nav a.link .mdi-set ~ span {
+    display: none; 
   }
 }
 
