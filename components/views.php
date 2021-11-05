@@ -61,4 +61,7 @@ class VWM
     }
 }
 
-VWM::initialize();
+if (!defined("SUPPRESS_VIEW"))
+{
+    VWM::initialize();
+}
