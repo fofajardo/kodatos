@@ -23,6 +23,7 @@ class Framework
             "ROOT"    => $droot,
             "COM"     => $droot . "/components",
             "DBP"     => $droot . "/components/db",
+            "VWP"     => $droot . "/components/views",
             "EXT"     => $droot . "/components/external",
             "TPL"     => $droot . "/components/templates",
             "AST"     => $droot . "/assets",
@@ -43,6 +44,7 @@ class Framework
             "UTILS"   => self::$dir["COM"] . "/utils.php",
             "TPLMAN"  => self::$dir["COM"] . "/template.php",
             "AUTH"    => self::$dir["COM"] . "/auth.php",
+            "VWMAN"   => self::$dir["COM"] . "/views.php",
             // Database
             "DB"      => self::$dir["DBP"] . "/database.php",
             "DBPAT"   => self::$dir["DBP"] . "/patients.php",
@@ -59,20 +61,13 @@ class Framework
 
         // Required components
         self::$rcom = [
-            "CONFIG",
-            "UTILS",
-            "TPLMAN",
-            "DB",
-            "AUTH"
+            "CONFIG", "UTILS", "TPLMAN", "DB", "AUTH", "VWMAN"
         ];
 
         // Load all required components
         foreach (self::$rcom as $component) {
             self::load($component);
         }
-
-        // Set content type HTTP header
-        header("Content-Type: text/html; charset=utf-8");
     }
 
     public static function load(string $name)
