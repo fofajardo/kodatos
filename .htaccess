@@ -1,7 +1,17 @@
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule (.*) $1.php [L]
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  # Take-over all requests 
+  RewriteCond %{SCRIPT_FILENAME} !-d
+  RewriteCond %{SCRIPT_FILENAME} !-f
+ 
+  RewriteRule ^.*$ ./index.php
 </IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=REDIRECT_accept
+</IfModule>
+
+AddType application/font-woff2 .woff2
+AddCharset UTF-8 .html
