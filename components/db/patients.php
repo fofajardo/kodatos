@@ -7,20 +7,22 @@ class Patients extends Database
         $last_name,
         $middle_name,
         $birthdate,
+        $suffix,
         $location_id
     ) {
         $parameters = [
             "INSERT INTO `patients`",
-            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `birthdate`, `location_id`)",
+            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `suffix`, `birthdate`, `location_id`)",
             "VALUES (?, ?, ?, ?, ?, ?, ?)",
         ];
 
         $rand = random_int(0, 1000);
-        $cd_ref = hash("fnv164", $first_name . $middle_name . $last_name . $birthdate . $rand);
-        $cd_sec = hash("adler32", $first_name . $middle_name . $last_name . $birthdate . $rand);
+        $cd_raw = $first_name . $middle_name . $last_name . $birthdate . $suffix . $rand;
+        $cd_ref = hash("fnv164", $cd_raw);
+        $cd_sec = hash("adler32", $cd_raw);
 
         $values = [
-            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $birthdate, $location_id
+            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $suffix, $birthdate, $location_id
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -29,6 +31,7 @@ class Patients extends Database
         $first_name = null,
         $last_name = null,
         $middle_name = null,
+        $suffix = null,
         $birthdate = null,
         $location_id = null,
         $id
@@ -51,6 +54,11 @@ class Patients extends Database
         {
             $parameters[] = "`middle_name`=?";
             $values[] = $middle_name;
+        }
+        if (!empty($suffix))
+        {
+            $parameters[] = "`suffix`=?";
+            $values[] = $suffix;
         }
         if (!empty($birthdate))
         {
