@@ -20,27 +20,39 @@ class VWM
         $url = parse_url($_SERVER["REQUEST_URI"]);
         $url_path = trim($url["path"], "/");
 
-        foreach (self::$registeredViews as $view) {
-            $slug = $view::SLUG;
+        $view = self::findView($url_path);
 
-            if (is_array($slug))
+        if ($view == null)
+        {
+            $view = self::findView("notfound");
+        }
+
+        $view->output();
+    }
+
+    public static function findView($url_path)
+    {
+        foreach (self::$registeredViews as $view)
+        {
+            if (is_array($view::SLUG))
             {
-                foreach ($slug as $slug_part)
+                foreach ($view::SLUG as $slug_part)
                 {
                     if ($slug_part == $url_path)
                     {
-                        $view->output();
-                        break;
+                        return $view;
                     }
                 }
                 continue;
             }
 
-            if ($slug == $url_path)
+            if ($view::SLUG == $url_path)
             {
-                $view->output();
+                return $view;
             }
         }
+
+        return null;
     }
 
     public static function register($view)
