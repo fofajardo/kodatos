@@ -4,8 +4,9 @@ class SignOutView implements View
 {
     const SLUG = "sign-out";
     
-    public function output()
+    public function getDocument()
     {
+        $document = new Template("", true);
         $all_sessions = isset($_GET["all"]);
 
         if (Auth::isSignedIn())
@@ -14,6 +15,7 @@ class SignOutView implements View
         }
 
         Utils::redirect("");
+        return $document;
     }
 }
 

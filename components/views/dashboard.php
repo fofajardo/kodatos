@@ -4,7 +4,7 @@ class DashboardView implements View
 {
     const SLUG = ["dashboard", "admin/dashboard"];
     
-    public function output()
+    public function getDocument()
     {
         if (!Auth::isSignedIn())
         {
@@ -19,7 +19,7 @@ class DashboardView implements View
         $document = new Template("dashboard");
         $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
 
-        echo $document->output();
+        return $document;
     }
 }
 

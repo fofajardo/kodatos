@@ -4,7 +4,7 @@ class SignInView implements View
 {
     const SLUG = "sign-in";
     
-    public function output()
+    public function getDocument()
     {
         if (Auth::isSignedIn())
         {
@@ -52,7 +52,7 @@ class SignInView implements View
 
         // var_dump(Auth::isSessionExpired());
 
-        echo $document->output();
+        return $document;
     }
 }
 

@@ -4,7 +4,7 @@ class ViewRecordView implements View
 {
     const SLUG = "view";
     
-    public function output()
+    public function getDocument()
     {
         Framework::loadMultiple(["DBVAX", "DBLOC", "DBPAT", "DBPRO", "DBSIT", "DBWOR", "DBTSR", "DBTTY"]);
 
@@ -141,8 +141,7 @@ class ViewRecordView implements View
             }
         }
 
-        // Output page
-        echo $document->output();
+        return $document;
     }
 }
 

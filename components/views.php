@@ -2,7 +2,7 @@
 
 interface View
 {
-    public function output();
+    public function getDocument();
 }
 
 class VWM
@@ -27,7 +27,7 @@ class VWM
             $view = self::findView("notfound");
         }
 
-        $view->output();
+        echo $view->getDocument()->output();
     }
 
     public static function findView($url_path)
