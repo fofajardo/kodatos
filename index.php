@@ -7,5 +7,3 @@ $document = new Template("home");
 $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
 
 echo $document->output();
-
-?>
