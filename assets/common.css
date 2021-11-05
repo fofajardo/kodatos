@@ -11,12 +11,15 @@
   --main-text-color: #000000;
   
   --accent-color: #000;
-  
+
   --header-background: #fff;
   --header-text-color: #0091ff;
   --header-link-background: rgba(0, 0, 0, 0.1);
   --header-shadow-color: rgba(0, 0, 0, 0.1);
   --header-height: 40px;
+
+  --mb-background-hover: rgba(0, 0, 0, 0.1);
+  --mb-background-active: rgba(0, 0, 0, 0.15);
   
   --separator-color: var(--accent-color);
   
@@ -245,6 +248,23 @@ footer {
   min-height: 100vh;
 }
 
+.two-col {
+  display: flex;
+  flex-direction: row;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.two-col > div:first-child {
+  flex: 1 200px;
+  max-width: 300px;
+}
+
+.two-col > div:last-child {
+  flex: 5 500px;
+  /* max-width: none; */
+}
+
 /* ::::: Content: Cards ::::: */
 
 .card,
@@ -401,6 +421,45 @@ footer {
 
 .choice > .title > .text {
   font-weight: 400;
+}
+
+/* ::::: Content: Sidebar ::::: */
+
+.menu-header {
+  font-size: 1.2em;
+  margin: 10px;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+.menu-button {
+  display: flex;
+  border-radius: 6px;
+  padding: 5px 15px;
+  margin: 5px 10px;
+  text-decoration: none;
+  color: #000;
+  transition: all 200ms;
+  border: 2px solid transparent;
+  min-width: 200px;
+  text-shadow: none;
+}
+
+.menu-button:not(:first-child) {
+  margin-top: 0;
+}
+
+.menu-button:hover {
+  background: var(--mb-background-hover);
+}
+
+.menu-button:focus,
+.menu-button:hover:active {
+  background: var(--mb-background-active);
+}
+
+.menu-button:focus {
+  outline: none;
+  border-color: #0067C0;
 }
 
 /* ::::: Input elements ::::: */
