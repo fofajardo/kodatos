@@ -110,8 +110,8 @@ class Template
 
     public function appendElement(
         string $name,
-        $content = "",
-        array $attributes = []
+        array $attributes = [],
+        $content = ""
     ) {
         $this->content[] = self::createElement(
             $name,
