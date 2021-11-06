@@ -1,0 +1,56 @@
+<div class="title">
+    <span class="cell left-col hr">PAGE_NAME</span>
+    <span class="cell">
+        <a class="button" href="/admin/test-results/view?rfc=PERSON_RFC">
+            <span class="mdi-set mdi-close-thick"></span>
+            Cancel
+        </a>
+    </span>
+</div>
+<span class="mb1">
+You are ACTION_VERB COVID-19 test result for <strong>PERSON_NAME</strong>:
+</span>
+<form method="post" action="">
+    <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
+    <input type="hidden" id="field-person-rfc" name="person-rfc" value="PERSON_RFC">
+    <input type="hidden" id="field-test-id" name="test-id" value="TEST_ID">
+    <div class="table eq">
+        <div class="row subhead">
+        General Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Date of Test Result:</span>
+                <input type="date" id="field-test-date" name="test-date" value="TEST_DATE" required>
+            </div>
+            <div class="cell box v">
+                <span>Laboratory/Test Site:</span>
+                <select id="field-test-site" name="test-site" required>
+                    <option value="" hidden>Choose</option>
+                    TEST_SITE_INSERT
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Test Type:</span>
+                <select id="field-test-type" name="test-type" required>
+                    <option value="" hidden>Choose</option>
+                    TEST_TYPE_INSERT
+                </select>
+            </div>
+            <div class="cell box v">
+                <span>Result:</span>
+                <select id="field-test-result" name="test-result" required>
+                    <option value="" hidden>Choose</option>
+                    <option value="0" TEST_RESULT_0>Negative</option>
+                    <option value="1" TEST_RESULT_1>Positive</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt1">
+            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+            <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another Test Result</button>
+        </div>
+    </div>
+</form>
