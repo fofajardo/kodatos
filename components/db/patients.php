@@ -21,7 +21,7 @@ class Patients extends Database
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         ];
 
-        $rand = random_int(0, 1000);
+        $rand = time() + random_int(0, 1000);
         $cd_raw = $first_name . $middle_name . $last_name . $birthdate . $suffix . $rand;
         $cd_ref = hash("fnv164", $cd_raw);
         $cd_sec = hash("adler32", $cd_raw);
@@ -51,66 +51,66 @@ class Patients extends Database
 		$parameters = [];
         $values = [];
         
-        if (!empty($first_name))
+        if (isset($first_name))
         {
             $parameters[] = "`first_name`=?";
             $values[] = $first_name;
         }
-        if (!empty($last_name))
+        if (isset($last_name))
         {
             $parameters[] = "`last_name`=?";
             $values[] = $last_name;
         }
-        if (!empty($middle_name))
+        if (isset($middle_name))
         {
             $parameters[] = "`middle_name`=?";
             $values[] = $middle_name;
         }
-        if (!empty($suffix))
+        if (isset($suffix))
         {
             $parameters[] = "`suffix`=?";
             $values[] = $suffix;
         }
-        if (!empty($gender))
+        if (isset($gender))
         {
             $parameters[] = "`gender`=?";
             $values[] = $gender;
         }
-        if (!empty($birthdate))
+        if (isset($birthdate))
         {
             $parameters[] = "`birthdate`=?";
             $values[] = $birthdate;
         }
-        if (!empty($civil_status))
+        if (isset($civil_status))
         {
             $parameters[] = "`civil_status`=?";
             $values[] = $civil_status;
         }
-        if (!empty($contact_number))
+        if (isset($contact_number))
         {
             $parameters[] = "`contact_number`=?";
             $values[] = $contact_number;
         }
-        if (!empty($email))
+        if (isset($email))
         {
             $parameters[] = "`email`=?";
             $values[] = $email;
         }
-        if (!empty($location_id))
+        if (isset($location_id))
         {
             $parameters[] = "`location_id`=?";
             $values[] = $location_id;
         }
-        if (!empty($street_address))
+        if (isset($street_address))
         {
             $parameters[] = "`street_address`=?";
             $values[] = $street_address;
         }
-        
+
 		$query[] = implode(",", $parameters);
         $query[] = "WHERE `id`=?";
         $values[] = $id;
-        
+
         return $this->execute(implode(" ", $query), $values);
     }
 
