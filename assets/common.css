@@ -627,7 +627,7 @@ form button {
   max-width: 1250px;
 }
 
-#section-dashboard > .two-col > div:first-child {
+#navigation-col {
   max-width: 300px;
 }
 
@@ -717,7 +717,7 @@ body,
 }
 
 @media screen and (max-width: 750px) {
-  .two-col > div:first-child {
+  #navigation-col {
     max-width: none;
   }
 }
