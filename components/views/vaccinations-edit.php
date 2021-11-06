@@ -72,7 +72,7 @@ class EditVaxView extends DashboardView
             ),
         ]);
 
-        $db_com = DBM::$com["SITES"]->read();
+        $db_com = DBM::$com["SITES"]->readFilter(false);
         $insert0 = "";
         foreach ($db_com as $option)
         {

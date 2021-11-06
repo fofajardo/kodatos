@@ -16,6 +16,7 @@ class DeleteVaxView extends DashboardView
             isset($_POST["action"])
         )
         {
+            $refcode = $_POST["holder1"];
             $action = $_POST["action"];
             switch ($action)
             {
@@ -27,7 +28,6 @@ class DeleteVaxView extends DashboardView
                     return;
             }
 
-            $refcode = $_POST["holder1"];
             $record_id = $_POST["holder0"];
             $result1 = DBM::$com["VAXR"]->delete($record_id);
 
