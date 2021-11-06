@@ -65,20 +65,20 @@ class PeopleDashboardView extends DashboardView
                 {
                     $vax_color = "green";
                     $vax_icon = "checkbox-marked-circle";
-                    $vax_text = "NEGATIVE";
+                    $vax_text = "FULLY VACCINATED";
                 }
                 else
                 {
                     $vax_color = "yellow";
                     $vax_icon = "checkbox-marked-circle";
-                    $vax_text = "UNTESTED";
+                    $vax_text = "PARTIALLY VACCINATED";
                 }
             }
             else
             {
                 $vax_color = "red";
                 $vax_icon = "alert-circle";
-                $vax_text = "POSITIVE";
+                $vax_text = "NOT VACCINATED";
             }
 
             $name = sprintf(
