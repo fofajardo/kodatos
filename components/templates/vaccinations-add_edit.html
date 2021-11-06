@@ -1,0 +1,78 @@
+<div class="title">
+    <span class="cell left-col hr">PAGE_NAME</span>
+    <span class="cell">
+        <a class="button" href="/admin/vaccinations/view?rfc=PERSON_RFC">
+            <span class="mdi-set mdi-close-thick"></span>
+            Cancel
+        </a>
+    </span>
+</div>
+<span class="mb1">
+You are ACTION_VERB vaccination record for <strong>PERSON_NAME</strong>:
+</span>
+<form method="post" action="">
+    <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
+    <input type="hidden" id="field-person-rfc" name="person-rfc" value="PERSON_RFC">
+    <input type="hidden" id="field-vax-id" name="vax-id" value="VAX_ID">
+    <div class="table eq">
+        <div class="row subhead">
+        General Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Date of Vaccination:</span>
+                <input type="date" id="field-vax-date" name="vax-date" value="VAX_DATE" required>
+            </div>
+            <div class="cell box v">
+                <span>Vaccination Site:</span>
+                <select id="field-vax-site" name="vax-site" required>
+                    <option value="" hidden>Choose</option>
+                    VAX_SITE_INSERT
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Assigned Healthcare Professional:</span>
+                <select id="field-vax-hcw" name="vax-hcw" required>
+                    <option value="" hidden>Choose</option>
+                    VAX_HCW_INSERT
+                </select>
+            </div>
+        </div>
+
+        <div class="row subhead">
+        Vaccine Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Vaccine/Prophylaxis:</span>
+                <input type="text" id="field-vax-type" name="vax-type" value="COVID-19 vaccine" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Product Name/Manufacturer:</span>
+                <select id="field-vax-product" name="vax-product" required>
+                    <option value="" hidden>Choose</option>
+                    VAX_PROD_INSERT
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Lot Number:</span>
+                <input type="text" id="field-vax-lotnum" name="vax-lotnum" value="VAX_LOTNUM" required>
+            </div>
+            <div class="cell box v">
+                <span>Expiry Date:</span>
+                <input type="date" id="field-vax-expiry" name="vax-expiry" value="VAX_EXPIRY" required>
+            </div>
+        </div>
+        
+        <div class="row mt1">
+            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+            <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another Dose</button>
+        </div>
+    </div>
+</form>
