@@ -4,16 +4,16 @@ class Sites extends Database
 {
     public function create(
         $site_name,
-        $location_id
+        $location_id,
+        $is_laboratory
     ) {
         $parameters = [
-            "INSERT INTO `vaxsites`",
-            "(`name`, `location_id)",
-            "VALUES (?, ?)",
+            "INSERT INTO `sites`",
+            "(`name`, `location_id`, `is_laboratory`)",
+            "VALUES (?, ?, ?)",
         ];
         $values = [
-            $site_name,
-            $location_id
+            $site_name, $location_id, $is_laboratory
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -21,9 +21,10 @@ class Sites extends Database
     public function update(
         $site_name = null,
         $location_id = null,
+        $is_laboratory = null,
         $id
     ) {
-        $query = ["UPDATE `vaxsites` SET"];
+        $query = ["UPDATE `sites` SET"];
 		$parameters = [];
         $values = [];
         
@@ -37,6 +38,11 @@ class Sites extends Database
             $parameters[] = "`location_id`=?";
             $values[] = $location_id;
         }
+        if (!empty($is_laboratory))
+        {
+            $parameters[] = "`is_laboratory`=?";
+            $values[] = $is_laboratory;
+        }
         
 		$query[] = implode(",", $parameters);
         $query[] = "WHERE `id`=?";
@@ -47,7 +53,16 @@ class Sites extends Database
 
     public function read()
     {
-        $this->statement = $this->connection->prepare("SELECT * FROM `vaxsites`");
+        $this->statement = $this->connection->prepare("SELECT * FROM `sites`");
+        $this->statement->execute();
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries;
+    }
+
+    public function readFilter(bool $laboratories_only)
+    {
+        $filter_value = $laboratories_only ? 1 : 0;
+        $this->statement = $this->connection->prepare("SELECT * FROM `sites` WHERE `is_laboratory` = '$filter_value'");
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
@@ -56,7 +71,7 @@ class Sites extends Database
     public function delete(int $id)
     {
         return $this->execute(
-            "DELETE FROM `vaxsites` WHERE `id`=?",
+            "DELETE FROM `sites` WHERE `id`=?",
             [$id]
         );
     }

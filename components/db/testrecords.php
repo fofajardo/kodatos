@@ -6,15 +6,16 @@ class TestRecords extends Database
         $patient_id,
         $test_date,
         $test_site_id,
+        $test_type,
         $test_result
     ) {
         $parameters = [
             "INSERT INTO `testrecords`",
-            "(`patient_id`, `test_date`, `test_site_id`, `test_result`)",
-            "VALUES (?, ?, ?, ?)",
+            "(`patient_id`, `test_date`, `test_site_id`, `test_type`, `test_result`)",
+            "VALUES (?, ?, ?, ?, ?)",
         ];
         $values = [
-            $patient_id, $test_date, $test_site_id, $test_result
+            $patient_id, $test_date, $test_site_id, $test_type, $test_result
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -23,6 +24,7 @@ class TestRecords extends Database
         $patient_id = null,
         $test_date = null,
         $test_site_id = null,
+        $test_type = null,
         $test_result = null,
         $id
     ) {
@@ -30,22 +32,27 @@ class TestRecords extends Database
 		$parameters = [];
         $values = [];
         
-        if (!empty($patient_id))
+        if (isset($patient_id))
         {
             $parameters[] = "`patient_id`=?";
             $values[] = $patient_id;
         }
-        if (!empty($test_date))
+        if (isset($test_date))
         {
             $parameters[] = "`test_date`=?";
             $values[] = $test_date;
         }
-        if (!empty($test_site_id))
+        if (isset($test_site_id))
         {
             $parameters[] = "`test_site_id`=?";
             $values[] = $test_site_id;
         }
-        if (!empty($test_result))
+        if (isset($test_type))
+        {
+            $parameters[] = "`test_type`=?";
+            $values[] = $test_type;
+        }
+        if (isset($test_result))
         {
             $parameters[] = "`test_result`=?";
             $values[] = $test_result;
@@ -66,6 +73,13 @@ class TestRecords extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries;
     }
     
+    public function readId(int $id)
+    {
+        $this->statement = $this->connection->prepare("SELECT * FROM `testrecords` WHERE `id`=?");
+        $this->statement->execute([$id]);
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
+    }
     public function readFromPatientId(int $id)
     {
         $this->statement = $this->connection->prepare("SELECT * FROM `testrecords` WHERE `patient_id`=? ORDER BY `test_date` DESC");
