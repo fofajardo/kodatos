@@ -25,9 +25,8 @@ class ViewRecordView implements View
         // Info
         $info = [];
         // $info["pid"] = 1;
-        $db = new Patients();
         // $info["patient"] = $db->readId($info["pid"]);
-        $info["patient"] = $db->readCode($_POST["reference"], "");
+        $info["patient"] = DBM::$com["PAT"]->readCode($_POST["reference"], "");
 
         if (is_bool($info["patient"]))
         {

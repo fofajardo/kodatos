@@ -2,8 +2,6 @@
 
 class DashboardView implements View
 {
-    const SLUG = ["dashboard", "admin/dashboard"];
-    
     public function getDocument()
     {
         if (!Auth::isSignedIn())
@@ -25,5 +23,3 @@ class DashboardView implements View
         return $document;
     }
 }
-
-VWM::register(new DashboardView());
