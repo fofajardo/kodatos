@@ -347,6 +347,8 @@ footer {
 /* ::::: Content: Table ::::: */
 
 .table > .row.subhead {
+  align-items: center;
+  justify-content: space-between;
   font-size: 1.2em;
   font-weight: bold;
   background: rgba(0,0,0,0.15);
@@ -505,6 +507,7 @@ footer {
 button {
   font-size: 16px;
   font-weight: initial;
+  cursor: default;
 }
 
 /* ::::: Input elements ::::: */
@@ -520,6 +523,11 @@ input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type=
   border-radius: 5px;
   background-color: #F9F9F9;
   padding: 10px;
+}
+
+input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"])[readonly] {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: gray;
 }
 
 select:hover,
@@ -654,6 +662,8 @@ form button {
 #section-login > .card {
   max-width: 400px;
 }
+
+
 
 /* ::::: Backgrounds ::::: */
 
