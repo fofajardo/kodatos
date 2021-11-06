@@ -1,8 +1,8 @@
 <?php
 
-class RegistrationsDashboardView extends DashboardView
+class AddRegistrationView extends DashboardView
 {
-    const SLUG = ["dashboard", "admin/registration"];
+    const SLUG = ["admin/registration/add"];
 
     public function getDocument()
     {
@@ -10,6 +10,7 @@ class RegistrationsDashboardView extends DashboardView
 
         $document = parent::getDocument();
         $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["SECTION_TITLE"] = "Registrations";
 
         $child = new Template("dashboard-registrations");
         $patients = DBM::$com["PAT"]->read();
@@ -60,4 +61,4 @@ EOD;
     }
 }
 
-VWM::register(new RegistrationsDashboardView());
+VWM::register(new AddRegistrationView());

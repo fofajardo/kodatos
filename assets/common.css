@@ -249,14 +249,12 @@ footer {
 .two-col {
   display: flex;
   flex-direction: row;
-  max-width: 1250px;
   margin: auto;
   flex-wrap: wrap;
 }
 
 .two-col > div:first-child {
   flex: 1 200px;
-  max-width: 300px;
 }
 
 .two-col > div:last-child {
@@ -301,6 +299,7 @@ footer {
   border: 2px solid black;
   min-width: 300px;
   margin-bottom: 45px;
+  background: white;
 }
 
 .card2 > .title {
@@ -310,6 +309,7 @@ footer {
   border-radius: 10px 10px 0 0;
   font-size: 1.35em;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border: 2px solid #000;
 }
@@ -377,6 +377,11 @@ footer {
   border-bottom: 2px solid black;
 }
 
+.table.ac > .row > .cell {
+  display: flex;
+  align-items: center;
+}
+
 .table > .row > .cell {
   padding: 5px 0;
   flex: 2 250px;
@@ -435,6 +440,7 @@ footer {
   border-bottom: 2px solid rgba(0,0,0,0.2);
 }
 
+.action-button,
 .menu-button {
   display: flex;
   border-radius: 6px;
@@ -446,21 +452,39 @@ footer {
   border: 2px solid transparent;
   min-width: 200px;
   user-select: none;
+  font-size: 16px;
+}
+
+.action-button {
+  margin: 0 5px;
+  min-width: 0;
+}
+
+.action-button:first-child {
+  margin-left: 0;
+}
+
+.action-button:last-child {
+  margin-right: 0;
 }
 
 .menu-button:not(:first-child) {
   margin-top: 0;
 }
 
+.action-button:hover,
 .menu-button:hover {
   background: var(--mb-background-hover);
 }
 
+.action-button:focus,
+.action-button:hover:active,
 .menu-button:focus,
 .menu-button:hover:active {
   background: var(--mb-background-active);
 }
 
+.action-button:focus,
 .menu-button:focus {
   outline: none;
   border-color: #0067C0;
@@ -499,6 +523,7 @@ input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type=
   margin-bottom: 1em;
 }
 
+.button,
 button {
   background: #0067C0;
   border-radius: 5px;
@@ -509,10 +534,13 @@ button {
   border: 2px solid transparent;
 }
 
+.button:hover,
 button:hover {
   background: #0088FF;
 }
 
+.button:focus,
+.button:hover:active,
 button:focus,
 button:hover:active {
   background: #005FB2;
@@ -593,6 +621,14 @@ form button {
   display: inline !important;
   width: 150px;
   height: 150px;
+}
+
+#section-dashboard > .two-col {
+  max-width: 1250px;
+}
+
+#section-dashboard > .two-col > div:first-child {
+  max-width: 300px;
 }
 
 #section-login > .card {
