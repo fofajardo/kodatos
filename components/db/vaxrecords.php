@@ -4,7 +4,6 @@ class Vaccinations extends Database
 {
     public function create(
         $patient_id,
-        $vax_dosenum,
         $vax_product_id,
         $vax_lotnum,
         $vax_expiry,
@@ -14,18 +13,17 @@ class Vaccinations extends Database
     ) {
         $parameters = [
             "INSERT INTO `vaxrecords`",
-            "(`patient_id`, `vax_dosenum`, `vax_product_id`, `vax_lotnum`, `vax_expiry`, `vax_date`, `vax_site_id`, `vax_hcw_id`)",
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            "(`patient_id`, `vax_product_id`, `vax_lotnum`, `vax_expiry`, `vax_date`, `vax_site_id`, `vax_hcw_id`)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
         ];
         $values = [
-            $patient_id, $vax_dosenum, $vax_product_id, $vax_lotnum
+            $patient_id, $vax_product_id, $vax_lotnum, $vax_expiry, $vax_date, $vax_site_id, $vax_hcw_id
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
 
     public function update(
         $patient_id = null,
-        $vax_dosenum = null,
         $vax_product_id = null,
         $vax_lotnum = null,
         $vax_expiry = null,
@@ -42,11 +40,6 @@ class Vaccinations extends Database
         {
             $parameters[] = "`patient_id`=?";
             $values[] = $patient_id;
-        }
-        if (!empty($vax_dosenum))
-        {
-            $parameters[] = "`vax_dosenum`=?";
-            $values[] = $vax_dosenum;
         }
         if (!empty($vax_product_id))
         {
@@ -93,7 +86,15 @@ class Vaccinations extends Database
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
     }
-    
+
+    public function readId(int $id)
+    {
+        $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords` WHERE `id`=?");
+        $this->statement->execute([$id]);
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
+    }
+
     public function readFromPatientId(int $id)
     {
         $this->statement = $this->connection->prepare("SELECT * FROM `vaxrecords` WHERE `patient_id`=? ORDER BY `vax_date` ASC");
