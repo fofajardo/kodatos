@@ -81,11 +81,11 @@ class PeopleDashboardView extends DashboardView
                 $vax_text = "NOT VACCINATED";
             }
 
-            $name = sprintf(
-                "%s, %s %s",
-                strtoupper($record["last_name"]),
+            $name = Utils::getFullName(
                 $record["first_name"],
-                $record["middle_name"]
+                $record["middle_name"],
+                $record["last_name"],
+                $record["suffix"]
             );
 
             $row = <<<EOD
