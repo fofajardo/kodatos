@@ -34,19 +34,19 @@ class PeopleDashboardView extends DashboardView
     <span class="cell box">
         <a class="action-button" href="/view?rfc=$cd_ref">
             <div>
-                <span class="mdi-set mdi-account"></span>
+                <span class="mdi-set mdi-eye"></span>
                 View
             </div>
         </a>
         <a class="action-button" href="/admin/people/edit?rfc=$cd_ref">
             <div>
-                <span class="mdi-set mdi-account"></span>
+                <span class="mdi-set mdi-pencil"></span>
                 Edit
             </div>
         </a>
         <a class="action-button" href="/admin/people/delete?rfc=$cd_ref">
             <div>
-                <span class="mdi-set mdi-account"></span>
+                <span class="mdi-set mdi-trash-can"></span>
                 Delete
             </div>
         </a>

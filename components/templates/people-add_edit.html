@@ -1,16 +1,16 @@
 <div class="title">
-    <span class="cell left-col hr">Add Person</span>
+    <span class="cell left-col hr">PAGE_NAME</span>
     <span class="cell">
-        <a class="action-button" href="/admin/people">
-            <div>
-                <span class="mdi-set mdi-close-thick"></span>
-                Cancel
-            </div>
+        <a class="button" href="/admin/people">
+            <span class="mdi-set mdi-close-thick"></span>
+            Cancel
         </a>
     </span>
 </div>
 
 <form method="post" action="">
+    <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
+    <input type="hidden" id="field-person-rfc" name="person-rfc" value="PERSON_RFC">
     <div class="table eq">
         <div class="row subhead">
         Personal Information

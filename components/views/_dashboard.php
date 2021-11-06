@@ -18,6 +18,7 @@ class DashboardView implements View
         $document->setData([
             "TPL_HEADER" => $header_tpl->output(),
             "PAGE_NAME" => "Dashboard",
+            "PAGE_MARKER" => "dashboard",
         ]);
 
         return $document;

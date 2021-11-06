@@ -35,7 +35,7 @@ class ViewRecordView implements View
 
         if (empty($initial_refcode))
         {
-            Utils::redirect("");            
+            Utils::redirect("");
         }
 
         // Info
@@ -65,10 +65,11 @@ class ViewRecordView implements View
             // data
             $document->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov");
             $document->getDataByRef()["PATIENT_NAME"] = sprintf(
-                                        "%s, %s %s",
-                                        strtoupper($info["patient"]["last_name"]),
+                                        "%s %s %s %s",
                                         $info["patient"]["first_name"],
-                                        $info["patient"]["middle_name"]
+                                        $info["patient"]["middle_name"],
+                                        $info["patient"]["last_name"],
+                                        $info["patient"]["suffix"]
                                     );
             $document->getDataByRef()["PATIENT_BIRTH"] = $info["patient"]["birthdate"];
             $document->getDataByRef()["PATIENT_REFCODE"] = strtoupper($info["patient"]["reference_code"]);
