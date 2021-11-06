@@ -10,6 +10,7 @@ class RegistrationsDashboardView extends DashboardView
 
         $document = parent::getDocument();
         $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["PAGE_NAME"] = "Registrations";
 
         $child = new Template("registration-dashboard");
         $patients = DBM::$com["PAT"]->read();

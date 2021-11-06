@@ -1,0 +1,97 @@
+<div class="title">
+    <span class="cell left-col hr">Add Registration</span>
+    <span class="cell">
+        <a class="action-button" href="/admin/registration">
+            <div>
+                <span class="mdi-set mdi-close-thick"></span>
+                Cancel
+            </div>
+        </a>
+    </span>
+</div>
+
+<form method="post" action="">
+    <div class="table eq">
+        <div class="row subhead">
+        Personal Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Last Name:</span>
+                <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
+            </div>
+            <div class="cell box v">
+                <span>First Name:</span>
+                <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
+            </div>
+            <div class="cell box v">
+                <span>Middle Name:</span>
+                <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
+            </div>
+            <div class="cell box v">
+                <span>Suffix:</span>
+                <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Sex:</span>
+                <select id="field-gender" name="bio_gender" required>
+                    <option value="" hidden>Choose</option>
+                    <option value="0" BIO_GENDER_0>Male</option>
+                    <option value="1" BIO_GENDER_1>Female</option>
+                </select>
+            </div>
+            <div class="cell box v">
+                <span>Date of Birth:</span>
+                <input type="date" id="field-bio-birthdate" name="bio-birthdate" value="BIO_BIRTHDATE" required>
+            </div>
+            <div class="cell box v">
+                <span>Civil Status:</span>
+                <select id="field-civilstatus" name="bio-civilstatus" required>
+                    <option value="" hidden>Choose</option>
+                    <option value="0" BIO_CIVILSTATUS_0>Single</option>
+                    <option value="1" BIO_CIVILSTATUS_1>Married</option>
+                    <option value="2" BIO_CIVILSTATUS_2>Widow/Widower</option>
+                    <option value="3" BIO_CIVILSTATUS_3>Separated/Annulled</option>
+                    <option value="4" BIO_CIVILSTATUS_4>Common-law Spouse (Live-in)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row subhead">
+        Contact Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Contact number:</span>
+                <input type="number" min="0" id="field-contact-number" name="contact-number" value="CON_NUMBER" required>
+            </div>
+            <div class="cell box v">
+                <span>Email:</span>
+                <input type="email" id="field-contact-email" name="contact-email" value="CON_EMAIL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>General Location:</span>
+                <select id="field-location-general" name="location-general" required>
+                    <option value="" hidden>Choose</option>
+                    CONTENT_INSERT
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Street Address:</span>
+                <input type="text" id="field-location-street" name="location-street" value="LOC_STREET" required>
+            </div>
+        </div>
+        
+        <div class="row mt1">
+            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+            <button class="cell" name="action" value="G_VAX" type="submit">Proceed to Vaccination Records</button>
+            <button class="cell" name="action" value="G_TEST" type="submit">Proceed to Test Records</button>
+        </div>
+    </div>
+</form>
