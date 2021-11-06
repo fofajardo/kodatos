@@ -164,9 +164,7 @@ header a.link {
   left: 0;
   color: var(--header-text-color);
   justify-content: space-between;
-  transition-property: background, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: ease;
+  transition: background 250ms ease, box-shadow 250ms ease;
 }
 
 #primary-header[opaque] {
@@ -253,6 +251,7 @@ footer {
   flex-direction: row;
   max-width: 1250px;
   margin: auto;
+  flex-wrap: wrap;
 }
 
 .two-col > div:first-child {
@@ -262,7 +261,6 @@ footer {
 
 .two-col > div:last-child {
   flex: 5 500px;
-  /* max-width: none; */
 }
 
 /* ::::: Content: Cards ::::: */
@@ -369,6 +367,9 @@ footer {
 
 .table > .row {
   display: flex;
+}
+
+.table:not(.no-wrap) > .row {
   flex-wrap: wrap;
 }
 
@@ -381,8 +382,11 @@ footer {
   flex: 2 250px;
 }
 
-.table > .row > .cell.hr {
+.table > .row > .cell.left-col {
   flex: 1 200px;
+}
+
+.table > .row > .cell.hr {
   font-weight: bold;
 }
 
@@ -438,10 +442,10 @@ footer {
   margin: 5px 10px;
   text-decoration: none;
   color: #000;
-  transition: all 200ms;
+  transition: background 200ms ease, border 200ms ease;
   border: 2px solid transparent;
   min-width: 200px;
-  text-shadow: none;
+  user-select: none;
 }
 
 .menu-button:not(:first-child) {
@@ -460,6 +464,13 @@ footer {
 .menu-button:focus {
   outline: none;
   border-color: #0067C0;
+}
+
+.menu-button.selected,
+.menu-button.selected:hover:active {
+  background-color: #0091ff;
+  color: #fff;
+  cursor: default;
 }
 
 /* ::::: Input elements ::::: */
@@ -494,7 +505,7 @@ button {
   padding: 5px;
   text-decoration: none;
   color: #fff;
-  transition: all 200ms;
+  transition: background 200ms ease, border 200ms ease;
   border: 2px solid transparent;
 }
 
@@ -669,6 +680,12 @@ body,
   }
 }
 
+@media screen and (max-width: 750px) {
+  .two-col > div:first-child {
+    max-width: none;
+  }
+}
+
 @media screen and (max-width: 650px) {
   #pov-right-col {
     margin-left: 0;
@@ -704,7 +721,14 @@ body,
   /* 480px */
   #section-login > .card {
     border-radius: 0;
+  }
+
+  .card {
     width: 100%;
     max-width: none;
+  }
+
+  #section-dashboard > .two-col > #main-col {
+    padding: 0;
   }
 }
