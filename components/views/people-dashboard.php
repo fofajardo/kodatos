@@ -1,8 +1,8 @@
 <?php
 
-class RegistrationsDashboardView extends DashboardView
+class PeopleDashboardView extends DashboardView
 {
-    const SLUG = ["dashboard", "admin/registration"];
+    const SLUG = ["dashboard", "admin/people"];
 
     public function getDocument()
     {
@@ -10,9 +10,9 @@ class RegistrationsDashboardView extends DashboardView
 
         $document = parent::getDocument();
         $document->getDataByRef()["RGA_0"] = "selected";
-        $document->getDataByRef()["PAGE_NAME"] = "Registrations";
+        $document->getDataByRef()["PAGE_NAME"] = "People";
 
-        $child = new Template("registration-dashboard");
+        $child = new Template("people-dashboard");
         $patients = DBM::$com["PAT"]->read();
 
         $record_count = count($patients);
@@ -38,13 +38,13 @@ class RegistrationsDashboardView extends DashboardView
                 View
             </div>
         </a>
-        <a class="action-button" href="/admin/registration/edit?rfc=$cd_ref">
+        <a class="action-button" href="/admin/people/edit?rfc=$cd_ref">
             <div>
                 <span class="mdi-set mdi-account"></span>
                 Edit
             </div>
         </a>
-        <a class="action-button" href="/admin/registration/delete?rfc=$cd_ref">
+        <a class="action-button" href="/admin/people/delete?rfc=$cd_ref">
             <div>
                 <span class="mdi-set mdi-account"></span>
                 Delete
@@ -61,4 +61,4 @@ EOD;
     }
 }
 
-VWM::register(new RegistrationsDashboardView());
+VWM::register(new PeopleDashboardView());

@@ -1,8 +1,8 @@
 <?php
 
-class AddRegistrationView extends DashboardView
+class AddPersonView extends DashboardView
 {
-    const SLUG = ["admin/registration/add"];
+    const SLUG = ["admin/people/add"];
 
     public function getDocument()
     {
@@ -51,9 +51,9 @@ class AddRegistrationView extends DashboardView
         }
 
         $document->getDataByRef()["RGA_0"] = "selected";
-        $document->getDataByRef()["PAGE_NAME"] = "Add Registration";
+        $document->getDataByRef()["PAGE_NAME"] = "Add New Person";
 
-        $child = new Template("registration-add");
+        $child = new Template("people-add_edit");
         $locations = DBM::$com["LOC"]->read();
 
         foreach ($locations as $location)
@@ -87,4 +87,4 @@ class AddRegistrationView extends DashboardView
     }
 }
 
-VWM::register(new AddRegistrationView());
+VWM::register(new AddPersonView());
