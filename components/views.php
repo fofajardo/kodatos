@@ -24,7 +24,7 @@ class VWM
 
         if ($view == null)
         {
-            $view = self::findView("notfound");
+            self::outputNotFound();
         }
 
         echo $view->getDocument()->output();
@@ -58,6 +58,21 @@ class VWM
     public static function register($view)
     {
         self::$registeredViews[] = $view;
+    }
+    
+    public static function outputNotFound()
+    {
+        $view = self::findView("notfound");
+        if (is_null($view))
+        {
+            echo "404 Not Found";
+        }
+        else
+        {
+            echo $view->getDocument()->output();
+        }
+        http_response_code(404);
+        exit;
     }
 }
 
