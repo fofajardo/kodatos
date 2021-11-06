@@ -109,6 +109,14 @@ class Vaccinations extends Database
             [$id]
         );
     }
+
+    public function deleteFromPatientId(int $id)
+    {
+        return $this->execute(
+            "DELETE FROM `vaxrecords` WHERE `patient_id`=?",
+            [$id]
+        );
+    }
 }
 
 DBM::add("VAXR", new Vaccinations());

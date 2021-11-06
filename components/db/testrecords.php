@@ -81,6 +81,14 @@ class TestRecords extends Database
             [$id]
         );
     }
+
+    public function deleteFromPatientId(int $id)
+    {
+        return $this->execute(
+            "DELETE FROM `testrecords` WHERE `patient_id`=?",
+            [$id]
+        );
+    }
 }
 
 DBM::add("TSTR", new TestRecords());
