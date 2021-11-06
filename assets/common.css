@@ -326,13 +326,13 @@ footer {
   background-color: #0AFF53;
 }
 
-.card2 > .title.state-low > .state-low-child,
-.card2 > .title.state-mid > .state-mid-child,
-.card2 > .title.state-high > .state-high-child {
+.state-low > .state-low-child,
+.state-mid > .state-mid-child,
+.state-high > .state-high-child {
   display: block;
 }
 
-.card2 > .title > .state-child {
+.state-child {
   display: none;
 }
 
@@ -461,6 +461,7 @@ footer {
 .action-button {
   margin: 0 5px;
   min-width: 0;
+  background: var(--mb-background-hover);
 }
 
 .action-button:first-child {
@@ -475,13 +476,11 @@ footer {
   margin-top: 0;
 }
 
-.action-button:hover,
 .menu-button:hover {
   background: var(--mb-background-hover);
 }
 
-.action-button:focus,
-.action-button:hover:active,
+.action-button:hover,
 .menu-button:focus,
 .menu-button:hover:active {
   background: var(--mb-background-active);
