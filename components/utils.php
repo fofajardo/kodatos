@@ -44,4 +44,25 @@ class Utils
         header('Location: ' . Framework::$dir["S_ROOT"] . "/" . $page);
         exit;
     }
+
+    public static function getFullName($firstName, $middleName, $lastName, $suffix = null)
+    {
+        if (empty(trim($suffix)))
+        {
+            return trim(sprintf(
+                "%s, %s %s",
+                strtoupper($lastName),
+                $firstName,
+                $middleName
+            ));
+        }
+
+        return trim(sprintf(
+            "%s %s, %s %s",
+            strtoupper($lastName),
+            $suffix,
+            $firstName,
+            $middleName
+        ));
+    }
 }
