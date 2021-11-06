@@ -6,14 +6,19 @@ class Patients extends Database
         $first_name,
         $last_name,
         $middle_name,
-        $birthdate,
         $suffix,
-        $location_id
+        $gender,
+        $birthdate,
+        $civil_status,
+        $contact_number,
+        $email,
+        $location_id,
+        $street_address
     ) {
         $parameters = [
             "INSERT INTO `patients`",
-            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `suffix`, `birthdate`, `location_id`)",
-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+            "(`reference_code`, `security_code`, `first_name`, `last_name`, `middle_name`, `suffix`, `gender`, `birthdate`, `civil_status`, `contact_number`, `email`, `location_id`, `street_address`)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         ];
 
         $rand = random_int(0, 1000);
@@ -22,9 +27,10 @@ class Patients extends Database
         $cd_sec = hash("adler32", $cd_raw);
 
         $values = [
-            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $suffix, $birthdate, $location_id
+            $cd_ref, $cd_sec, $first_name, $last_name, $middle_name, $suffix, $gender,
+            $birthdate, $civil_status, $contact_number, $email, $location_id, $street_address
         ];
-        return $this->execute(implode(" ", $parameters), $values);
+        return [$this->execute(implode(" ", $parameters), $values), $cd_ref];
     }
 
     public function update(
@@ -32,8 +38,13 @@ class Patients extends Database
         $last_name = null,
         $middle_name = null,
         $suffix = null,
+        $gender = null,
         $birthdate = null,
+        $civil_status = null,
+        $contact_number = null,
+        $email = null,
         $location_id = null,
+        $street_address = null,
         $id
     ) {
         $query = ["UPDATE `patients` SET"];
@@ -60,15 +71,40 @@ class Patients extends Database
             $parameters[] = "`suffix`=?";
             $values[] = $suffix;
         }
+        if (!empty($gender))
+        {
+            $parameters[] = "`gender`=?";
+            $values[] = $gender;
+        }
         if (!empty($birthdate))
         {
             $parameters[] = "`birthdate`=?";
             $values[] = $birthdate;
         }
+        if (!empty($civil_status))
+        {
+            $parameters[] = "`civil_status`=?";
+            $values[] = $civil_status;
+        }
+        if (!empty($contact_number))
+        {
+            $parameters[] = "`contact_number`=?";
+            $values[] = $contact_number;
+        }
+        if (!empty($email))
+        {
+            $parameters[] = "`email`=?";
+            $values[] = $email;
+        }
         if (!empty($location_id))
         {
             $parameters[] = "`location_id`=?";
             $values[] = $location_id;
+        }
+        if (!empty($street_address))
+        {
+            $parameters[] = "`street_address`=?";
+            $values[] = $street_address;
         }
         
 		$query[] = implode(",", $parameters);
