@@ -17,16 +17,30 @@ class ViewRecordView implements View
             "CONTENT_VISIBLE" => "",
         ]);
 
-        if (!isset($_POST["reference"]))
+        $initial_refcode = "";
+
+        // Allow passing reference code via query string if signed in
+        if (Auth::isSignedIn())
         {
-            Utils::redirect("");
+            if (isset($_GET["rfc"]))
+            {
+                $initial_refcode = $_GET["rfc"];
+            }
+        }
+
+        if (isset($_POST["reference"]))
+        {
+            $initial_refcode = $_POST["reference"];
+        }
+
+        if (empty($initial_refcode))
+        {
+            Utils::redirect("");            
         }
 
         // Info
         $info = [];
-        // $info["pid"] = 1;
-        // $info["patient"] = $db->readId($info["pid"]);
-        $info["patient"] = DBM::$com["PAT"]->readCode($_POST["reference"], "");
+        $info["patient"] = DBM::$com["PAT"]->readCode($initial_refcode, "");
 
         if (is_bool($info["patient"]))
         {
