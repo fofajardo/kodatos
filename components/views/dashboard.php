@@ -17,7 +17,10 @@ class DashboardView implements View
         ]);
 
         $document = new Template("dashboard");
-        $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
+        $document->setData([
+            "TPL_HEADER" => $header_tpl->output(),
+            "PAGE_NAME" => "Dashboard",
+        ]);
 
         return $document;
     }
