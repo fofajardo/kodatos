@@ -45,7 +45,7 @@ body[hide-content="true"] > main {
   display: none;
 }
 
-input, button, body {
+input, select, button, body {
   font-family: "Montserrat", "Segoe UI", "Helvetica", "Arial", sans-serif;
 }
 
@@ -351,7 +351,7 @@ footer {
   font-weight: bold;
   background: rgba(0,0,0,0.15);
   padding: 15px;
-  border: 2px solid black;
+  border: none !important;
   border-radius: 5px;
   margin-top: 25px;
 }
@@ -373,7 +373,7 @@ footer {
   flex-wrap: wrap;
 }
 
-.table > .row:not(:last-child) {
+.table.hl > .row:not(:last-child) {
   border-bottom: 2px solid black;
 }
 
@@ -383,8 +383,12 @@ footer {
 }
 
 .table > .row > .cell {
-  padding: 5px 0;
+  margin: 5px;
   flex: 2 250px;
+}
+
+.table.eq > .row > .cell {
+  flex: 1 200px;
 }
 
 .table > .row > .cell.left-col {
@@ -452,7 +456,6 @@ footer {
   border: 2px solid transparent;
   min-width: 200px;
   user-select: none;
-  font-size: 16px;
 }
 
 .action-button {
@@ -497,13 +500,22 @@ footer {
   cursor: default;
 }
 
+.action-button,
+.menu-button,
+.button,
+button {
+  font-size: 16px;
+  font-weight: initial;
+}
+
 /* ::::: Input elements ::::: */
 
+select,
 input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"]) {
   appearance: none;
   -moz-appearance: none;
   width: 100%;
-  min-height: 30px;
+  height: 40px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   transition: border-color 150ms;
   border-radius: 5px;
@@ -511,16 +523,25 @@ input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type=
   padding: 10px;
 }
 
+select:hover,
 input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"]):hover {
   border-color: rgba(0, 0, 0, 0.4);
 }
 
+select:focus,
 input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"]):focus {
   border-color: rgba(0, 0, 0, 0.7);
 }
 
 input:not([type="button"]):not([type="checkbox"]):not([type="image"]):not([type="radio"]):not(:last-child) {
   margin-bottom: 1em;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
 }
 
 .button,
