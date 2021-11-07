@@ -11,18 +11,18 @@ class Workers extends Database
         $parameters = [
             "INSERT INTO `workers`",
             "(`first_name`, `middle_name`, `last_name`, `suffix`)",
-            "VALUES (?, ?, ?)",
+            "VALUES (?, ?, ?, ?)",
         ];
         $values = [
-            $first_name, $middle_namem, $last_name, $suffix
+            $first_name, $middle_name, $last_name, $suffix
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
 
     public function update(
         $first_name = null,
-        $last_name = null,
         $middle_name = null,
+        $last_name = null,
         $suffix = null,
         $id
     ) {
@@ -64,6 +64,14 @@ class Workers extends Database
         $this->statement->execute();
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
         return ($this->statement->rowCount() == 0) ? false : $entries;
+    }
+
+    public function readId(int $id)
+    {
+        $this->statement = $this->connection->prepare("SELECT * FROM `workers` WHERE `id`=?");
+        $this->statement->execute([$id]);
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
     public function delete(int $id)
