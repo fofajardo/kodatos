@@ -647,14 +647,11 @@ form button {
 }
 
 #pov-qr,
+#pov-qr > canvas,
 #pov-qr > img {
   /* display: inline !important; */
   width: 150px;
   height: 150px;
-}
-
-#pov-qr > canvas {
-  display: none;
 }
 
 #pov-qr {
