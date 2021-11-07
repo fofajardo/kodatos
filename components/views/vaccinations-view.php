@@ -16,7 +16,7 @@ class ViewVaxView extends DashboardView
         $patient = DBM::$com["PAT"]->readCode($_GET["rfc"], "");
 
         $document = parent::getDocument();
-        $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["RGA_0B"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Vaccinations";
         $document->getDataByRef()["PAGE_MARKER"] = "vax-view";
 

@@ -47,7 +47,7 @@ class AddVaxView extends DashboardView
         }
 
         $document = parent::getDocument();
-        $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["RGA_0B"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Add Vaccination Dose Record";
         $document->getDataByRef()["PAGE_MARKER"] = "vax-add";
 

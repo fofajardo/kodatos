@@ -16,7 +16,7 @@ class ViewTestsView extends DashboardView
         $patient = DBM::$com["PAT"]->readCode($_GET["rfc"], "");
 
         $document = parent::getDocument();
-        $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["RGA_0C"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "COVID-19 Test Results";
         $document->getDataByRef()["PAGE_MARKER"] = "tests-view";
 

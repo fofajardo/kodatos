@@ -52,7 +52,7 @@ class DeleteVaxView extends DashboardView
             VWM::outputNotFound();
         }
 
-        $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["RGA_0B"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Delete Vaccination Dose Record";
         $document->getDataByRef()["PAGE_MARKER"] = "vax-delete";
 

@@ -52,7 +52,7 @@ class DeleteTestsView extends DashboardView
             VWM::outputNotFound();
         }
 
-        $document->getDataByRef()["RGA_0"] = "selected";
+        $document->getDataByRef()["RGA_0C"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Delete COVID-19 Test Result";
         $document->getDataByRef()["PAGE_MARKER"] = "tests-delete";
 
