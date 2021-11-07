@@ -1,4 +1,4 @@
-const version = "1.0.0";
+const version = "1.0.1";
 const cacheName = `kodatos-${version}`;
 self.addEventListener('install', e => {
     e.waitUntil(
@@ -6,8 +6,6 @@ self.addEventListener('install', e => {
             return cache.addAll([
                 `/`, 
                 `/enter-code`, 
-                `/dashboard`, 
-                `/sign-in`, 
                 `/assets/images/404.svg`, 
                 `/assets/images/code.svg`, 
                 `/assets/images/taken.svg`, 
