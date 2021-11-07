@@ -11,6 +11,7 @@ class EditAccountsView extends DashboardView
         if (!empty($_POST))
         {
             $accounts = DBM::$com["ACC"];
+            $user_id = $_POST["user-id"];
             $result = $accounts->update(
                 $_POST["user-name"],
                 $_POST["user-email"],
@@ -22,12 +23,22 @@ class EditAccountsView extends DashboardView
                 $_POST["name-middle"],
                 $_POST["name-last"],
                 $_POST["name-suffix"],
-                $_POST["user-id"]
+                $user_id
             );
 
             if ($result)
             {
                 $action = $_POST["action"];
+
+                if (!empty($_POST["user-password"]))
+                {
+                    Auth::signOut(true, $user_id);
+                    if ($user_id == Auth::getAccountID())
+                    {
+                        Utils::redirect("sign-in");
+                    }
+                }
+
                 switch ($action)
                 {
                     case "G_RET":

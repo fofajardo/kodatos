@@ -27,9 +27,14 @@ class DeleteAccountsView extends DashboardView
 
             $record_id = $_POST["holder0"];
             $result1 = DBM::$com["ACC"]->delete($record_id);
-
             if ($result1)
             {
+                Auth::signOut(true, $record_id);
+                if ($record_id == Auth::getAccountID())
+                {
+                    Utils::redirect("sign-in");
+                }
+
                 Utils::redirect("admin/accounts");
             }
 

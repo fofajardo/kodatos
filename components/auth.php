@@ -28,7 +28,7 @@ class Auth
         return self::$roleID;
     }
 
-    public static function getgroupID()
+    public static function getGroupID()
     {
         return self::$groupID;
     }
@@ -124,9 +124,9 @@ class Auth
         return false;
     }
 
-    public static function signOut($allSessions = false)
+    public static function signOut($allSessions = false, $user_id = null)
     {
-        if (!self::isSignedIn())
+        if (!self::isSignedIn() && empty($user_id))
         {
             return false;
         }
@@ -135,18 +135,27 @@ class Auth
 
         if ($allSessions)
         {
-            $session_removed = DBM::$com["SESS"]->deleteFromAccount(self::$accountID);
+            $target_id = empty($user_id) ? self::$accountID : $user_id;
+            $session_removed = DBM::$com["SESS"]->deleteFromAccount($target_id);
         }
         else
         {
             $session_removed = DBM::$com["SESS"]->delete(self::$sessionID);
         }
 
-        self::$accountID = null;
-        self::$roleID = null;
-        self::$groupID = null;
-        self::$accountEnabled = null;
-        self::$userName = null;
+        if (
+            empty($user_id) ||
+            (
+                $allSessions &&
+                $user_id == self::$accountID
+            )
+        ) {
+            self::$accountID = null;
+            self::$roleID = null;
+            self::$groupID = null;
+            self::$accountEnabled = null;
+            self::$userName = null;
+        }
 
         return $session_removed;
     }
