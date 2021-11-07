@@ -1,0 +1,81 @@
+<div class="title">
+    <span class="cell left-col hr">PAGE_NAME</span>
+    <span class="cell">
+        <a class="button" href="/admin/accounts">
+            <span class="mdi-set mdi-close-thick"></span>
+            Cancel
+        </a>
+    </span>
+</div>
+<form method="post" action="">
+    <input type="hidden" id="field-user-id" name="user-id" value="USER_ID">
+    <div class="table eq">
+        <div class="row subhead">
+        General Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Last Name:</span>
+                <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
+            </div>
+            <div class="cell box v">
+                <span>First Name:</span>
+                <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
+            </div>
+            <div class="cell box v">
+                <span>Middle Name:</span>
+                <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
+            </div>
+            <div class="cell box v">
+                <span>Suffix:</span>
+                <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
+            </div>
+        </div>
+        <div class="row subhead">
+        Sign In Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Email:</span>
+                <input type="text" id="field-user-email" name="user-email" value="USER_EMAIL" required>
+            </div>
+            <div class="cell box v">
+                <span>Username:</span>
+                <input type="text" id="field-user-name" name="user-name" value="USER_NAME" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Password:</span>
+                <input type="password" id="field-user-password" name="user-password" value="" placeholder="USER_PW_PL" USER_PW_REQ>
+            </div>
+        </div>
+        <div class="row subhead">
+        Account Status
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Role:</span>
+                <select id="field-user-role" name="user-role" required>
+                    <option value="" hidden>Choose</option>
+                    <option value="0" USER_ROLE_0>Global</option>
+                    <option value="1" USER_ROLE_1>Local Group Admin</option>
+                    <option value="2" USER_ROLE_2>Local Group User</option>
+                    <option value="3" USER_ROLE_3>Guest</option>
+                </select>
+            </div>
+            <div class="cell box v">
+                <span>Enabled:</span>
+                <select id="field-user-enabled" name="user-enabled" required>
+                    <option value="" hidden>Choose</option>
+                    <option value="1" USER_ENABLED_1>Yes</option>
+                    <option value="0" USER_ENABLED_0>No</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt1">
+            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+            <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another Account</button>
+        </div>
+    </div>
+</form>
