@@ -1,0 +1,53 @@
+{
+    "short_name": "KoDatos",
+    "name": "KoDatos",
+    "icons": [
+        {
+            "src": "/assets/images/branding/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/images/branding/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "icon": {
+        "purpose": "maskable"
+    },
+    "start_url": "/?source=pwa",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait",
+    "shortcuts": [
+        {
+            "name": "KoDatos",
+            "short_name": "KoDatos",
+            "description": "KoDatos",
+            "url": "/?source=pwa",
+            "icons": [
+                {
+                    "src": "/assets/images/branding/icon-192.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                },
+                {
+                    "src": "/assets/images/branding/icon-512.png",
+                    "type": "image/png",
+                    "sizes": "512x512"
+                }
+            ]
+        },
+        {
+            "name": "KoDatos Dashboard",
+            "short_name": "Dashboard",
+            "description": "KoDatos Dashboard",
+            "url": "/dashboard?source=pwa"
+        }
+    ],
+    "description": "KoDatos",
+    "dir": "ltr"
+}
+
