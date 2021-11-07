@@ -11,6 +11,8 @@ class PeopleDashboardView extends DashboardView
         $document = parent::getDocument();
         $document->getDataByRef()["RGA_0"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "People";
+        $document->getDataByRef()["PAGE_LANDING"] = "people";
+        $document->getDataByRef()["NEW_VERB"] = "Person";
 
         $child = new Template("generic-3col-dashboard");
         $patients = DBM::$com["PAT"]->read();
