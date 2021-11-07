@@ -11,7 +11,6 @@ class DeleteHCWView extends DashboardView
         if (
             !empty($_POST) &&
             isset($_POST["holder0"]) &&
-            isset($_POST["holder1"]) &&
             isset($_POST["action"])
         )
         {

@@ -1,0 +1,37 @@
+<div class="title">
+    <span class="cell left-col hr">PAGE_NAME</span>
+    <span class="cell">
+        <a class="button" href="/admin/PAGE_LANDING">
+            <span class="mdi-set mdi-close-thick"></span>
+            Cancel
+        </a>
+    </span>
+</div>
+<form method="post" action="">
+    <input type="hidden" id="field-site-id" name="site-id" value="SITE_ID">
+    <input type="hidden" id="field-site-is-lab" name="site-is-lab" value="SITE_IS_LAB">
+    <div class="table eq">
+        <div class="row subhead">
+        General Information
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Name:</span>
+                <input type="text" id="field-site-name" name="site-name" value="SITE_NAME" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell box v">
+                <span>Linked Location:</span>
+                <select id="field-site-location" name="site-location" required>
+                    <option value="" hidden>Choose</option>
+                    LOCATION_INSERT
+                </select>
+            </div>
+        </div>
+        <div class="row mt1">
+            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+            <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another NEW_VERB</button>
+        </div>
+    </div>
+</form>
