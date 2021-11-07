@@ -4,7 +4,7 @@ self.addEventListener("install", function(event) {
             return;
         })
     );
-};
+});
 
 self.addEventListener("fetch", function(event) {
     event.respondWith(
@@ -12,4 +12,4 @@ self.addEventListener("fetch", function(event) {
             return response || fetch(event.request);
         })
     );
-};
+});
