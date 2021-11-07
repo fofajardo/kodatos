@@ -59,6 +59,14 @@ class Sites extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries;
     }
 
+    public function readId(int $id)
+    {
+        $this->statement = $this->connection->prepare("SELECT * FROM `sites` WHERE `id`=?");
+        $this->statement->execute([$id]);
+        $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
+    }
+
     public function readFilter(bool $laboratories_only)
     {
         $filter_value = $laboratories_only ? 1 : 0;

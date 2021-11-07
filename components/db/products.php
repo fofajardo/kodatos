@@ -50,7 +50,7 @@ class Products extends Database
         $this->statement = $this->connection->prepare("SELECT * FROM `products` WHERE `id`=?");
         $this->statement->execute([$id]);
         $entries = $this->statement->fetchAll(PDO::FETCH_ASSOC);
-        return ($this->statement->rowCount() == 0) ? false : $entries;
+        return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
     public function delete(int $id)
