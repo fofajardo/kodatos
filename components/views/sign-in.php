@@ -42,10 +42,10 @@ class SignInView implements View
                 }
                 $document->appendElement(
                     "div",
-                    $status_text,
                     [
                         "class" => "status-box $status_color mb1",
                     ],
+                    $status_text
                 );
             }
         }
