@@ -14,7 +14,7 @@ class MapLabDashboardView extends DashboardView
         $document->getDataByRef()["PAGE_LANDING"] = "laboratories";
         $document->getDataByRef()["NEW_VERB"] = "Laboratory";
 
-        $child = new Template("map-vax-dashboard");
+        $child = new Template("generic-2col-dashboard");
         $records = DBM::$com["SITES"]->readFilter(true);
         
         if (is_bool($records))

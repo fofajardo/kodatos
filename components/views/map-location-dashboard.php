@@ -14,7 +14,7 @@ class LocationDashboardView extends DashboardView
         $document->getDataByRef()["PAGE_LANDING"] = "locations";
         $document->getDataByRef()["NEW_VERB"] = "Location";
 
-        $child = new Template("map-vax-dashboard");
+        $child = new Template("generic-2col-dashboard");
         $records = DBM::$com["LOC"]->read();
         
         if (is_bool($records))

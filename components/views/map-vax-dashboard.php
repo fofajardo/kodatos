@@ -14,7 +14,7 @@ class MapVaxDashboardView extends DashboardView
         $document->getDataByRef()["PAGE_LANDING"] = "vaccination-sites";
         $document->getDataByRef()["NEW_VERB"] = "Vaccination Site";
 
-        $child = new Template("map-vax-dashboard");
+        $child = new Template("generic-2col-dashboard");
         $records = DBM::$com["SITES"]->readFilter(false);
         
         if (is_bool($records))

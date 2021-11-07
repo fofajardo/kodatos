@@ -12,7 +12,7 @@ class VaxDashboardView extends DashboardView
         $document->getDataByRef()["RGA_0B"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Vaccinations";
 
-        $child = new Template("people-dashboard");
+        $child = new Template("generic-3col-dashboard");
         $patients = DBM::$com["PAT"]->read();
 
         if (is_bool($patients))

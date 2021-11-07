@@ -12,7 +12,7 @@ class PeopleDashboardView extends DashboardView
         $document->getDataByRef()["RGA_0"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "People";
 
-        $child = new Template("people-dashboard");
+        $child = new Template("generic-3col-dashboard");
         $patients = DBM::$com["PAT"]->read();
 
         if (is_bool($patients))
