@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="DIR_IMG/branding/favicon.ico">
         <link href="DIR_AST/common.css" rel="stylesheet">
         <script src="DIR_AST/common.js" type="text/javascript"></script>
+        <script src="DIR_AST/qrcode-scan.min.js"></script>
     </head>
     <body>
 TPL_HEADER
@@ -32,27 +33,25 @@ TPL_HEADER
                     </div>
                 </div>
                 <div hidden>
+                    <div id="reader" width="600px" height="600px"></div>
                     <input type="file" id="qr-selector" accept="image/*">
                     <script type="module">
-                        import QrScanner from "./assets/qr-scanner.min.js";
-                        QrScanner.WORKER_PATH = './assets/qr-scanner-worker.min.js';
-
-                        var fileSelector = document.getElementById('qr-selector');
-
-                        function setResult(result) {
-                            var label = document.getElementById("field-reference");
-                            label.value = result;
-                            document.verifyForm.submit();
-                        }
-
-                        fileSelector.addEventListener('change', event => {
-                            const file = fileSelector.files[0];
-                            if (!file) {
+                        const html5QrCode = new Html5Qrcode("reader");
+                        const fileinput = document.getElementById("qr-selector");
+                        fileinput.addEventListener('change', e => {
+                            if (e.target.files.length == 0) {
                                 return;
                             }
-                            QrScanner.scanImage(file)
-                                .then(result => setResult(result))
-                                .catch(e => setResult(e || 'No QR code found.'));
+                            const referenceField = document.getElementById("field-reference");
+                            const imageFile = e.target.files[0];
+                            html5QrCode.scanFile(imageFile, true)
+                                .then(decodedText => {
+                                    referenceField.value = decodedText;
+                                    document.verifyForm.submit();
+                                })
+                                .catch(err => {
+                                    document.verifyForm.submit();
+                                });
                         });
                     </script>
                     <form name="verifyForm" method="post" action="view">
