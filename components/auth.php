@@ -12,7 +12,7 @@ class Auth
 {
     private static $accountID = null;
     private static $roleID = null;
-    private static $locationID = null;
+    private static $groupID = null;
     private static $sessionID = null;
     private static $accountEnabled = null;
     private static $userName = null;
@@ -28,9 +28,9 @@ class Auth
         return self::$roleID;
     }
 
-    public static function getLocationID()
+    public static function getgroupID()
     {
-        return self::$locationID;
+        return self::$groupID;
     }
 
     public static function getAccountEnabled()
@@ -41,6 +41,18 @@ class Auth
     public static function getUserName()
     {
         return self::$userName;
+    }
+
+    public static $roleNames = [
+        0 => "Global",
+        1 => "Local Group Admin",
+        2 => "Local Group User",
+        3 => "Guest"
+    ];
+
+    public static function getRoleFriendlyName($role_id)
+    {
+        return self::$roleNames[$role_id];
     }
 
     public static function isSessionExpired()
@@ -60,7 +72,7 @@ class Auth
     {
         self::$accountID = $record["id"];
         self::$roleID = $record["role_id"];
-        self::$locationID = $record["location_id"];
+        self::$groupID = $record["group_id"];
         self::$accountEnabled = (bool)$record["enabled"];
         self::$userName = $record["username"];
     }
@@ -132,7 +144,7 @@ class Auth
 
         self::$accountID = null;
         self::$roleID = null;
-        self::$locationID = null;
+        self::$groupID = null;
         self::$accountEnabled = null;
         self::$userName = null;
 
