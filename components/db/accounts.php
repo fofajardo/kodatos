@@ -7,17 +7,21 @@ class Accounts extends Database
         $email,
         $password,
         $role_id,
-        $location_id,
-        $enabled
+        $group_id,
+        $enabled,
+        $first_name,
+        $middle_name,
+        $last_name,
+        $suffix
     ) {
         $parameters = [
             "INSERT INTO `accounts`",
-            "(`username`, `email`, `password`, `role_id`, `location_id`, `enabled`)",
-            "VALUES (?, ?, ?, ?)",
+            "(`username`, `email`, `password`, `role_id`, `group_id`, `enabled`, `first_name`, `middle_name`, `last_name`, `suffix`)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         ];
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $values = [
-            $username, $email, $hash, $role_id, $location_id, $enabled
+            $username, $email, $hash, $role_id, $group_id, $enabled, $first_name, $middle_name, $last_name, $suffix
         ];
         return $this->execute(implode(" ", $parameters), $values);
     }
@@ -27,20 +31,44 @@ class Accounts extends Database
         $email = null,
         $password = null,
         $role_id = null,
-        $location_id = null,
+        $group_id = null,
         $enabled = null,
+        $first_name = null,
+        $middle_name = null,
+        $last_name = null,
+        $suffix = null,
         $id
     ) {
         $query = ["UPDATE `accounts` SET"];
 		$parameters = [];
         $values = [];
-        
-        if (!empty($username))
+
+        if (isset($first_name))
+        {
+            $parameters[] = "`first_name`=?";
+            $values[] = $first_name;
+        }
+        if (isset($last_name))
+        {
+            $parameters[] = "`last_name`=?";
+            $values[] = $last_name;
+        }
+        if (isset($middle_name))
+        {
+            $parameters[] = "`middle_name`=?";
+            $values[] = $middle_name;
+        }
+        if (isset($suffix))
+        {
+            $parameters[] = "`suffix`=?";
+            $values[] = $suffix;
+        }        
+        if (isset($username))
         {
             $parameters[] = "`username`=?";
             $values[] = $username;
         }
-        if (!empty($email))
+        if (isset($email))
         {
             $parameters[] = "`email`=?";
             $values[] = $email;
@@ -51,17 +79,17 @@ class Accounts extends Database
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $values[] = $hash;
         }
-        if (!empty($role_id))
+        if (isset($role_id))
         {
             $parameters[] = "`role_id`=?";
             $values[] = $role_id;
         }
-        if (!empty($location_id))
+        if (isset($group_id))
         {
-            $parameters[] = "`location_id`=?";
-            $values[] = $location_id;
+            $parameters[] = "`group_id`=?";
+            $values[] = $group_id;
         }
-        if (!empty($enabled))
+        if (isset($enabled))
         {
             $parameters[] = "`enabled`=?";
             $values[] = $enabled;
