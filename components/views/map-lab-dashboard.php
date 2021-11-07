@@ -1,21 +1,21 @@
 <?php
 
-class MapVaxDashboardView extends DashboardView
+class MapLabDashboardView extends DashboardView
 {
-    const SLUG = ["admin/vaccination-sites"];
+    const SLUG = ["admin/laboratories"];
 
     public function getDocument()
     {
         Framework::loadMultiple(["DBSIT", "DBLOC"]);
 
         $document = parent::getDocument();
-        $document->getDataByRef()["RGA_2"] = "selected";
-        $document->getDataByRef()["PAGE_NAME"] = "Vaccination Sites";
-        $document->getDataByRef()["PAGE_LANDING"] = "vaccination-sites";
-        $document->getDataByRef()["NEW_VERB"] = "Vaccination Site";
+        $document->getDataByRef()["RGA_3"] = "selected";
+        $document->getDataByRef()["PAGE_NAME"] = "Laboratories";
+        $document->getDataByRef()["PAGE_LANDING"] = "laboratories";
+        $document->getDataByRef()["NEW_VERB"] = "Laboratory";
 
         $child = new Template("map-vax-dashboard");
-        $records = DBM::$com["SITES"]->readFilter(false);
+        $records = DBM::$com["SITES"]->readFilter(true);
         
         if (is_bool($records))
         {
@@ -24,7 +24,7 @@ class MapVaxDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no vaccination sites registered in this platform. You may add a new person by clicking <em>Add Vaccination Site</em>."
+                "There are no testing laboratories registered in this platform. You may add a new person by clicking <em>Add Laboratory</em>."
             );
         }
         else
@@ -41,13 +41,13 @@ class MapVaxDashboardView extends DashboardView
     <div class="row">
         <span class="cell hr left-col">$name</span>
         <div class="cell box">
-            <a class="action-button" href="/admin/vaccination-sites/edit?id=$cd_ref">
+            <a class="action-button" href="/admin/laboratories/edit?id=$cd_ref">
                 <div>
                     <span class="mdi-set mdi-pencil"></span>
                     Edit
                 </div>
             </a>
-            <a class="action-button" href="/admin/vaccination-sites/delete?id=$cd_ref">
+            <a class="action-button" href="/admin/laboratories/delete?id=$cd_ref">
                 <div>
                     <span class="mdi-set mdi-trash-can"></span>
                     Delete
@@ -64,4 +64,4 @@ EOD;
     }
 }
 
-VWM::register(new MapVaxDashboardView());
+VWM::register(new MapLabDashboardView());
