@@ -6,3 +6,5 @@ const DB_NAME = "kodatos";
 const DB_USERNAME = "root";
 const DB_PASSWORD = "";
 const DB_DSN = DB_DRIVER . ":dbname=" . DB_NAME . ";host=" . DB_HOST;
+
+const APP_PRODUCTION = false;

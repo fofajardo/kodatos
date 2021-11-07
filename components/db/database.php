@@ -7,13 +7,7 @@ class Database
     
     public function __construct()
     {
-        try
-        {
-            $this->connection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        } catch (PDOException $e)
-        {
-            echo 'Connection failed: ' . $e->getMessage();
-        }
+        $this->connection = DBM::$connection;
     }
     
     public function __destruct()
@@ -64,6 +58,31 @@ class Database
 class DBM
 {
     public static $com = [];
+    public static $connection = null;
+
+    public static function initialize()
+    {
+        try
+        {
+            self::$connection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        }
+        catch (PDOException $e)
+        {
+            if (!APP_PRODUCTION)
+            {
+                echo "Connection failed: " . $e->getMessage();
+            }
+        }
+
+        register_shutdown_function(
+            function () {
+                if (DBM::$connection != null)
+                {
+                    DBM::$connection = null;
+                }
+            }
+        );
+    }
 
     public static function add($name, $dbComponent)
     {
@@ -78,3 +97,5 @@ class DBM
         }
     }
 }
+
+DBM::initialize();
