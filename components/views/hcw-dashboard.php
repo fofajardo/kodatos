@@ -11,8 +11,10 @@ class HCWDashboardView extends DashboardView
         $document = parent::getDocument();
         $document->getDataByRef()["RGA_1"] = "selected";
         $document->getDataByRef()["PAGE_NAME"] = "Healthcare Workers";
+        $document->getDataByRef()["PAGE_LANDING"] = "healthcare-workers";
+        $document->getDataByRef()["NEW_VERB"] = "Healthcare Worker";
 
-        $child = new Template("hcw-dashboard");
+        $child = new Template("map-vax-dashboard");
         $patients = DBM::$com["HCW"]->read();
         
         if (is_bool($patients))
