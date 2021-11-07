@@ -59,9 +59,19 @@ class EditMapVaxView extends DashboardView
         ]);
 
         $db_com = DBM::$com["LOC"]->read();
-        if (!is_bool($db_com))
+        $insert0 = "";
+        if (is_bool($db_com))
         {
-            $insert0 = "";
+            $insert0 .= Template::createElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a location first using the Dashboard, under Mapping > Locations."
+            );
+        }
+        else
+        {
             foreach ($db_com as $option)
             {
                 $attributes = [
@@ -73,8 +83,8 @@ class EditMapVaxView extends DashboardView
                 }
                 $insert0 .= Template::createElement("option", $attributes, $option["name"]);
             }
-            $child->getDataByRef()["LOCATION_INSERT"] = $insert0;
         }
+        $child->getDataByRef()["LOCATION_INSERT"] = $insert0;
 
         $document->attach($child);
         return $document;

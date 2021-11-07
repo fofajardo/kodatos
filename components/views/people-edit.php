@@ -69,16 +69,29 @@ class EditPersonView extends DashboardView
         $child = new Template("people-add_edit");
         $locations = DBM::$com["LOC"]->read();
 
-        foreach ($locations as $location)
+        if (is_bool($locations))
         {
-            $attributes = [
-                "value" => $location["id"],
-            ];
-            if ($location["id"] == $patient["location_id"])
+            $child->appendElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a location first using the Dashboard, under Mapping > Locations."
+            );
+        }
+        else
+        {
+            foreach ($locations as $location)
             {
-                $attributes["selected"] = "selected";
+                $attributes = [
+                    "value" => $location["id"],
+                ];
+                if ($location["id"] == $patient["location_id"])
+                {
+                    $attributes["selected"] = "selected";
+                }
+                $child->appendElement("option", $attributes, $location["name"]);
             }
-            $child->appendElement("option", $attributes, $location["name"]);
         }
 
         $selected_gender = "BIO_GENDER_" . $patient["gender"];

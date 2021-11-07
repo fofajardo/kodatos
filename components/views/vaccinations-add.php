@@ -71,43 +71,82 @@ class AddVaxView extends DashboardView
 
         $db_com = DBM::$com["SITES"]->readFilter(false);
         $insert0 = "";
-        foreach ($db_com as $option)
+        if (is_bool($db_com))
         {
-            $attributes = [
-                "value" => $option["id"],
-            ];
-            $insert0 .= Template::createElement("option", $attributes, $option["name"]);
+            $insert0 .= Template::createElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a vaccination site first using the Dashboard, under Mapping > Vaccination Sites."
+            );
+        }
+        else
+        {
+            foreach ($db_com as $option)
+            {
+                $attributes = [
+                    "value" => $option["id"],
+                ];
+                $insert0 .= Template::createElement("option", $attributes, $option["name"]);
+            }
         }
         $child->getDataByRef()["VAX_SITE_INSERT"] = $insert0;
 
         $db_com = DBM::$com["HCW"]->read();
         $insert1 = "";
-        foreach ($db_com as $option)
+        if (is_bool($db_com))
         {
-            $attributes = [
-                "value" => $option["id"],
-            ];
             $insert1 .= Template::createElement(
                 "option",
-                $attributes,
-                Utils::getFullName(
-                    $option["first_name"],
-                    $option["middle_name"],
-                    $option["last_name"],
-                    $option["suffix"]
-                )
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a healthcare worker first using the Dashboard, under Records > Healthcare Workers."
             );
+        }
+        else
+        {
+            foreach ($db_com as $option)
+            {
+                $attributes = [
+                    "value" => $option["id"],
+                ];
+                $insert1 .= Template::createElement(
+                    "option",
+                    $attributes,
+                    Utils::getFullName(
+                        $option["first_name"],
+                        $option["middle_name"],
+                        $option["last_name"],
+                        $option["suffix"]
+                    )
+                );
+            }
         }
         $child->getDataByRef()["VAX_HCW_INSERT"] = $insert1;
 
         $db_com = DBM::$com["PROD"]->read();
         $insert2 = "";
-        foreach ($db_com as $option)
+        if (is_bool($db_com))
         {
-            $attributes = [
-                "value" => $option["id"],
-            ];
-            $insert2 .= Template::createElement("option", $attributes, $option["vax_name"]);
+            $insert2 .= Template::createElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a vaccine brand first using the Dashboard, under Inventory > Vaccines."
+            );
+        }
+        else
+        {
+            foreach ($db_com as $option)
+            {
+                $attributes = [
+                    "value" => $option["id"],
+                ];
+                $insert2 .= Template::createElement("option", $attributes, $option["vax_name"]);
+            }
         }
         $child->getDataByRef()["VAX_PROD_INSERT"] = $insert2;
         

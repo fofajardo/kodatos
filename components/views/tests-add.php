@@ -68,9 +68,19 @@ class AddTestsView extends DashboardView
         ]);
 
         $db_com = DBM::$com["SITES"]->readFilter(true);
-        if (!is_bool($db_com))
+        $insert0 = "";
+        if (is_bool($db_com))
         {
-            $insert0 = "";
+            $insert0 .= Template::createElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a laboratory/test site first using the Dashboard, under Mapping > Laboratories."
+            );
+        }
+        else
+        {
             foreach ($db_com as $option)
             {
                 $attributes = [
@@ -78,13 +88,23 @@ class AddTestsView extends DashboardView
                 ];
                 $insert0 .= Template::createElement("option", $attributes, $option["name"]);
             }
-            $child->getDataByRef()["TEST_SITE_INSERT"] = $insert0;
         }
+        $child->getDataByRef()["TEST_SITE_INSERT"] = $insert0;
 
         $db_com = DBM::$com["TSTT"]->read();
-        if (!is_bool($db_com))
+        $insert1 = "";
+        if (is_bool($db_com))
         {
-            $insert1 = "";
+            $insert1 .= Template::createElement(
+                "option",
+                [
+                    "disabled" => "disabled"
+                ],
+                "You must add a test type first using the Dashboard, under Inventory > Test Types."
+            );
+        }
+        else
+        {
             foreach ($db_com as $option)
             {
                 $attributes = [
@@ -92,8 +112,8 @@ class AddTestsView extends DashboardView
                 ];
                 $insert1 .= Template::createElement("option", $attributes, $option["name"]);
             }
-            $child->getDataByRef()["TEST_TYPE_INSERT"] = $insert1;
         }
+        $child->getDataByRef()["TEST_TYPE_INSERT"] = $insert1;
 
         $document->attach($child);
         return $document;
