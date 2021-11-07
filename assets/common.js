@@ -36,8 +36,8 @@ document.addEventListener("scroll", gSite.updateHeader);
 
 // Initialize PWA service worker
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register('DIR_AST/pwa.js', {
-        scope: '.'
+    navigator.serviceWorker.register("pwa.js", {
+        scope: "."
     }).then(function (registration) {
         console.log('PWA: ServiceWorker registration successful with scope: ', registration.scope);
     }, function (err) {
