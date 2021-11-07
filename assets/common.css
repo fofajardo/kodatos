@@ -312,6 +312,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   border: 2px solid #000;
+  flex-wrap: wrap;
 }
 
 .card2 > .title.state-low {
