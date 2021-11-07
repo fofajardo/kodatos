@@ -235,7 +235,7 @@ footer {
 }
 
 .section-full.alt {
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .section-full > .content-layout {

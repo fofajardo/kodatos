@@ -81,7 +81,7 @@
 }
 
 .box.ae {
-  align-items: end;
+  align-items: flex-end;
 }
 
 .box.jc {
@@ -93,7 +93,7 @@
 }
 
 .box.je {
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .box.jsb {
