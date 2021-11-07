@@ -646,10 +646,19 @@ form button {
   font-family: monospace;
 }
 
+#pov-qr,
 #pov-qr > img {
-  display: inline !important;
+  /* display: inline !important; */
   width: 150px;
   height: 150px;
+}
+
+#pov-qr > canvas {
+  display: none;
+}
+
+#pov-qr {
+  margin: 10px;
 }
 
 #section-dashboard > .two-col {
