@@ -31,11 +31,6 @@ class ViewVaxView extends DashboardView
             "PERSON_RFC" => $patient["reference_code"],
         ]);
 
-        $info = [];
-        $info["products"]  = DBM::$com["PROD"]->read();
-        $info["vaxsites"]  = DBM::$com["SITES"]->read();
-        $info["workers"]   = DBM::$com["HCW"]->read();
-
         $vax_records = DBM::$com["VAXR"]->readFromPatientId($patient["id"]);
         if (!is_bool($vax_records))
         {
@@ -45,22 +40,21 @@ class ViewVaxView extends DashboardView
                 $record = $vax_records[$i];
                 $record_tpl = new Template("vaccinations-view-child");
 
-                // FIXME: ID should be handled in DB component directly
-                $hcw = $info["workers"][$record["vax_hcw_id"] - 1];
+                $hcw = DBM::$com["HCW"]->readId($record["vax_hcw_id"]);
                 $record_tpl->setData([
                     "VAX_ID"    => $record["id"],
                     "DOSE_NUM"  => Utils::getOrdinal($i + 1),
                     "VAX_DATE"  => $record["vax_date"],
                     "VAX_TYPE"  => "COVID-19 vaccine",
-                    "PROD_NAME" => $info["products"][$record["vax_product_id"] - 1]["vax_name"],
+                    "PROD_NAME" => DBM::$com["PROD"]->readId($record["vax_product_id"])["vax_name"],
                     "LOT_NUM"   => sprintf("%s / Expiry: %s", $record["vax_lotnum"], $record["vax_expiry"]),
-                    "VAX_SITE"  => $info["vaxsites"][$record["vax_site_id"] - 1]["name"],
-                    "HCW_NAME"  => sprintf(
-                                        "%s, %s %s",
-                                        strtoupper($hcw["last_name"]),
+                    "VAX_SITE"  => DBM::$com["SITES"]->readId($record["vax_site_id"])["name"],
+                    "HCW_NAME"  => Utils::getFullName(
                                         $hcw["first_name"],
-                                        $hcw["middle_name"]
-                                    )
+                                        $hcw["middle_name"],
+                                        $hcw["last_name"],
+                                        $hcw["suffix"],
+                                   ),
                 ]);
 
                 $child->attach($record_tpl);

@@ -45,14 +45,13 @@ class ViewTestsView extends DashboardView
                 $record_tpl = new Template("tests-view-child");
 
                 $test_result = (bool)$record["test_result"] ? "Positive" : "Negative";
-                // FIXME: ID should be handled in DB component directly
                 $record_tpl->setData([
                     "TEST_NUM"    => Utils::getOrdinal($test_results_count - $i),
                     "TEST_ID"     => $record["id"],
                     "TEST_DATE"   => $record["test_date"],
                     "TEST_RESULT" => $test_result,
-                    "TEST_TYPE"   => $info["testtype"][$record["test_type"] - 1]["name"],
-                    "TEST_SITE"   => $info["vaxsites"][$record["test_site_id"] - 1]["name"],
+                    "TEST_TYPE"   => DBM::$com["TSTT"]->readId($record["test_type"])["name"],
+                    "TEST_SITE"   => DBM::$com["SITES"]->readId($record["test_site_id"])["name"],
                 ]);
 
                 $child->attach($record_tpl);

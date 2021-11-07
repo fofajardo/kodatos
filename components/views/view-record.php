@@ -53,11 +53,7 @@ class ViewRecordView implements View
         $info["pid"] = $info["patient"]["id"];
         $info["location"]  = DBM::$com["LOC"]->readId($info["patient"]["location_id"]);
         $info["vaxrecord"] = DBM::$com["VAXR"]->readFromPatientId($info["pid"]);
-        $info["products"]  = DBM::$com["PROD"]->read();
-        $info["vaxsites"]  = DBM::$com["SITES"]->read();
-        $info["workers"]   = DBM::$com["HCW"]->read();
         $info["tests"]     = DBM::$com["TSTR"]->readFromPatientId($info["pid"]);
-        $info["testtype"]  = DBM::$com["TSTT"]->read();
 
         $vaccinated = !is_bool($info["vaxrecord"]);
         $tested = !is_bool($info["tests"]);
@@ -85,11 +81,10 @@ class ViewRecordView implements View
             $record_tpl = new Template("card-covidtest-child");
             $card_test->attach($record_tpl);
 
-            // FIXME: ID should be handled in DB component directly
             $record_tpl->setData([
                 "TEST_DATE" => $record["test_date"],
-                "TEST_TYPE" => $info["testtype"][$record["test_type"] - 1]["name"],
-                "TEST_SITE" => $info["vaxsites"][$record["test_site_id"] - 1]["name"],
+                "TEST_TYPE" => DBM::$com["TSTT"]->readId($record["test_type"])["name"],
+                "TEST_SITE" => DBM::$com["SITES"]->readId($record["test_site_id"])["name"],
             ]);
             
             if ((bool)$record["test_result"])
@@ -120,21 +115,20 @@ class ViewRecordView implements View
                 $record_tpl = new Template("card-covidvax-child");
                 $card_vax->attach($record_tpl);
 
-                // FIXME: ID should be handled in DB component directly
-                $hcw = $info["workers"][$record["vax_hcw_id"] - 1];
+                $hcw = DBM::$com["HCW"]->readId($record["vax_hcw_id"]);
                 $record_tpl->setData([
                     "DOSE_NUM"  => Utils::getOrdinal($i + 1),
                     "VAX_DATE"  => $record["vax_date"],
                     "VAX_TYPE"  => "COVID-19 vaccine",
-                    "PROD_NAME" => $info["products"][$record["vax_product_id"] - 1]["vax_name"],
+                    "PROD_NAME" => DBM::$com["PROD"]->readId($record["vax_product_id"])["vax_name"],
                     "LOT_NUM"   => sprintf("%s / Expiry: %s", $record["vax_lotnum"], $record["vax_expiry"]),
-                    "VAX_SITE"  => $info["vaxsites"][$record["vax_site_id"] - 1]["name"],
-                    "HCW_NAME"  => sprintf(
-                                        "%s, %s %s",
-                                        strtoupper($hcw["last_name"]),
+                    "VAX_SITE"  => DBM::$com["SITES"]->readId($record["vax_site_id"])["name"],
+                    "HCW_NAME"  => Utils::getFullName(
                                         $hcw["first_name"],
-                                        $hcw["middle_name"]
-                                    )
+                                        $hcw["middle_name"],
+                                        $hcw["last_name"],
+                                        $hcw["suffix"],
+                                   ),
                 ]);
             }
             
