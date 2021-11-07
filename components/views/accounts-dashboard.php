@@ -78,7 +78,7 @@ class AccountsDashboardView extends DashboardView
     <div class="row">
         <div class="cell hr left-col">
             <span>$name</span>
-            <pre> ($username)</pre>
+            <span class="username">($username)</span>
         </div>
         <div class="cell box">
             <div class="status-box $en_color">

@@ -513,6 +513,10 @@ button {
   cursor: default;
 }
 
+.button-bar {
+  display: flex;
+}
+
 /* ::::: Input elements ::::: */
 
 select,
@@ -672,7 +676,11 @@ form button {
   max-width: 400px;
 }
 
-
+.cell > .username {
+  font-family: monospace;
+  font-weight: 500;
+  padding: 0 5px;
+}
 
 /* ::::: Backgrounds ::::: */
 
@@ -812,10 +820,6 @@ body,
     max-width: none;
   }
 
-  .table > .row.subhead {
-    border-radius: 0;
-  }
-
   .card2 {
     padding: 5px;
   }
@@ -823,5 +827,32 @@ body,
   .card2 > .title {
     padding: 15px;
     margin: -7px -7px 7px -7px;
+  }
+
+  .button-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-button,
+  .action-button > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  .action-button {
+    min-width: 80px;
+    margin: 2px;
+  }
+  .button-bar > .button {
+    margin: 2px;
+  }
+  .button-bar > .button:first-child {
+    margin-top: 0;
+  }
+  .button-bar > .button:last-child {
+    margin-bottom: 0;
   }
 }
