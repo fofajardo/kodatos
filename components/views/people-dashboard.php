@@ -24,7 +24,7 @@ class PeopleDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no people registered in this platform. You may add a new person by clicking <em>Add Person</em>."
+                "There are no people registered in this platform. You may add a new person by clicking Add Person."
             );
         }
         else

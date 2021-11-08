@@ -24,7 +24,7 @@ class LocationDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no locations registered in this platform. You may add a new location by clicking <em>Add Location</em>."
+                "There are no locations registered in this platform. You may add a new location by clicking Add Location."
             );
         }
         else

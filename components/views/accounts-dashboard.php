@@ -24,7 +24,7 @@ class AccountsDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no accounts in this platform. You may add a new account by clicking <em>Add Account</em>."
+                "There are no accounts in this platform. You may add a new account by clicking Add Account."
             );
         }
         else

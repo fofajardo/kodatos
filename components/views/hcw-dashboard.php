@@ -24,7 +24,7 @@ class HCWDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no healthcare workers registered in this platform. You may add a new person by clicking <em>Add Healthcare Worker</em>."
+                "There are no healthcare workers registered in this platform. You may add a new person by clicking Add Healthcare Worker."
             );
         }
         else

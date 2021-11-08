@@ -24,7 +24,7 @@ class MapLabDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no testing laboratories registered in this platform. You may add a new person by clicking <em>Add Laboratory</em>."
+                "There are no testing laboratories registered in this platform. You may add a new person by clicking Add Laboratory."
             );
         }
         else

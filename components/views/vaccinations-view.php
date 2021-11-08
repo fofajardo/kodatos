@@ -67,7 +67,7 @@ class ViewVaxView extends DashboardView
                 [
                     "class" => "status-box"
                 ],
-                "This person has no vaccination records. You may add a new record by clicking <em>Add Dose</em>."
+                "This person has no vaccination records. You may add a new record by clicking Add Dose."
             );
         }
 

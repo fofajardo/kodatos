@@ -64,7 +64,7 @@ class ViewTestsView extends DashboardView
                 [
                     "class" => "status-box"
                 ],
-                "This person has no COVID-19 test results. You may add a new test result by clicking <em>Add Test Result</em>."
+                "This person has no COVID-19 test results. You may add a new test result by clicking Add Test Result."
             );
         }
 

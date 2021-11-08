@@ -24,7 +24,7 @@ class MapVaxDashboardView extends DashboardView
                 [
                     "class" => "status-box mt1"
                 ],
-                "There are no vaccination sites registered in this platform. You may add a new person by clicking <em>Add Vaccination Site</em>."
+                "There are no vaccination sites registered in this platform. You may add a new person by clicking Add Vaccination Site."
             );
         }
         else
