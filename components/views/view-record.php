@@ -17,6 +17,7 @@ class ViewRecordView extends BaseView
             "TPL_POV" => "",
             "CONTENT_VISIBLE" => "",
         ]);
+        $document->attach($tpl);
 
         $initial_refcode = "";
 
