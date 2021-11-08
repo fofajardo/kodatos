@@ -586,6 +586,7 @@ select {
 button {
   display: flex;
   align-items: center;
+  justify-content: center;
   background: #0067C0;
   border-radius: 5px;
   padding: 5px;
