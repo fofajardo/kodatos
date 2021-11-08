@@ -7,7 +7,7 @@ class NotFoundView implements View
     public function getDocument()
     {
         $header_tpl = new Template("_header");
-        $document = new Template("notfound");
+        $document = new Template("_notfound");
         $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
 
         return $document;

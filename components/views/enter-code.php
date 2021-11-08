@@ -7,7 +7,7 @@ class EnterCodeView implements View
     public function getDocument()
     {
         $header_tpl = new Template("_header");
-        $document = new Template("enter-code");
+        $document = new Template("_enter-code");
         $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
 
         return $document;

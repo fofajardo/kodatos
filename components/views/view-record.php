@@ -9,7 +9,7 @@ class ViewRecordView implements View
         Framework::loadMultiple(["DBVAX", "DBLOC", "DBPAT", "DBPRO", "DBSIT", "DBWOR", "DBTSR", "DBTTY"]);
 
         // Init document
-        $document = new Template("view");
+        $document = new Template("_view");
         $header_tpl = new Template("_header");
         $document->setData([
             "TPL_HEADER" => $header_tpl->output(),

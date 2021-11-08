@@ -12,7 +12,7 @@ class SignInView implements View
             exit;
         }
 
-        $document = new Template("sign-in");
+        $document = new Template("_sign-in");
 
         if (isset($_POST["email"]) && isset($_POST["password"]))
         {

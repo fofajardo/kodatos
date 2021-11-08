@@ -14,7 +14,7 @@ class DashboardView implements View
             "USER_NAME" => strtoupper(Auth::getUserName()),
         ]);
 
-        $document = new Template("dashboard");
+        $document = new Template("_dashboard");
         $document->setData([
             "TPL_HEADER" => $header_tpl->output(),
             "PAGE_NAME" => "Dashboard",
