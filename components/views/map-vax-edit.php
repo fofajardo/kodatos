@@ -86,7 +86,7 @@ class EditMapVaxView extends DashboardView
         }
         $child->getDataByRef()["LOCATION_INSERT"] = $insert0;
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

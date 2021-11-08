@@ -17,6 +17,11 @@ class SignOutView implements View
         Utils::redirect("");
         return $document;
     }
+    
+    public function output()
+    {
+        return $this->getDocument()->output();
+    }
 }
 
 VWM::register(new SignOutView());

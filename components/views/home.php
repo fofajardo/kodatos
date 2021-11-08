@@ -1,14 +1,16 @@
 <?php
 
-class HomeView implements View
+class HomeView extends BaseView
 {
     const SLUG = ["", "home"];
 
     public function getDocument()
     {
-        $header_tpl = new Template("_header");
-        $document = new Template("_home");
-        $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
+        $document = parent::getDocument();
+        $this->addScript(Framework::$dir["S_AST"] . "/qrcode-scan.min.js");
+
+        $tpl = new Template("_home");
+        $document->attach($tpl);
 
         return $document;
     }

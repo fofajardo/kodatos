@@ -1,6 +1,6 @@
 <?php
 
-class SignInView implements View
+class SignInView extends BaseView
 {
     const SLUG = "sign-in";
     
@@ -12,7 +12,12 @@ class SignInView implements View
             exit;
         }
 
-        $document = new Template("_sign-in");
+        $document = parent::getDocument();
+        $this->hideHeader = true;
+        $this->parameters["PAGE_NAME"] = "Sign In";
+
+        $tpl = new Template("_sign-in");
+        $document->attach($tpl);
 
         if (isset($_POST["email"]) && isset($_POST["password"]))
         {
@@ -40,7 +45,7 @@ class SignInView implements View
                         $status_text = "Unknown error code " . $result;
                         break;
                 }
-                $document->appendElement(
+                $tpl->appendElement(
                     "div",
                     [
                         "class" => "status-box $status_color mb1",

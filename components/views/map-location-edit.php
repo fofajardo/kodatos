@@ -76,7 +76,7 @@ class EditLocationView extends DashboardView
         }
 */
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

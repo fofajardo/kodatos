@@ -96,7 +96,7 @@ class AddPersonView extends DashboardView
             "LOC_STREET",
         ], ""));
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

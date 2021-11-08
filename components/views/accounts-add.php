@@ -67,7 +67,7 @@ class AddAccountsView extends DashboardView
             "USER_ENABLED_1"=> "selected",
         ]);
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

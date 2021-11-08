@@ -112,7 +112,7 @@ class EditPersonView extends DashboardView
             "LOC_STREET" => $patient["street_address"],
         ]);
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

@@ -85,7 +85,7 @@ class EditAccountsView extends DashboardView
             "USER_PW_REQ"     => "",
         ]);
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

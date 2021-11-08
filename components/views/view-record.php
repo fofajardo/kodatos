@@ -1,6 +1,6 @@
 <?php
 
-class ViewRecordView implements View
+class ViewRecordView extends BaseView
 {
     const SLUG = "view";
     
@@ -9,10 +9,11 @@ class ViewRecordView implements View
         Framework::loadMultiple(["DBVAX", "DBLOC", "DBPAT", "DBPRO", "DBSIT", "DBWOR", "DBTSR", "DBTTY"]);
 
         // Init document
-        $document = new Template("_view");
-        $header_tpl = new Template("_header");
-        $document->setData([
-            "TPL_HEADER" => $header_tpl->output(),
+        $document = parent::getDocument();
+        $this->parameters["PAGE_NAME"] = "View";
+
+        $tpl = new Template("_view");
+        $tpl->setData([
             "TPL_POV" => "",
             "CONTENT_VISIBLE" => "",
         ]);
@@ -44,12 +45,14 @@ class ViewRecordView implements View
 
         if (is_bool($info["patient"]))
         {
+            $this->addScript(Framework::$dir["S_AST"] . "/qrcode-scan.min.js");
             $nf_tpl = new Template("view-pov-404");
-            $document->getDataByRef()["TPL_POV"] = $nf_tpl->output();
-            $document->getDataByRef()["CONTENT_VISIBLE"] = "hidden";
+            $tpl->getDataByRef()["TPL_POV"] = $nf_tpl->output();
+            $tpl->getDataByRef()["CONTENT_VISIBLE"] = "hidden";
             return $document;
         }
 
+        $this->addScript(Framework::$dir["S_AST"] . "/qrcode.min.js");
         $info["pid"] = $info["patient"]["id"];
         $info["location"]  = DBM::$com["LOC"]->readId($info["patient"]["location_id"]);
         $info["vaxrecord"] = DBM::$com["VAXR"]->readFromPatientId($info["pid"]);
@@ -59,20 +62,20 @@ class ViewRecordView implements View
         $tested = !is_bool($info["tests"]);
 
         // data
-        $document->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov");
-        $document->getDataByRef()["PATIENT_NAME"] = Utils::getFullName(
+        $tpl->getDataByRef()["TPL_POV"] = Utils::getTemplate("view-pov");
+        $tpl->getDataByRef()["PATIENT_NAME"] = Utils::getFullName(
                                     $info["patient"]["first_name"],
                                     $info["patient"]["middle_name"],
                                     $info["patient"]["last_name"],
                                     $info["patient"]["suffix"]
                                 );
-        $document->getDataByRef()["PATIENT_BIRTH"] = $info["patient"]["birthdate"];
-        $document->getDataByRef()["PATIENT_REFCODE"] = strtoupper($info["patient"]["reference_code"]);
-        $document->getDataByRef()["PATIENT_LOCATION"] = $info["location"]["name"];
+        $tpl->getDataByRef()["PATIENT_BIRTH"] = $info["patient"]["birthdate"];
+        $tpl->getDataByRef()["PATIENT_REFCODE"] = strtoupper($info["patient"]["reference_code"]);
+        $tpl->getDataByRef()["PATIENT_LOCATION"] = $info["location"]["name"];
 
         // Init covid test card
         $card_test = new Template("card-covidtest");
-        $document->attach($card_test);
+        $tpl->attach($card_test);
 
         if ($tested)
         {
@@ -104,7 +107,7 @@ class ViewRecordView implements View
 
         // Init covid vax card
         $card_vax = new Template("card-covidvax");
-        $document->attach($card_vax);
+        $tpl->attach($card_vax);
 
         if ($vaccinated)
         {

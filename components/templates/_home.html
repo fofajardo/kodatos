@@ -1,102 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KoDatos</title>
-        <link rel="shortcut icon" href="DIR_IMG/branding/favicon.ico">
-        <link href="DIR_AST/common.css" rel="stylesheet">
-        <script src="DIR_AST/common.js" type="text/javascript"></script>
-        <script src="DIR_AST/qrcode-scan.min.js"></script>
-        <!-- Web Application Manifest -->
-        <link rel="manifest" href="DIR_AST/pwa.webmanifest">
-        <!-- Chrome for Android theme color -->
-        <meta name="theme-color" content="#FFFFFF">
-        <!-- Add to homescreen for Chrome on Android -->
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="application-name" content="KoDatos">
-        <link rel="icon" sizes="512x512" href="DIR_AST/images/branding/icon-512.png">
-    </head>
-    <body>
-TPL_HEADER
-        <main id="main">
-            <section id="section-home" class="bg ib1 section-full alt">
-                <div id="primary-header-spacer"></div>
-                <div class="content-layout card3">
-                    <h1>Do you need to verify COVID-19 information?</h1>
-                    <h2>Scan a QR code or type the reference code from your infocard.</h2>
-                    <div class="box wp ac jc">
-                        <a class="choice" href="#" onclick="document.getElementById('qr-selector').click();">
-                            <div class="box title">
-                                <span class="icon mdi-set mdi-qrcode-scan"></span>
-                                <span class="text c nm">Scan QR code</span>
-                            </div>
-                        </a>
-                        <a class="choice" href="/enter-code">
-                            <div class="box title">
-                                <span class="icon mdi-set mdi-tooltip-account"></span>
-                                <span class="text c nm">Use reference code</span>
-                            </div>
-                        </a>
+<main id="main">
+    <section id="section-home" class="bg ib1 section-full alt">
+        <div id="primary-header-spacer"></div>
+        <div class="content-layout card3">
+            <h1>Do you need to verify COVID-19 information?</h1>
+            <h2>Scan a QR code or type the reference code from your infocard.</h2>
+            <div class="box wp ac jc">
+                <a class="choice" href="#" onclick="document.getElementById('qr-selector').click();">
+                    <div class="box title">
+                        <span class="icon mdi-set mdi-qrcode-scan"></span>
+                        <span class="text c nm">Scan QR code</span>
                     </div>
-                </div>
-                <div hidden>
-                    <div id="reader" width="600px" height="600px"></div>
-                    <input type="file" id="qr-selector" accept="image/*">
-                    <script type="module">
-                        const html5QrCode = new Html5Qrcode("reader");
-                        const fileinput = document.getElementById("qr-selector");
-                        fileinput.addEventListener('change', e => {
-                            if (e.target.files.length == 0) {
-                                return;
-                            }
-                            const referenceField = document.getElementById("field-reference");
-                            const imageFile = e.target.files[0];
-                            html5QrCode.scanFile(imageFile, true)
-                                .then(decodedText => {
-                                    referenceField.value = decodedText;
-                                    document.verifyForm.submit();
-                                })
-                                .catch(err => {
-                                    document.verifyForm.submit();
-                                });
+                </a>
+                <a class="choice" href="/enter-code">
+                    <div class="box title">
+                        <span class="icon mdi-set mdi-tooltip-account"></span>
+                        <span class="text c nm">Use reference code</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div hidden>
+            <div id="reader" width="600px" height="600px"></div>
+            <input type="file" id="qr-selector" accept="image/*">
+            <script type="module">
+                const html5QrCode = new Html5Qrcode("reader");
+                const fileinput = document.getElementById("qr-selector");
+                fileinput.addEventListener('change', e => {
+                    if (e.target.files.length == 0) {
+                        return;
+                    }
+                    const referenceField = document.getElementById("field-reference");
+                    const imageFile = e.target.files[0];
+                    html5QrCode.scanFile(imageFile, true)
+                        .then(decodedText => {
+                            referenceField.value = decodedText;
+                            document.verifyForm.submit();
+                        })
+                        .catch(err => {
+                            document.verifyForm.submit();
                         });
-                    </script>
-                    <form name="verifyForm" method="post" action="view">
-                        <input type="text" id="field-reference" class="mb1" name="reference" placeholder="Reference Code" required>
-                        <div class="box ac jc v">
-                            <button class="">
-                                <span class="text c nm">Verify</span>
-                            </button>
-                        </div>
-                    </form>
+                });
+            </script>
+            <form name="verifyForm" method="post" action="view">
+                <input type="text" id="field-reference" class="mb1" name="reference" placeholder="Reference Code" required>
+                <div class="box ac jc v">
+                    <button class="">
+                        <span class="text c nm">Verify</span>
+                    </button>
                 </div>
-            </section>
-            <section id="section-vax-2" class="bg ib3 section-full nh">
-                <div class="content-layout">
-                    <h1>Not yet vaccinated?</h1>
-                    <h2>Know more if you're eligible and where you can get vaccinated.</h2>
-                    <a class="choice" href="https://doh.gov.ph/vaccines">
-                        <div class="box title">
-                            <span class="icon mdi-set mdi-magnify"></span>
-                            <span class="text c nm">Find COVID-19 vaccines</span>
-                        </div>
-                    </a>
+            </form>
+        </div>
+    </section>
+    <section id="section-vax-2" class="bg ib3 section-full nh">
+        <div class="content-layout">
+            <h1>Not yet vaccinated?</h1>
+            <h2>Know more if you're eligible and where you can get vaccinated.</h2>
+            <a class="choice" href="https://doh.gov.ph/vaccines">
+                <div class="box title">
+                    <span class="icon mdi-set mdi-magnify"></span>
+                    <span class="text c nm">Find COVID-19 vaccines</span>
                 </div>
-            </section>
-            <section id="section-vax-1" class="bg ib2 section-full nh">
-                <div class="content-layout">
-                    <img src="assets/images/branding/logo-full.svg#sprite" width="75%" />
-                    <!-- <h1>Komunidad + Datos</h1> -->
-                    <h2>KoDatos is a unified platform for vaccination cards and COVID-19 test results.</h2>
-                    <a class="choice" href="#">
-                        <div class="box title">
-                            <span class="icon mdi-set mdi-information"></span>
-                            <span class="text c nm">About KoDatos</span>
-                        </div>
-                    </a>
+            </a>
+        </div>
+    </section>
+    <section id="section-vax-1" class="bg ib2 section-full nh">
+        <div class="content-layout">
+            <img src="assets/images/branding/logo-full.svg#sprite" width="75%" />
+            <!-- <h1>Komunidad + Datos</h1> -->
+            <h2>KoDatos is a unified platform for vaccination cards and COVID-19 test results.</h2>
+            <a class="choice" href="#">
+                <div class="box title">
+                    <span class="icon mdi-set mdi-information"></span>
+                    <span class="text c nm">About KoDatos</span>
                 </div>
-            </section>
-        </main>
-    </body>
-</html>
+            </a>
+        </div>
+    </section>
+</main>

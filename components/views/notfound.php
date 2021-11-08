@@ -1,14 +1,16 @@
 <?php
 
-class NotFoundView implements View
+class NotFoundView extends BaseView
 {
     const SLUG = "notfound";
     
     public function getDocument()
     {
-        $header_tpl = new Template("_header");
-        $document = new Template("_notfound");
-        $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
+        $document = parent::getDocument();
+        $this->parameters["PAGE_NAME"] = "Page Not Found";
+
+        $tpl = new Template("_notfound");
+        $document->attach($tpl);
 
         return $document;
     }

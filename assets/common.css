@@ -140,10 +140,19 @@ header a.link:hover {
   background-color: var(--header-link-background);
 }
 
+header a.link > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--header-height);
+}
+
+header a.link .iconify,
 header a.link .mdi-set {
   font-size: 24px;
 }
 
+header a.link .iconify ~ span,
 header a.link .mdi-set ~ span {
   margin-left: 5px;  
 }
@@ -776,6 +785,7 @@ body,
   #pov-right-col {
     margin-left: 0;
   }
+  #primary-header > #right-nav a.link .iconify ~ span,
   #primary-header > #right-nav a.link .mdi-set ~ span {
     display: none; 
   }

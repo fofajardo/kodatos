@@ -59,7 +59,7 @@ EOD;
                 $child->append($row);
             }
         }
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

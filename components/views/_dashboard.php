@@ -1,25 +1,38 @@
 <?php
 
-class DashboardView implements View
+class DashboardView extends BaseView
 {
+    protected $mainTpl;
+
+    protected function getAuthRequired()
+    {
+        return true;
+    }
+
     public function getDocument()
     {
-        if (!Auth::isSignedIn())
-        {
-            Utils::redirect("sign-in");
-        }
+        $document = parent::getDocument();
 
-        $header_tpl = new Template("_header_li");
-        $header_tpl->setData([
-            "USER_NAME" => strtoupper(Auth::getUserName()),
-        ]);
-
-        $document = new Template("_dashboard");
-        $document->setData([
-            "TPL_HEADER" => $header_tpl->output(),
+        $this->clearHeader();
+        $this->addHeaderMenu(
+            0,
+            strtoupper(Auth::getUserName()),
+            "mdi-account",
+            "dashboard"
+        );
+        $this->addHeaderMenu(
+            1,
+            "Sign out",
+            "mdi-logout",
+            "sign-out"
+        );
+        $this->addParameters([
             "PAGE_NAME" => "Dashboard",
             "PAGE_MARKER" => "dashboard",
         ]);
+
+        $this->mainTpl = new Template("_dashboard");
+        $document->attach($this->mainTpl);
 
         return $document;
     }

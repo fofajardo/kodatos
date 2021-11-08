@@ -1,108 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PAGE_NAME - KoDatos</title>
-        <link rel="shortcut icon" href="DIR_IMG/branding/favicon.ico">
-        <link href="DIR_AST/common.css" rel="stylesheet">
-        <script src="DIR_AST/common.js" type="text/javascript"></script>
-        <!-- Web Application Manifest -->
-        <link rel="manifest" href="DIR_AST/pwa.webmanifest">
-        <!-- Chrome for Android theme color -->
-        <meta name="theme-color" content="#FFFFFF">
-        <!-- Add to homescreen for Chrome on Android -->
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="application-name" content="KoDatos">
-        <link rel="icon" sizes="512x512" href="DIR_AST/images/branding/icon-512.png">
-    </head>
-    <body class="bg ib0" state="PAGE_MARKER">
-TPL_HEADER
-        <div id="primary-header-spacer"></div>
-        <main id="main">
-            <section id="section-dashboard">
-                <div class="two-col">
-                    <div class="content-layout" id="navigation-col">
-                        <div class="menu-header">
-                            RECORDS
-                        </div>
-                        <a class="menu-button RGA_0" href="/admin/people">
-                            <div>
-                                <span class="mdi-set mdi-human"></span>
-                                People
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_0B" href="/admin/vaccinations">
-                            <div>
-                                <span class="mdi-set mdi-pulse"></span>
-                                Vaccinations
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_0C" href="/admin/test-results">
-                            <div>
-                                <span class="mdi-set mdi-note"></span>
-                                Test Results
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_1" href="/admin/healthcare-workers">
-                            <div>
-                                <span class="mdi-set mdi-hospital-box"></span>
-                                Healthcare Workers
-                            </div>
-                        </a>
-                        <div class="menu-header">
-                            MAPPING
-                        </div>
-                        <a class="menu-button RGA_2" href="/admin/vaccination-sites">
-                            <div>
-                                <span class="mdi-set mdi-hospital-marker"></span>
-                                Vaccination Sites
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_3" href="/admin/laboratories">
-                            <div>
-                                <span class="mdi-set mdi-flask"></span>
-                                Laboratories
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_4" href="/admin/locations">
-                            <div>
-                                <span class="mdi-set mdi-map-marker"></span>
-                                Locations
-                            </div>
-                        </a>
-                        <!--div class="menu-header">
-                            INVENTORY
-                        </div>
-                        <a class="menu-button RGA_5" href="/admin/vaccines">
-                            <div>
-                                <span class="mdi-set mdi-account"></span>
-                                Available Vaccines
-                            </div>
-                        </a>
-                        <a class="menu-button RGA_6" href="/admin/test-types">
-                            <div>
-                                <span class="mdi-set mdi-account"></span>
-                                COVID-19 Test Types
-                            </div>
-                        </a-->
-                        <div class="menu-header">
-                            ADMINISTRATION
-                        </div>
-                        <a class="menu-button RGA_7" href="/admin/accounts">
-                            <div>
-                                <span class="mdi-set mdi-account-multiple"></span>
-                                Accounts
-                            </div>
-                        </a>
-                    </div>
-                    <div class="content-layout" id="main-col">
-                        <div class="card2">
-                            CONTENT_INSERT
-                        </div>
-                    </div>
+<div id="primary-header-spacer"></div>
+<main id="main">
+    <section id="section-dashboard">
+        <div class="two-col">
+            <div class="content-layout" id="navigation-col">
+                <div class="menu-header">
+                    RECORDS
                 </div>
-            </section>
-        </main>
-    </body>
-</html>
+                <a class="menu-button RGA_0" href="/admin/people">
+                    <div>
+                        <span class="mdi-set mdi-human"></span>
+                        People
+                    </div>
+                </a>
+                <a class="menu-button RGA_0B" href="/admin/vaccinations">
+                    <div>
+                        <span class="mdi-set mdi-pulse"></span>
+                        Vaccinations
+                    </div>
+                </a>
+                <a class="menu-button RGA_0C" href="/admin/test-results">
+                    <div>
+                        <span class="mdi-set mdi-note"></span>
+                        Test Results
+                    </div>
+                </a>
+                <a class="menu-button RGA_1" href="/admin/healthcare-workers">
+                    <div>
+                        <span class="mdi-set mdi-hospital-box"></span>
+                        Healthcare Workers
+                    </div>
+                </a>
+                <div class="menu-header">
+                    MAPPING
+                </div>
+                <a class="menu-button RGA_2" href="/admin/vaccination-sites">
+                    <div>
+                        <span class="mdi-set mdi-hospital-marker"></span>
+                        Vaccination Sites
+                    </div>
+                </a>
+                <a class="menu-button RGA_3" href="/admin/laboratories">
+                    <div>
+                        <span class="mdi-set mdi-flask"></span>
+                        Laboratories
+                    </div>
+                </a>
+                <a class="menu-button RGA_4" href="/admin/locations">
+                    <div>
+                        <span class="mdi-set mdi-map-marker"></span>
+                        Locations
+                    </div>
+                </a>
+                <!--div class="menu-header">
+                    INVENTORY
+                </div>
+                <a class="menu-button RGA_5" href="/admin/vaccines">
+                    <div>
+                        <span class="mdi-set mdi-account"></span>
+                        Available Vaccines
+                    </div>
+                </a>
+                <a class="menu-button RGA_6" href="/admin/test-types">
+                    <div>
+                        <span class="mdi-set mdi-account"></span>
+                        COVID-19 Test Types
+                    </div>
+                </a-->
+                <div class="menu-header">
+                    ADMINISTRATION
+                </div>
+                <a class="menu-button RGA_7" href="/admin/accounts">
+                    <div>
+                        <span class="mdi-set mdi-account-multiple"></span>
+                        Accounts
+                    </div>
+                </a>
+            </div>
+            <div class="content-layout" id="main-col">
+                <div class="card2">
+                    CONTENT_INSERT
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

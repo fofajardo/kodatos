@@ -63,7 +63,7 @@ class DeleteMapLabView extends DashboardView
                               ),
         ]);
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

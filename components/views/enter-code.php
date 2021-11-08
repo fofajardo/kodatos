@@ -1,14 +1,16 @@
 <?php
 
-class EnterCodeView implements View
+class EnterCodeView extends BaseView
 {
     const SLUG = "enter-code";
     
     public function getDocument()
     {
-        $header_tpl = new Template("_header");
-        $document = new Template("_enter-code");
-        $document->getDataByRef()["TPL_HEADER"] = $header_tpl->output();
+        $document = parent::getDocument();
+        $this->parameters["PAGE_NAME"] = "Enter Reference Code";
+
+        $tpl = new Template("_enter-code");
+        $document->attach($tpl);
 
         return $document;
     }

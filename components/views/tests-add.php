@@ -115,7 +115,7 @@ class AddTestsView extends DashboardView
         }
         $child->getDataByRef()["TEST_TYPE_INSERT"] = $insert1;
 
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }

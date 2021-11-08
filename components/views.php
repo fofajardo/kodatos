@@ -3,6 +3,7 @@
 interface View
 {
     public function getDocument();
+    public function output();
 }
 
 class VWM
@@ -27,7 +28,7 @@ class VWM
             self::outputNotFound();
         }
 
-        echo $view->getDocument()->output();
+        echo $view->output();
     }
 
     public static function findView($url_path)
@@ -69,7 +70,7 @@ class VWM
         }
         else
         {
-            echo $view->getDocument()->output();
+            echo $view->output();
         }
         http_response_code(404);
         exit;

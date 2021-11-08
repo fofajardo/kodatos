@@ -150,7 +150,7 @@ class AddVaxView extends DashboardView
         }
         $child->getDataByRef()["VAX_PROD_INSERT"] = $insert2;
         
-        $document->attach($child);
+        $this->mainTpl->attach($child);
         return $document;
     }
 }
