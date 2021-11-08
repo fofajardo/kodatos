@@ -340,11 +340,16 @@ footer {
 .state-low > .state-low-child,
 .state-mid > .state-mid-child,
 .state-high > .state-high-child {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .state-child {
   display: none;
+}
+
+.state-child .iconify ~ span {
+  margin-left: 5px;
 }
 
 .card3 {
