@@ -39,12 +39,6 @@
                     "sizes": "512x512"
                 }
             ]
-        },
-        {
-            "name": "KoDatos Dashboard",
-            "short_name": "Dashboard",
-            "description": "KoDatos Dashboard",
-            "url": "/dashboard?source=pwa"
         }
     ],
     "description": "KoDatos",
