@@ -2,7 +2,6 @@
 /* ::::: External ::::: */
 
 @import url("common.proto.css");
-@import url("fonts/icons_full.css");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 /* ::::: Page ::::: */
@@ -435,14 +434,14 @@ footer {
 }
 
 .choice > .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-content: center;
   font-size: 1.15em;
 }
 
 .choice > .title > .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-right: 5px;
 }
 
@@ -470,6 +469,17 @@ footer {
   border: 2px solid transparent;
   min-width: 200px;
   user-select: none;
+}
+
+.action-button > div,
+.menu-button > div {
+  display: flex;
+  align-items: center;
+}
+
+.action-button > div .iconify,
+.menu-button > div .iconify {
+  margin-right: 5px;
 }
 
 .action-button {
@@ -569,6 +579,8 @@ select {
 
 .button,
 button {
+  display: flex;
+  align-items: center;
   background: #0067C0;
   border-radius: 5px;
   padding: 5px;
@@ -576,6 +588,11 @@ button {
   color: #fff;
   transition: background 200ms ease, border 200ms ease;
   border: 2px solid transparent;
+}
+
+.button .iconify ~ span,
+button .iconify ~ span {
+  margin-left: 5px;
 }
 
 .button:hover,
@@ -599,6 +616,9 @@ form button {
 /* ::::: Status box ::::: */
 
 .status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   background-image: repeating-linear-gradient(135deg,
                                               rgba(255,255,255,.05), rgba(255,255,255,.05) 15px,
@@ -609,6 +629,11 @@ form button {
   text-align: center;
   font-weight: bold;
   min-width: 50px;
+  min-height: 30px;
+}
+
+.status-box .iconify ~ span {
+  margin-left: 5px;
 }
 
 .status-box.yellow {
@@ -839,11 +864,10 @@ body,
     margin: -7px -7px 7px -7px;
   }
 
-  .button-bar {
-    flex-direction: column;
-    align-items: center;
+  .action-button {
+    min-width: 80px;
+    margin: 2px;
   }
-  
   .action-button,
   .action-button > div {
     display: flex;
@@ -852,9 +876,13 @@ body,
     align-content: center;
     text-align: center;
   }
-  .action-button {
-    min-width: 80px;
-    margin: 2px;
+  .action-button > div .iconify {
+    margin: 0;
+  }
+
+  .button-bar {
+    flex-direction: column;
+    align-items: center;
   }
   .button-bar > .button {
     margin: 2px;

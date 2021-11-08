@@ -43,13 +43,13 @@ class MapLabDashboardView extends DashboardView
         <div class="cell box">
             <a class="action-button" href="/admin/laboratories/edit?id=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-pencil"></span>
+                    <span class="iconify" data-icon="mdi-pencil"></span>
                     Edit
                 </div>
             </a>
             <a class="action-button" href="/admin/laboratories/delete?id=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-trash-can"></span>
+                    <span class="iconify" data-icon="mdi-trash-can"></span>
                     Delete
                 </div>
             </a>

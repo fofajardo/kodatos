@@ -107,30 +107,30 @@ class PeopleDashboardView extends DashboardView
         <span class="cell hr left-col">$name</span>
         <div class="cell">
             <div class="status-box $tsr_color mr1">
-                <span class="mdi-set mdi-$tsr_icon"></span>
+                <span class="iconify" data-icon="mdi-$tsr_icon"></span>
                 <span>$tsr_text</span>
             </div>
             <div class="status-box $vax_color">
-                <span class="mdi-set mdi-$vax_icon"></span>
+                <span class="iconify" data-icon="mdi-$vax_icon"></span>
                 <span>$vax_text</span>
             </div>
         </div>
         <div class="cell box">
             <a class="action-button" href="/view?rfc=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-eye"></span>
+                    <span class="iconify" data-icon="mdi-eye"></span>
                     View
                 </div>
             </a>
             <a class="action-button" href="/admin/people/edit?rfc=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-pencil"></span>
+                    <span class="iconify" data-icon="mdi-pencil"></span>
                     Edit
                 </div>
             </a>
             <a class="action-button" href="/admin/people/delete?rfc=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-trash-can"></span>
+                    <span class="iconify" data-icon="mdi-trash-can"></span>
                     Delete
                 </div>
             </a>

@@ -67,11 +67,13 @@ class AccountsDashboardView extends DashboardView
                 {
                     $en_color = "green";
                     $en_icon = "checkbox-marked-circle";
+                    $en_text = "Enabled";
                 }
                 else
                 {
                     $en_color = "red";
                     $en_icon = "alert-circle";
+                    $en_text = "Disabled";
                 }
 
                 $row = <<<EOD
@@ -82,7 +84,7 @@ class AccountsDashboardView extends DashboardView
         </div>
         <div class="cell box">
             <div class="status-box $en_color">
-                <span class="mdi-set mdi-$en_icon"></span>
+                <span class="iconify" data-icon="mdi-$en_icon"></span>
                 <span>$en_text</span>
             </div>
             <div class="status-box $role_color ml1">
@@ -92,13 +94,13 @@ class AccountsDashboardView extends DashboardView
         <div class="cell box">
             <a class="action-button" href="/admin/accounts/edit?id=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-pencil"></span>
+                    <span class="iconify" data-icon="mdi-pencil"></span>
                     Edit
                 </div>
             </a>
             <a class="action-button" href="/admin/accounts/delete?id=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-trash-can"></span>
+                    <span class="iconify" data-icon="mdi-trash-can"></span>
                     Delete
                 </div>
             </a>

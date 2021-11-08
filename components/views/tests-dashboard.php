@@ -78,20 +78,20 @@ class TestsDashboardView extends DashboardView
         <span class="cell hr left-col">$name</span>
         <div class="cell">
             <div class="status-box $tsr_color mr1">
-                <span class="mdi-set mdi-$tsr_icon"></span>
+                <span class="iconify" data-icon="mdi-$tsr_icon"></span>
                 <span>$tsr_text</span>
             </div>
         </div>
         <div class="cell box">
             <a class="action-button" href="/admin/test-results/view?rfc=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-eye"></span>
+                    <span class="iconify" data-icon="mdi-eye"></span>
                     View
                 </div>
             </a>
             <a class="action-button" href="/admin/test-results/add?rfc=$cd_ref">
                 <div>
-                    <span class="mdi-set mdi-bookmark-plus"></span>
+                    <span class="iconify" data-icon="mdi-bookmark-plus"></span>
                     Add Test Result
                 </div>
             </a>
