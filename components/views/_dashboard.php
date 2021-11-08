@@ -17,7 +17,7 @@ class DashboardView extends BaseView
         $this->addHeaderMenu(
             0,
             strtoupper(Auth::getUserName()),
-            "mdi-account",
+            "mdi-account-circle",
             "dashboard"
         );
         $this->addHeaderMenu(

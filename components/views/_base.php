@@ -93,7 +93,7 @@ EOD;
         $this->addHeaderMenu(
             0,
             "",
-            "mdi-account",
+            "mdi-account-circle",
             "dashboard"
         );
         
