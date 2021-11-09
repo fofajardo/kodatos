@@ -29,6 +29,7 @@
                             if (e.target.files.length == 0) {
                                 return;
                             }
+                            document.getElementById("load-overlay").setAttribute("active", "true");
                             const referenceField = document.getElementById("field-reference");
                             const imageFile = e.target.files[0];
                             html5QrCode.scanFile(imageFile, true)
@@ -37,6 +38,7 @@
                                     document.verifyForm.submit();
                                 })
                                 .catch(err => {
+                                    referenceField.value = "-1";
                                     document.verifyForm.submit();
                                 });
                         });
