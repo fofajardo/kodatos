@@ -16,7 +16,6 @@ class Auth
     private static $sessionID = null;
     private static $accountEnabled = null;
     private static $userName = null;
-    private static $sessionExpired = false;
 
     public static function getAccountID()
     {
@@ -57,7 +56,16 @@ class Auth
 
     public static function isSessionExpired()
     {
-        return self::$sessionExpired;
+        if (isset($_SESSION["session_expired"]))
+        {
+            return $_SESSION["session_expired"];
+        }
+        return false;
+    }
+
+    public static function clearSessionExpired()
+    {
+        unset($_SESSION["session_expired"]);
     }
 
     public static function isSignedIn()
@@ -110,7 +118,7 @@ class Auth
             {
                 // Delete session from database and mark as expired
                 DBM::$com["SESS"]->delete($session["session_id"]);
-                self::$sessionExpired = true;
+                $_SESSION["session_expired"] = true;
                 return false;
             }
 

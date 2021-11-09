@@ -55,7 +55,17 @@ class SignInView extends BaseView
             }
         }
 
-        // var_dump(Auth::isSessionExpired());
+        if (Auth::isSessionExpired())
+        {
+            $tpl->appendElement(
+                "div",
+                [
+                    "class" => "status-box yellow mb1",
+                ],
+                "Your session has expired. Please sign in again."
+            );
+            Auth::clearSessionExpired();
+        }
 
         return $document;
     }
