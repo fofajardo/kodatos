@@ -99,6 +99,7 @@ EOD;
         
         $this->parameters = [
             "PAGE_NAME"          => "",
+            "PAGE_DESC"          => "KoDatos is a unified platform for vaccination cards and COVID-19 test results.",
             "PAGE_MARKER"        => "default",
             "PAGE_SCRIPT_INSERT" => "",
             "SI_USER_NAME"       => strtoupper(Auth::getUserName()),
