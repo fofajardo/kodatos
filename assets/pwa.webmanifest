@@ -1,48 +1,49 @@
 {
     "short_name": "KoDatos",
     "name": "KoDatos",
+    "description": "KoDatos is a unified platform for vaccination cards and COVID-19 test results.",
     "icons": [
         {
             "src": "/assets/images/branding/maskable_icon_x48.png",
             "type": "image/png",
             "sizes": "48x48",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x72.png",
             "type": "image/png",
             "sizes": "72x72",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x96.png",
             "type": "image/png",
             "sizes": "96x96",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x128.png",
             "type": "image/png",
             "sizes": "128x128",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x192.png",
             "type": "image/png",
             "sizes": "192x192",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x384.png",
             "type": "image/png",
             "sizes": "384x384",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/maskable_icon_x512.png",
             "type": "image/png",
             "sizes": "512x512",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "/assets/images/branding/icon-192.png",
@@ -62,24 +63,31 @@
     "orientation": "portrait",
     "shortcuts": [
         {
-            "name": "KoDatos",
-            "short_name": "KoDatos",
-            "description": "KoDatos",
+            "name": "Home",
+            "short_name": "Home",
+            "description": "KoDatos Homepage",
             "url": "/?source=pwa",
             "icons": [
                 {
-                    "src": "/assets/images/branding/icon-192.png",
+                    "src": "/assets/images/shortcuts/home_x96.png",
                     "type": "image/png",
-                    "sizes": "192x192"
-                },
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "KoDatos Dashboard",
+            "url": "/dashboard?source=pwa",
+            "icons": [
                 {
-                    "src": "/assets/images/branding/icon-512.png",
+                    "src": "/assets/images/shortcuts/dashboard_x96.png",
                     "type": "image/png",
-                    "sizes": "512x512"
+                    "sizes": "96x96"
                 }
             ]
         }
     ],
-    "description": "KoDatos",
     "dir": "ltr"
 }

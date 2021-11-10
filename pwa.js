@@ -1,4 +1,4 @@
-const version = "1.1.0";
+const version = "1.2.0";
 const cacheName = `kodatos-${version}`;
 self.addEventListener('install', e => {
     e.waitUntil(
