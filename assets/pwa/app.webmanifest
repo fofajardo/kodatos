@@ -1,7 +1,12 @@
 {
-    "short_name": "KoDatos",
     "name": "KoDatos",
+    "short_name": "KoDatos",
     "description": "KoDatos is a unified platform for vaccination cards and COVID-19 test results.",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait",
+    "display": "minimal-ui",
+    "start_url": "/?source=pwa",
     "icons": [
         {
             "src": "/assets/branding/maskable_icon_x48.png",
@@ -56,11 +61,6 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "/?source=pwa",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
-    "orientation": "portrait",
     "shortcuts": [
         {
             "name": "Home",
@@ -88,6 +88,5 @@
                 }
             ]
         }
-    ],
-    "dir": "ltr"
+    ]
 }
