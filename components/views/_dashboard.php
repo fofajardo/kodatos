@@ -29,6 +29,7 @@ class DashboardView extends BaseView
         $this->addParameters([
             "PAGE_NAME" => "Dashboard",
             "PAGE_MARKER" => "dashboard",
+            "PAGE_HEADER_STATIC" => "true",
         ]);
 
         $this->mainTpl = new Template("_dashboard");

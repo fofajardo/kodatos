@@ -117,6 +117,7 @@ EOD;
             "PAGE_DESC"          => "KoDatos is a unified platform for vaccination cards and COVID-19 test results.",
             "PAGE_MARKER"        => "default",
             "PAGE_SCRIPT_INSERT" => "",
+            "PAGE_HEADER_STATIC" => "",
             "SI_USER_NAME"       => strtoupper(Auth::getUserName()),
             "SI_FULL_NAME"       => Auth::getFullName(),
             "SI_ROLE"            => Auth::getRoleFriendlyName(Auth::getRoleID()),

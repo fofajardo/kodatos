@@ -177,9 +177,10 @@ header a.link {
   transition: background 250ms ease, box-shadow 250ms ease;
 }
 
+body[static="true"] #primary-header,
 #primary-header[opaque] {
   background: var(--header-background);
-  box-shadow: 0 0 20px 1px var(--header-shadow-color);
+  box-shadow: 0 0 5px 1px var(--header-shadow-color);
 }
 
 #primary-header-spacer {
@@ -325,7 +326,7 @@ footer {
 }
 
 .card2-outer-title {
-  padding: 0 0 15px 0;
+  padding: 10px 0 15px 0;
   font-size: 1.5em;
 }
 
