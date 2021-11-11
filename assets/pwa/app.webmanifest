@@ -69,7 +69,7 @@
             "url": "/?source=pwa",
             "icons": [
                 {
-                    "src": "/assets/images/shortcuts/home_x96.png",
+                    "src": "/assets/pwa/shortcuts/home_x96.png",
                     "type": "image/png",
                     "sizes": "96x96"
                 }
@@ -82,7 +82,7 @@
             "url": "/dashboard?source=pwa",
             "icons": [
                 {
-                    "src": "/assets/images/shortcuts/dashboard_x96.png",
+                    "src": "/assets/pwa/shortcuts/dashboard_x96.png",
                     "type": "image/png",
                     "sizes": "96x96"
                 }
