@@ -326,7 +326,7 @@ footer {
 }
 
 .card2-outer-title {
-  padding: 10px 0 15px 0;
+  padding: 0 0 15px 0;
   font-size: 1.5em;
 }
 
@@ -468,13 +468,11 @@ footer {
 /* ::::: Content: Sidebar ::::: */
 
 .menu-header {
-  font-size: 1.2em;
-  margin: 10px;
+  margin: 5px 10px;
 }
 
 .action-button,
-.menu-button,
-.menu-button-nc {
+.menu-button {
   display: flex;
   border-radius: 6px;
   padding: 5px 15px;
@@ -485,11 +483,6 @@ footer {
   border: 2px solid transparent;
   min-width: 200px;
   user-select: none;
-}
-
-.menu-button-nc {
-  background: none;
-  border-color: transparent;
 }
 
 .action-button > div,
@@ -723,6 +716,7 @@ form button {
 }
 
 #section-dashboard > .two-col {
+  padding-top: 15px;
   max-width: 1250px;
 }
 
