@@ -16,6 +16,7 @@ class Auth
     private static $sessionID = null;
     private static $accountEnabled = null;
     private static $userName = null;
+    private static $fullName = null;
 
     public static function getAccountID()
     {
@@ -42,6 +43,11 @@ class Auth
         return self::$userName;
     }
 
+    public static function getFullName()
+    {
+        return self::$fullName;
+    }
+
     public static $roleNames = [
         0 => "Global",
         1 => "Local Group Admin",
@@ -51,7 +57,11 @@ class Auth
 
     public static function getRoleFriendlyName($role_id)
     {
-        return self::$roleNames[$role_id];
+        if (isset($role_id))
+        {
+            return self::$roleNames[$role_id];
+        }
+        return "";
     }
 
     public static function isSessionExpired()
@@ -83,6 +93,13 @@ class Auth
         self::$groupID = $record["group_id"];
         self::$accountEnabled = (bool)$record["enabled"];
         self::$userName = $record["username"];
+        self::$fullName = Utils::getFullName(
+            $record["first_name"],
+            $record["middle_name"],
+            $record["last_name"],
+            $record["suffix"],
+            false
+        );
     }
 
     public static function signIn(string $email, string $password)
@@ -100,7 +117,6 @@ class Auth
 
         self::updateState($record);
         $session_created = DBM::$com["SESS"]->create(self::$sessionID, self::$accountID);
-        var_dump($session_created);
 
         return $session_created;
     }
@@ -163,6 +179,7 @@ class Auth
             self::$groupID = null;
             self::$accountEnabled = null;
             self::$userName = null;
+            self::$fullName = null;
         }
 
         return $session_removed;

@@ -45,24 +45,27 @@ class Utils
         exit;
     }
 
-    public static function getFullName($firstName, $middleName, $lastName, $suffix = null)
+    public static function getFullName($firstName, $middleName, $lastName, $suffix = null, $surnameFirst = true)
     {
-        if (empty(trim($suffix)))
+        $suffix_spaced = empty($suffix) ? "" : " $suffix";
+        
+        if ($surnameFirst)
         {
             return trim(sprintf(
-                "%s, %s %s",
+                "%s%s, %s %s",
                 strtoupper($lastName),
+                $suffix_spaced,
                 $firstName,
                 $middleName
             ));
         }
 
         return trim(sprintf(
-            "%s %s, %s %s",
-            strtoupper($lastName),
-            $suffix,
+            "%s %s %s%s",
             $firstName,
-            $middleName
+            $middleName,
+            $lastName,
+            $suffix_spaced
         ));
     }
 }
