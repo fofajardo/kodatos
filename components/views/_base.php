@@ -31,10 +31,25 @@ class BaseView implements View
         $hide_span = empty($text) ? "hidden" : "";
         $menu = <<<EOD
 <li>
-    <a class="link" href="/$landingPage">
+    <a id="hmb-$id" class="link" href="/$landingPage">
         <div>
             <span class="iconify" data-icon="$icon"></span>
             <span $hide_span>$text</span>
+        </div>
+    </a>
+</li>
+EOD;
+        $this->headerMenus[$id] = $menu;
+    }
+
+    protected function addHeaderMenuTarget($id, $icon, $targetId, $targetAttr)
+    {
+        $hide_span = empty($text) ? "hidden" : "";
+        $menu = <<<EOD
+<li>
+    <a id="hmb-$id" class="link has-action" targetId="$targetId" targetAttr="$targetAttr">
+        <div>
+            <span class="iconify" data-icon="$icon"></span>
         </div>
     </a>
 </li>
@@ -91,7 +106,7 @@ EOD;
         $this->headerTpl->attachContent($this->headerMenus);
 
         $this->addHeaderMenu(
-            0,
+            "dashboard",
             "",
             "mdi-account-circle",
             "dashboard"

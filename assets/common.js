@@ -1,16 +1,13 @@
 var gSite = {
-    lastKnownScrollPosition: 0,
-    ticking: false,
-
     initialize: function () {
+        gActions.initTargets();
     },
 
     deferredLoad: function () {
     },
     
-    reflow: function () {
-    },
-
+    lastKnownScrollPosition: 0,
+    ticking: false,
     updateHeader: function (e) {
         gSite.lastKnownScrollPosition = window.scrollY;
 
@@ -26,12 +23,55 @@ var gSite = {
             });
             gSite.ticking = true;
         }
-    }
+    },
+
+    toggleAttribute: function (elementId, attributeName) {
+        let container = document.getElementById(elementId);
+        let state = (container.getAttribute(attributeName) == "true") ? "false" : "true";
+        container.setAttribute(attributeName, state);
+        container.removeAttribute("prehidden");
+    },
+};
+
+var gActions = {
+    initTarget: function (aTarget) {
+        if (!aTarget) {
+            return false;
+        }
+        if (typeof aTarget === "string") {
+            aTarget = document.getElementById(aTarget);
+        }
+        if (aTarget.getAttribute("_")) {
+            return false;
+        }
+        
+        let targetIDs = aTarget.getAttribute("targetId").split(",");
+        let attributeName = aTarget.getAttribute("targetAttr");
+        for (let j = 0; j < targetIDs.length; j++) {
+            if (targetIDs[j] && attributeName) {
+                aTarget.addEventListener(
+                    "click",
+                    function (e) {
+                        gSite.toggleAttribute(targetIDs[j], attributeName);
+                    }
+                );
+                aTarget.setAttribute("_", "true");
+            }
+        }
+        
+        return true;
+    },
+    
+    initTargets: function () {
+        let actionElements = document.getElementsByClassName("has-action");
+        for (let i = 0; i < actionElements.length; i++) {
+            gActions.initTarget(actionElements[i]);
+        }
+    },
 };
 
 window.addEventListener("DOMContentLoaded", gSite.initialize);
 window.addEventListener("load", gSite.deferredLoad);
-window.addEventListener("resize", gSite.reflow);
 document.addEventListener("scroll", gSite.updateHeader);
 
 // Initialize PWA service worker

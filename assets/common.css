@@ -729,6 +729,10 @@ form button {
   padding: 0 5px;
 }
 
+#hmb-menu {
+  display: none;
+}
+
 #load-overlay {
   top: 0;
   right: 0;
@@ -878,6 +882,35 @@ body,
 }
 
 @media screen and (max-width: 650px) {
+  #hmb-menu {
+    display: block;
+  }
+  #hmb-sign-out {
+    display: none;
+  }
+  #navigation-col {
+    justify-content: space-between;
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    justify-content: space-between;
+    background-color: var(--header-background);
+    color: var(--header-text-color);
+    box-shadow: 0 5px 20px 1px var(--header-shadow-color);
+    overflow-y: auto;
+    z-index: 999;
+    transition: transform 500ms;
+    border-radius: 0 16px 16px 0;
+  }
+
+  #navigation-col:not([active="true"]) {
+    transform: translateX(-120%);
+  }
+  #navigation-col[active="false"] {
+    /* display: none; */
+  }
   #pov-right-col {
     margin-left: 0;
   }
