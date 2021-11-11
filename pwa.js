@@ -44,7 +44,6 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
     event.respondWith((async () => {
         const cache = await caches.open(CACHE_NAME);
-
         const cachedResponse = await cache.match(
             event.request,
             { ignoreSearch: true }
@@ -53,12 +52,12 @@ self.addEventListener("fetch", event => {
             return cachedResponse;
         }
 
-        const preloadResponse = await event.preloadResponse;
-        if (preloadResponse) {
-            return preloadResponse;
-        }
-
         try {
+            const preloadResponse = await event.preloadResponse;
+            if (preloadResponse) {
+                return preloadResponse;
+            }
+
             const networkResponse = await fetch(event.request);
             return networkResponse;
         } catch (e) {
