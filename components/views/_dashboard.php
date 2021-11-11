@@ -14,15 +14,7 @@ class DashboardView extends BaseView
         $document = parent::getDocument();
 
         $this->clearHeader();
-/*
-        $this->addHeaderMenu(
-            "dashboard",
-            strtoupper(Auth::getUserName()),
-            "mdi-account-circle",
-            "dashboard"
-        );
-*/
-        $this->addHeaderMenuTarget(
+        $this->addHeaderTarget(
             "menu",
             "mdi-menu",
             "navigation-col",

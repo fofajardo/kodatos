@@ -42,7 +42,7 @@ EOD;
         $this->headerMenus[$id] = $menu;
     }
 
-    protected function addHeaderMenuTarget($id, $icon, $targetId, $targetAttr)
+    protected function addHeaderTarget($id, $icon, $targetId, $targetAttr)
     {
         $hide_span = empty($text) ? "hidden" : "";
         $menu = <<<EOD
@@ -118,6 +118,8 @@ EOD;
             "PAGE_MARKER"        => "default",
             "PAGE_SCRIPT_INSERT" => "",
             "SI_USER_NAME"       => strtoupper(Auth::getUserName()),
+            "SI_FULL_NAME"       => Auth::getFullName(),
+            "SI_ROLE"            => Auth::getRoleFriendlyName(Auth::getRoleID()),
         ];
         $this->scripts = [];
 
