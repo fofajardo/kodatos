@@ -1,4 +1,4 @@
-const CACHE_VERSION = "1.4.0";
+const CACHE_VERSION = "1.4.1";
 const CACHE_NAME = `kodatos-${CACHE_VERSION}`;
 
 const OFFLINE_URL = "/pwa/offline";
