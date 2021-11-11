@@ -306,22 +306,23 @@ footer {
   flex-direction: column;
   border-radius: 10px;
   padding: 15px;
-  border: 2px solid black;
   min-width: 300px;
   margin-bottom: 45px;
   background: white;
+  box-shadow: 0px 1.6px 3.6px rgb(0 0 0 / 13%),
+              0px 0px 2.9px rgb(0 0 0 / 11%);
 }
 
 .card2 > .title {
   font-weight: bold;
-  margin: -17px -17px 17px -17px;
+  margin: -15px -15px 15px -15px;
   padding: 15px;
   border-radius: 10px 10px 0 0;
   font-size: 1.35em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid #000;
+  background-color: rgba(0, 0, 0, 0.05);
   flex-wrap: wrap;
 }
 
@@ -392,7 +393,7 @@ footer {
 }
 
 .table.hl > .row:not(:last-child) {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .table.ac > .row > .cell {
@@ -459,7 +460,6 @@ footer {
 .menu-header {
   font-size: 1.2em;
   margin: 10px;
-  border-bottom: 2px solid rgba(0,0,0,0.2);
 }
 
 .action-button,
@@ -695,7 +695,6 @@ form button {
 #pov-qr,
 #pov-qr > canvas,
 #pov-qr > img {
-  /* display: inline !important; */
   width: 150px;
   height: 150px;
 }
@@ -924,8 +923,8 @@ body,
   }
 
   .card2 > .title {
-    padding: 15px;
-    margin: -7px -7px 7px -7px;
+    padding: 10px;
+    margin: -5px -5px 5px -5px;
   }
 
   .action-button {
