@@ -313,17 +313,25 @@ footer {
               0px 0px 2.9px rgb(0 0 0 / 11%);
 }
 
+.card2-outer-title,
 .card2 > .title {
   font-weight: bold;
-  margin: -15px -15px 15px -15px;
   padding: 15px;
-  border-radius: 10px 10px 0 0;
   font-size: 1.35em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.05);
   flex-wrap: wrap;
+}
+
+.card2-outer-title {
+  font-size: 1.5em;
+}
+
+.card2 > .title {
+  margin: -15px -15px 15px -15px;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card2 > .title.state-low {
@@ -368,7 +376,7 @@ footer {
   justify-content: space-between;
   font-size: 1.2em;
   font-weight: bold;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.1);
   padding: 15px;
   border: none !important;
   border-radius: 5px;
@@ -393,7 +401,7 @@ footer {
 }
 
 .table.hl > .row:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .table.ac > .row > .cell {
@@ -415,7 +423,7 @@ footer {
 }
 
 .table > .row > .cell.hr {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* ::::: Content: Choice Buttons ::::: */
@@ -877,9 +885,11 @@ body,
   #primary-header > #right-nav a.link .mdi-set ~ span {
     display: none; 
   }
+  .card2-outer-title,
   .card2 > .title {
     flex-direction: column;
   }
+  .card2-outer-title > *:first-child,
   .card2 > .title > *:first-child {
     margin-bottom: 10px;
   }
@@ -922,6 +932,7 @@ body,
     padding: 5px;
   }
 
+  .card2-outer-title,
   .card2 > .title {
     padding: 10px;
     margin: -5px -5px 5px -5px;

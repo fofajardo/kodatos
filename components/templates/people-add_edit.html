@@ -1,4 +1,4 @@
-<div class="title">
+<div class="card2-outer-title">
     <span class="cell left-col hr">PAGE_NAME</span>
     <span class="cell">
         <a class="button" href="/admin/people">
@@ -7,91 +7,92 @@
         </a>
     </span>
 </div>
+<div class="card2">
+    <form method="post" action="">
+        <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
+        <input type="hidden" id="field-person-rfc" name="person-rfc" value="PERSON_RFC">
+        <div class="table eq">
+            <div class="row subhead">
+            Personal Information
+            </div>
+            <div class="row">
+                <div class="cell box v">
+                    <span>Last Name:</span>
+                    <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
+                </div>
+                <div class="cell box v">
+                    <span>First Name:</span>
+                    <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
+                </div>
+                <div class="cell box v">
+                    <span>Middle Name:</span>
+                    <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
+                </div>
+                <div class="cell box v">
+                    <span>Suffix:</span>
+                    <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell box v">
+                    <span>Sex:</span>
+                    <select id="field-gender" name="bio_gender" required>
+                        <option value="" hidden>Choose</option>
+                        <option value="0" BIO_GENDER_0>Male</option>
+                        <option value="1" BIO_GENDER_1>Female</option>
+                    </select>
+                </div>
+                <div class="cell box v">
+                    <span>Date of Birth:</span>
+                    <input type="date" id="field-bio-birthdate" name="bio-birthdate" value="BIO_BIRTHDATE" required>
+                </div>
+                <div class="cell box v">
+                    <span>Civil Status:</span>
+                    <select id="field-civilstatus" name="bio-civilstatus" required>
+                        <option value="" hidden>Choose</option>
+                        <option value="0" BIO_CIVILSTATUS_0>Single</option>
+                        <option value="1" BIO_CIVILSTATUS_1>Married</option>
+                        <option value="2" BIO_CIVILSTATUS_2>Widow/Widower</option>
+                        <option value="3" BIO_CIVILSTATUS_3>Separated/Annulled</option>
+                        <option value="4" BIO_CIVILSTATUS_4>Common-law Spouse (Live-in)</option>
+                    </select>
+                </div>
+            </div>
 
-<form method="post" action="">
-    <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
-    <input type="hidden" id="field-person-rfc" name="person-rfc" value="PERSON_RFC">
-    <div class="table eq">
-        <div class="row subhead">
-        Personal Information
-        </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>Last Name:</span>
-                <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
+            <div class="row subhead">
+            Contact Information
             </div>
-            <div class="cell box v">
-                <span>First Name:</span>
-                <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
+            <div class="row">
+                <div class="cell box v">
+                    <span>Contact number:</span>
+                    <input type="number" min="0" id="field-contact-number" name="contact-number" value="CON_NUMBER" required>
+                </div>
+                <div class="cell box v">
+                    <span>Email:</span>
+                    <input type="email" id="field-contact-email" name="contact-email" value="CON_EMAIL">
+                </div>
             </div>
-            <div class="cell box v">
-                <span>Middle Name:</span>
-                <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
+            <div class="row">
+                <div class="cell box v">
+                    <span>General Location:</span>
+                    <select id="field-location-general" name="location-general" required>
+                        <option value="" hidden>Choose</option>
+                        CONTENT_INSERT
+                    </select>
+                </div>
             </div>
-            <div class="cell box v">
-                <span>Suffix:</span>
-                <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
+            <div class="row">
+                <div class="cell box v">
+                    <span>Street Address:</span>
+                    <input type="text" id="field-location-street" name="location-street" value="LOC_STREET" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>Sex:</span>
-                <select id="field-gender" name="bio_gender" required>
-                    <option value="" hidden>Choose</option>
-                    <option value="0" BIO_GENDER_0>Male</option>
-                    <option value="1" BIO_GENDER_1>Female</option>
-                </select>
-            </div>
-            <div class="cell box v">
-                <span>Date of Birth:</span>
-                <input type="date" id="field-bio-birthdate" name="bio-birthdate" value="BIO_BIRTHDATE" required>
-            </div>
-            <div class="cell box v">
-                <span>Civil Status:</span>
-                <select id="field-civilstatus" name="bio-civilstatus" required>
-                    <option value="" hidden>Choose</option>
-                    <option value="0" BIO_CIVILSTATUS_0>Single</option>
-                    <option value="1" BIO_CIVILSTATUS_1>Married</option>
-                    <option value="2" BIO_CIVILSTATUS_2>Widow/Widower</option>
-                    <option value="3" BIO_CIVILSTATUS_3>Separated/Annulled</option>
-                    <option value="4" BIO_CIVILSTATUS_4>Common-law Spouse (Live-in)</option>
-                </select>
+            
+            <div class="row mt1">
+                <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+                <button class="cell" name="action" value="G_VAX" type="submit">Proceed to Vaccination Records</button>
+                <button class="cell" name="action" value="G_TST" type="submit">Proceed to Test Results</button>
             </div>
         </div>
-
-        <div class="row subhead">
-        Contact Information
-        </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>Contact number:</span>
-                <input type="number" min="0" id="field-contact-number" name="contact-number" value="CON_NUMBER" required>
-            </div>
-            <div class="cell box v">
-                <span>Email:</span>
-                <input type="email" id="field-contact-email" name="contact-email" value="CON_EMAIL">
-            </div>
-        </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>General Location:</span>
-                <select id="field-location-general" name="location-general" required>
-                    <option value="" hidden>Choose</option>
-                    CONTENT_INSERT
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>Street Address:</span>
-                <input type="text" id="field-location-street" name="location-street" value="LOC_STREET" required>
-            </div>
-        </div>
-        
-        <div class="row mt1">
-            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
-            <button class="cell" name="action" value="G_VAX" type="submit">Proceed to Vaccination Records</button>
-            <button class="cell" name="action" value="G_TST" type="submit">Proceed to Test Results</button>
-        </div>
-    </div>
-</form>
+    </form>
+</div>

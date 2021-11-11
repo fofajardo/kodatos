@@ -1,4 +1,4 @@
-<div class="title">
+<div class="card2-outer-title">
     <span class="cell left-col hr">PAGE_NAME</span>
     <span class="cell">
         <a class="button" href="/admin/healthcare-workers">
@@ -7,33 +7,35 @@
         </a>
     </span>
 </div>
-<form method="post" action="">
-    <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
-    <div class="table eq">
-        <div class="row subhead">
-        General Information
+<div class="card2">
+    <form method="post" action="">
+        <input type="hidden" id="field-person-id" name="person-id" value="PERSON_ID">
+        <div class="table eq">
+            <div class="row subhead">
+            General Information
+            </div>
+            <div class="row">
+                <div class="cell box v">
+                    <span>Last Name:</span>
+                    <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
+                </div>
+                <div class="cell box v">
+                    <span>First Name:</span>
+                    <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
+                </div>
+                <div class="cell box v">
+                    <span>Middle Name:</span>
+                    <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
+                </div>
+                <div class="cell box v">
+                    <span>Suffix:</span>
+                    <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
+                </div>
+            </div>
+            <div class="row mt1">
+                <button class="cell" name="action" value="G_RET" type="submit">Save</button>
+                <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another Healthcare Worker</button>
+            </div>
         </div>
-        <div class="row">
-            <div class="cell box v">
-                <span>Last Name:</span>
-                <input type="text" id="field-name-last" name="name-last" value="NAME_LAST" required>
-            </div>
-            <div class="cell box v">
-                <span>First Name:</span>
-                <input type="text" id="field-name-first" name="name-first" value="NAME_FIRST" required>
-            </div>
-            <div class="cell box v">
-                <span>Middle Name:</span>
-                <input type="text" id="field-name-middle" name="name-middle" value="NAME_MID">
-            </div>
-            <div class="cell box v">
-                <span>Suffix:</span>
-                <input type="text" id="field-name-suffix" name="name-suffix" value="NAME_SUFF">
-            </div>
-        </div>
-        <div class="row mt1">
-            <button class="cell" name="action" value="G_RET" type="submit">Save</button>
-            <button class="cell" name="action" value="G_NEW" type="submit">Save and Add Another Healthcare Worker</button>
-        </div>
-    </div>
-</form>
+    </form>
+</div>
