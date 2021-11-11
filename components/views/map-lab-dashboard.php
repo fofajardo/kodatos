@@ -39,7 +39,7 @@ class MapLabDashboardView extends DashboardView
 
                 $row = <<<EOD
     <div class="row">
-        <span class="cell hr left-col">$name</span>
+        <span class="cell left-col">$name</span>
         <div class="cell box">
             <a class="action-button" href="/admin/laboratories/edit?id=$cd_ref">
                 <div>

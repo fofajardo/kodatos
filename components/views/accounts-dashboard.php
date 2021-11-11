@@ -78,7 +78,7 @@ class AccountsDashboardView extends DashboardView
 
                 $row = <<<EOD
     <div class="row">
-        <div class="cell hr left-col">
+        <div class="cell left-col">
             <span>$name</span>
             <span class="username">($username)</span>
         </div>

@@ -104,7 +104,7 @@ class PeopleDashboardView extends DashboardView
 
                 $row = <<<EOD
     <div class="row">
-        <span class="cell hr left-col">$name</span>
+        <span class="cell left-col">$name</span>
         <div class="cell">
             <div class="status-box $tsr_color mr1">
                 <span class="iconify" data-icon="mdi-$tsr_icon"></span>
