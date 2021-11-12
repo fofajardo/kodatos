@@ -22,7 +22,7 @@ class DashboardView extends BaseView
         );
         $this->addHeaderMenu(
             "sign-out",
-            "Sign out",
+            "Sign Out",
             "mdi-logout",
             "sign-out"
         );
