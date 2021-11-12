@@ -46,6 +46,28 @@ class Sessions extends Database
         return ($this->statement->rowCount() == 0) ? false : $entries[0];
     }
 
+
+    public function update(
+        $expiry = null,
+        $id
+    ) {
+        $query = ["UPDATE `account_sessions` SET"];
+		$parameters = [];
+        $values = [];
+        
+        if (!empty($expiry))
+        {
+            $parameters[] = "`expiry`=?";
+            $values[] = $expiry;
+        }
+        
+		$query[] = implode(",", $parameters);
+        $query[] = "WHERE `session_id`=?";
+        $values[] = $id;
+
+        return $this->execute(implode(" ", $query), $values);
+    }
+
     public function delete(string $id)
     {
         return $this->execute(
