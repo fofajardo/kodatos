@@ -134,6 +134,9 @@ class Auth
             {
                 // Delete session from database and mark as expired
                 DBM::$com["SESS"]->delete($session["session_id"]);
+                session_destroy();
+                session_start();
+                session_regenerate_id();
                 $_SESSION["session_expired"] = true;
                 return false;
             }
