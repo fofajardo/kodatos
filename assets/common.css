@@ -672,7 +672,6 @@ form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 #pov-info-container {
@@ -869,6 +868,7 @@ body,
   }
 
   #pov-status-container {
+    flex-direction: column;
     justify-content: center;
   }
 
