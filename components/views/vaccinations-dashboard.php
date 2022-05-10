@@ -83,13 +83,13 @@ class VaxDashboardView extends DashboardView
             </div>
         </div>
         <div class="cell box">
-            <a class="action-button" href="/admin/vaccinations/view?rfc=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/vaccinations/view?rfc=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-eye"></span>
                     View
                 </div>
             </a>
-            <a class="action-button" href="/admin/vaccinations/add?rfc=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/vaccinations/add?rfc=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-bookmark-plus"></span>
                     Add Dose

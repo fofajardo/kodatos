@@ -15,8 +15,10 @@ class Framework
     public static function initialize()
     {
         $protocol = "http";
-        $droot = $_SERVER["DOCUMENT_ROOT"];
+        $droot = str_replace("\\", "/", dirname(__FILE__, 2));
         $sroot = $protocol . '://' . $_SERVER['HTTP_HOST'];
+        $adir = str_replace("/index.php", "", $_SERVER["SCRIPT_NAME"]);
+        $sroot .= $adir;
 
         // Directories
         self::$dir = [
@@ -30,6 +32,7 @@ class Framework
             "CNT"     => $droot . "/assets/content",
             "IMG"     => $droot . "/assets/images",
             "S_ROOT"  => $sroot,
+            "S_AD"    => $adir,
             "S_COM"   => $sroot . "/components",
             "S_DBP"   => $sroot . "/components/db",
             "S_TPL"   => $sroot . "/components/templates",

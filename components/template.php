@@ -154,6 +154,7 @@ class Template
                 "CONTENT_INSERT",
                 "DIR_AST",
                 "DIR_IMG",
+                "DIR_ROOT",
             ],
             array_keys($this->data)
         );
@@ -162,6 +163,7 @@ class Template
                 $content_merged,
                 Framework::$dir["S_AST"],
                 Framework::$dir["S_IMG"],
+                Framework::$dir["S_ROOT"],
             ],
             array_values($this->data)
         );

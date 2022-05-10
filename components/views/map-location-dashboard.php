@@ -41,13 +41,13 @@ class LocationDashboardView extends DashboardView
     <div class="row">
         <span class="cell left-col">$name</span>
         <div class="cell box">
-            <a class="action-button" href="/admin/locations/edit?id=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/locations/edit?id=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-pencil"></span>
                     Edit
                 </div>
             </a>
-            <a class="action-button" href="/admin/locations/delete?id=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/locations/delete?id=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-trash-can"></span>
                     Delete

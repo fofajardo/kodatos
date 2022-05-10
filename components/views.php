@@ -18,10 +18,10 @@ class VWM
             include_once $filename;
         }
 
-        $url = parse_url($_SERVER["REQUEST_URI"]);
-        $url_path = trim($url["path"], "/");
-
-        $view = self::findView($url_path);
+        $base_len = strlen(Framework::$dir["S_AD"]);
+        $url = parse_url($_SERVER["REQUEST_URI"])["path"];
+        $slug = trim(substr($url, $base_len), "/");
+        $view = self::findView($slug);
 
         if ($view == null)
         {

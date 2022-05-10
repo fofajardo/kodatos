@@ -103,13 +103,13 @@ class SessionsView extends DashboardView
             $date_expiry
         </div>
         <div class="cell box">
-            <a class="action-button" href="/admin/sessions?action=delete&id=$sess_id">
+            <a class="action-button" href="DIR_ROOT/admin/sessions?action=delete&id=$sess_id">
                 <div>
                     <span class="iconify" data-icon="mdi-logout"></span>
                     Sign Out
                 </div>
             </a>
-            <a class="action-button" href="/admin/sessions?action=expire&id=$sess_id">
+            <a class="action-button" href="DIR_ROOT/admin/sessions?action=expire&id=$sess_id">
                 <div>
                     <span class="iconify" data-icon="mdi-timer-off"></span>
                     Expire

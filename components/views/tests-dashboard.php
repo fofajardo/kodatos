@@ -83,13 +83,13 @@ class TestsDashboardView extends DashboardView
             </div>
         </div>
         <div class="cell box">
-            <a class="action-button" href="/admin/test-results/view?rfc=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/test-results/view?rfc=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-eye"></span>
                     View
                 </div>
             </a>
-            <a class="action-button" href="/admin/test-results/add?rfc=$cd_ref">
+            <a class="action-button" href="DIR_ROOT/admin/test-results/add?rfc=$cd_ref">
                 <div>
                     <span class="iconify" data-icon="mdi-bookmark-plus"></span>
                     Add Test Result

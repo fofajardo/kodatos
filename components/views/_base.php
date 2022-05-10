@@ -31,7 +31,7 @@ class BaseView implements View
         $hide_span = empty($text) ? "hidden" : "";
         $menu = <<<EOD
 <li>
-    <a id="hmb-$id" class="link" href="/$landingPage">
+    <a id="hmb-$id" class="link" href="DIR_ROOT/$landingPage">
         <div>
             <span class="iconify" data-icon="$icon"></span>
             <span $hide_span>$text</span>
