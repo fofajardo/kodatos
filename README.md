@@ -1,5 +1,5 @@
 # KoDatos
-KoDatos is a web application that allows users to store, manage, and share their COVID-19 vaccination and test records. It was originally written as a project for an Entrepreneurship class with the aim of partnering with LGUs in the Philippines.
+Komunidad + Datos. KoDatos is a web application that allows users to store, manage, and share their COVID-19 vaccination and test records. It was originally written as a project for an Entrepreneurship class with the aim of partnering with LGUs in the Philippines.
 
 ## Features
 - Secure storage: All user data is stored securely in the cloud.
